@@ -1,0 +1,1548 @@
+name: placebo
+kind: placebo
+display_name: Physical geography, geology and astronomy
+summary: Factual encyclopaedic material on landforms, weather, geology and astronomy.
+sources:
+- title: Lithosphere
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lithosphere
+  license: CC BY-SA 3.0 / GFDL
+  file: 0000.txt
+- title: "Cassini\u2013Huygens"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cassini%E2%80%93Huygens
+  license: CC BY-SA 3.0 / GFDL
+  file: 0001.txt
+- title: 253 Mathilde
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/253%20Mathilde
+  license: CC BY-SA 3.0 / GFDL
+  file: 0002.txt
+- title: Lake Baikal
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lake%20Baikal
+  license: CC BY-SA 3.0 / GFDL
+  file: 0003.txt
+- title: Earth's mantle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earth%27s%20mantle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0004.txt
+- title: South Atlantic tropical cyclone
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/South%20Atlantic%20tropical%20cyclone
+  license: CC BY-SA 3.0 / GFDL
+  file: 0005.txt
+- title: Geography of the Dominican Republic
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Geography%20of%20the%20Dominican%20Republic
+  license: CC BY-SA 3.0 / GFDL
+  file: 0006.txt
+- title: Plate tectonics
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Plate%20tectonics
+  license: CC BY-SA 3.0 / GFDL
+  file: 0007.txt
+- title: Sud-Est (department)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sud-Est%20%28department%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0008.txt
+- title: Kaghan Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Kaghan%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0009.txt
+- title: Condor
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Condor
+  license: CC BY-SA 3.0 / GFDL
+  file: 0010.txt
+- title: Fossil
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fossil
+  license: CC BY-SA 3.0 / GFDL
+  file: 0011.txt
+- title: Gulf of Mexico
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gulf%20of%20Mexico
+  license: CC BY-SA 3.0 / GFDL
+  file: 0012.txt
+- title: Mountain range
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mountain%20range
+  license: CC BY-SA 3.0 / GFDL
+  file: 0013.txt
+- title: Granite
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Granite
+  license: CC BY-SA 3.0 / GFDL
+  file: 0014.txt
+- title: Dominica
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dominica
+  license: CC BY-SA 3.0 / GFDL
+  file: 0015.txt
+- title: Insolation
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Insolation
+  license: CC BY-SA 3.0 / GFDL
+  file: 0016.txt
+- title: 1986 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1986%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0017.txt
+- title: Cicada
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cicada
+  license: CC BY-SA 3.0 / GFDL
+  file: 0018.txt
+- title: Monsoon
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Monsoon
+  license: CC BY-SA 3.0 / GFDL
+  file: 0019.txt
+- title: Nord-Ouest (department)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nord-Ouest%20%28department%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0020.txt
+- title: "R\xE9union"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/R%C3%A9union
+  license: CC BY-SA 3.0 / GFDL
+  file: 0021.txt
+- title: Long Island
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Long%20Island
+  license: CC BY-SA 3.0 / GFDL
+  file: 0022.txt
+- title: Weathering
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Weathering
+  license: CC BY-SA 3.0 / GFDL
+  file: 0023.txt
+- title: Auckland
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Auckland
+  license: CC BY-SA 3.0 / GFDL
+  file: 0024.txt
+- title: Amazon River
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Amazon%20River
+  license: CC BY-SA 3.0 / GFDL
+  file: 0025.txt
+- title: Goat Rock Beach
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Goat%20Rock%20Beach
+  license: CC BY-SA 3.0 / GFDL
+  file: 0026.txt
+- title: Gilgit River
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gilgit%20River
+  license: CC BY-SA 3.0 / GFDL
+  file: 0027.txt
+- title: Biome
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Biome
+  license: CC BY-SA 3.0 / GFDL
+  file: 0028.txt
+- title: "Trentino-Alto Adige/S\xFCdtirol"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Trentino-Alto%20Adige/S%C3%BCdtirol
+  license: CC BY-SA 3.0 / GFDL
+  file: 0029.txt
+- title: 2009 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2009%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0030.txt
+- title: Notostraca
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Notostraca
+  license: CC BY-SA 3.0 / GFDL
+  file: 0031.txt
+- title: Great Rift Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Great%20Rift%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0032.txt
+- title: Saturn
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Saturn
+  license: CC BY-SA 3.0 / GFDL
+  file: 0033.txt
+- title: Ecoregion
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ecoregion
+  license: CC BY-SA 3.0 / GFDL
+  file: 0034.txt
+- title: Rain
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rain
+  license: CC BY-SA 3.0 / GFDL
+  file: 0035.txt
+- title: Jurassic Coast
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Jurassic%20Coast
+  license: CC BY-SA 3.0 / GFDL
+  file: 0036.txt
+- title: Lot (department)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lot%20%28department%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0037.txt
+- title: Pangaea
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pangaea
+  license: CC BY-SA 3.0 / GFDL
+  file: 0038.txt
+- title: Fold mountain
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fold%20mountain
+  license: CC BY-SA 3.0 / GFDL
+  file: 0039.txt
+- title: Hurricane Isaac (2006)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hurricane%20Isaac%20%282006%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0040.txt
+- title: Tropical wave
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20wave
+  license: CC BY-SA 3.0 / GFDL
+  file: 0041.txt
+- title: Aruba
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Aruba
+  license: CC BY-SA 3.0 / GFDL
+  file: 0042.txt
+- title: Weather
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Weather
+  license: CC BY-SA 3.0 / GFDL
+  file: 0043.txt
+- title: Water cycle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Water%20cycle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0044.txt
+- title: "K\xF6ppen climate classification"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/K%C3%B6ppen%20climate%20classification
+  license: CC BY-SA 3.0 / GFDL
+  file: 0045.txt
+- title: Titan (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Titan%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0046.txt
+- title: Sandstone
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sandstone
+  license: CC BY-SA 3.0 / GFDL
+  file: 0047.txt
+- title: 1997 Pacific hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1997%20Pacific%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0048.txt
+- title: Pacific Ocean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pacific%20Ocean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0049.txt
+- title: Landform
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Landform
+  license: CC BY-SA 3.0 / GFDL
+  file: 0050.txt
+- title: Charente
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Charente
+  license: CC BY-SA 3.0 / GFDL
+  file: 0051.txt
+- title: Land
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Land
+  license: CC BY-SA 3.0 / GFDL
+  file: 0052.txt
+- title: Brackish water
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Brackish%20water
+  license: CC BY-SA 3.0 / GFDL
+  file: 0053.txt
+- title: 617 Patroclus
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/617%20Patroclus
+  license: CC BY-SA 3.0 / GFDL
+  file: 0054.txt
+- title: Moca, Dominican Republic
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Moca%2C%20Dominican%20Republic
+  license: CC BY-SA 3.0 / GFDL
+  file: 0055.txt
+- title: Island
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Island
+  license: CC BY-SA 3.0 / GFDL
+  file: 0056.txt
+- title: Greenhouse effect
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Greenhouse%20effect
+  license: CC BY-SA 3.0 / GFDL
+  file: 0057.txt
+- title: 10 Hygiea
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/10%20Hygiea
+  license: CC BY-SA 3.0 / GFDL
+  file: 0058.txt
+- title: Tropical Storm Beryl (2006)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20Storm%20Beryl%20%282006%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0059.txt
+- title: Continent
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Continent
+  license: CC BY-SA 3.0 / GFDL
+  file: 0060.txt
+- title: Vancouver
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vancouver
+  license: CC BY-SA 3.0 / GFDL
+  file: 0061.txt
+- title: Vancouver Island
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vancouver%20Island
+  license: CC BY-SA 3.0 / GFDL
+  file: 0062.txt
+- title: Death Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Death%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0063.txt
+- title: Natural satellite
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Natural%20satellite
+  license: CC BY-SA 3.0 / GFDL
+  file: 0064.txt
+- title: Ain
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ain
+  license: CC BY-SA 3.0 / GFDL
+  file: 0065.txt
+- title: Hunza Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hunza%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0066.txt
+- title: Seafloor spreading
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Seafloor%20spreading
+  license: CC BY-SA 3.0 / GFDL
+  file: 0067.txt
+- title: 2005 Pacific hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2005%20Pacific%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0068.txt
+- title: Cantal
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cantal
+  license: CC BY-SA 3.0 / GFDL
+  file: 0069.txt
+- title: Great Lakes
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Great%20Lakes
+  license: CC BY-SA 3.0 / GFDL
+  file: 0070.txt
+- title: Crustacean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Crustacean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0071.txt
+- title: 2006 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2006%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0072.txt
+- title: Stream
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Stream
+  license: CC BY-SA 3.0 / GFDL
+  file: 0073.txt
+- title: Mount Meager
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mount%20Meager
+  license: CC BY-SA 3.0 / GFDL
+  file: 0074.txt
+- title: Massif Central
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Massif%20Central
+  license: CC BY-SA 3.0 / GFDL
+  file: 0075.txt
+- title: Levee
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Levee
+  license: CC BY-SA 3.0 / GFDL
+  file: 0076.txt
+- title: Dobruja
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dobruja
+  license: CC BY-SA 3.0 / GFDL
+  file: 0077.txt
+- title: Kalam Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Kalam%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0078.txt
+- title: Barahona Province
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Barahona%20Province
+  license: CC BY-SA 3.0 / GFDL
+  file: 0079.txt
+- title: 704 Interamnia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/704%20Interamnia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0080.txt
+- title: Tropical Storm Chantal (2007)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20Storm%20Chantal%20%282007%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0081.txt
+- title: Portia (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Portia%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0082.txt
+- title: Province of Alicante
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Province%20of%20Alicante
+  license: CC BY-SA 3.0 / GFDL
+  file: 0083.txt
+- title: Argument of periapsis
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Argument%20of%20periapsis
+  license: CC BY-SA 3.0 / GFDL
+  file: 0084.txt
+- title: Sedimentary rock
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sedimentary%20rock
+  license: CC BY-SA 3.0 / GFDL
+  file: 0085.txt
+- title: Hawaii (island)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hawaii%20%28island%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0086.txt
+- title: Ceres (dwarf planet)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ceres%20%28dwarf%20planet%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0087.txt
+- title: Sahara pump theory
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sahara%20pump%20theory
+  license: CC BY-SA 3.0 / GFDL
+  file: 0088.txt
+- title: Solar System
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Solar%20System
+  license: CC BY-SA 3.0 / GFDL
+  file: 0089.txt
+- title: Kauai
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Kauai
+  license: CC BY-SA 3.0 / GFDL
+  file: 0090.txt
+- title: Himalayas
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Himalayas
+  license: CC BY-SA 3.0 / GFDL
+  file: 0091.txt
+- title: 1994 Pacific hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1994%20Pacific%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0092.txt
+- title: Eurasia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Eurasia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0093.txt
+- title: 87 Sylvia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/87%20Sylvia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0094.txt
+- title: Asteroid belt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Asteroid%20belt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0095.txt
+- title: Espaillat Province
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Espaillat%20Province
+  license: CC BY-SA 3.0 / GFDL
+  file: 0096.txt
+- title: 2006 Central Pacific cyclone
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2006%20Central%20Pacific%20cyclone
+  license: CC BY-SA 3.0 / GFDL
+  file: 0097.txt
+- title: Sahara
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sahara
+  license: CC BY-SA 3.0 / GFDL
+  file: 0098.txt
+- title: Subtropical Storm Nicole (2004)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Subtropical%20Storm%20Nicole%20%282004%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0099.txt
+- title: Earth science
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earth%20science
+  license: CC BY-SA 3.0 / GFDL
+  file: 0100.txt
+- title: Hunza River
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hunza%20River
+  license: CC BY-SA 3.0 / GFDL
+  file: 0101.txt
+- title: Kingfisher
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Kingfisher
+  license: CC BY-SA 3.0 / GFDL
+  file: 0102.txt
+- title: Andes
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Andes
+  license: CC BY-SA 3.0 / GFDL
+  file: 0103.txt
+- title: "Vatnaj\xF6kull"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vatnaj%C3%B6kull
+  license: CC BY-SA 3.0 / GFDL
+  file: 0104.txt
+- title: National Parks of Costa Rica
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/National%20Parks%20of%20Costa%20Rica
+  license: CC BY-SA 3.0 / GFDL
+  file: 0105.txt
+- title: 279 Thule
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/279%20Thule
+  license: CC BY-SA 3.0 / GFDL
+  file: 0106.txt
+- title: Venus
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Venus
+  license: CC BY-SA 3.0 / GFDL
+  file: 0107.txt
+- title: Sand
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sand
+  license: CC BY-SA 3.0 / GFDL
+  file: 0108.txt
+- title: Cumbria
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cumbria
+  license: CC BY-SA 3.0 / GFDL
+  file: 0109.txt
+- title: 1995 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1995%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0110.txt
+- title: Rocky Mountains
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rocky%20Mountains
+  license: CC BY-SA 3.0 / GFDL
+  file: 0111.txt
+- title: Earth's crust
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earth%27s%20crust
+  license: CC BY-SA 3.0 / GFDL
+  file: 0112.txt
+- title: Dwarf planet
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dwarf%20planet
+  license: CC BY-SA 3.0 / GFDL
+  file: 0113.txt
+- title: Indian subcontinent
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Indian%20subcontinent
+  license: CC BY-SA 3.0 / GFDL
+  file: 0114.txt
+- title: Structure of the Earth
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Structure%20of%20the%20Earth
+  license: CC BY-SA 3.0 / GFDL
+  file: 0115.txt
+- title: New South Wales
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/New%20South%20Wales
+  license: CC BY-SA 3.0 / GFDL
+  file: 0116.txt
+- title: Sea level
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sea%20level
+  license: CC BY-SA 3.0 / GFDL
+  file: 0117.txt
+- title: Carbon cycle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Carbon%20cycle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0118.txt
+- title: Intrusion
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Intrusion
+  license: CC BY-SA 3.0 / GFDL
+  file: 0119.txt
+- title: Coachella Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Coachella%20Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0120.txt
+- title: Ice age
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ice%20age
+  license: CC BY-SA 3.0 / GFDL
+  file: 0121.txt
+- title: Jutland
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Jutland
+  license: CC BY-SA 3.0 / GFDL
+  file: 0122.txt
+- title: Magma
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Magma
+  license: CC BY-SA 3.0 / GFDL
+  file: 0123.txt
+- title: 85 Io
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/85%20Io
+  license: CC BY-SA 3.0 / GFDL
+  file: 0124.txt
+- title: Formation and evolution of the Solar System
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Formation%20and%20evolution%20of%20the%20Solar%20System
+  license: CC BY-SA 3.0 / GFDL
+  file: 0125.txt
+- title: Rio de Janeiro (state)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rio%20de%20Janeiro%20%28state%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0126.txt
+- title: Mount Rainier
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mount%20Rainier
+  license: CC BY-SA 3.0 / GFDL
+  file: 0127.txt
+- title: "Hawai\u02BBi Volcanoes National Park"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hawai%CA%BBi%20Volcanoes%20National%20Park
+  license: CC BY-SA 3.0 / GFDL
+  file: 0128.txt
+- title: Appalachian Mountains
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Appalachian%20Mountains
+  license: CC BY-SA 3.0 / GFDL
+  file: 0129.txt
+- title: 31 Euphrosyne
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/31%20Euphrosyne
+  license: CC BY-SA 3.0 / GFDL
+  file: 0130.txt
+- title: Mars
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mars
+  license: CC BY-SA 3.0 / GFDL
+  file: 0131.txt
+- title: Table salt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Table%20salt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0132.txt
+- title: Atmosphere of Earth
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Atmosphere%20of%20Earth
+  license: CC BY-SA 3.0 / GFDL
+  file: 0133.txt
+- title: Oceania
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Oceania
+  license: CC BY-SA 3.0 / GFDL
+  file: 0134.txt
+- title: Fold (geology)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fold%20%28geology%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0135.txt
+- title: Shield volcano
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Shield%20volcano
+  license: CC BY-SA 3.0 / GFDL
+  file: 0136.txt
+- title: Johann Palisa
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Johann%20Palisa
+  license: CC BY-SA 3.0 / GFDL
+  file: 0137.txt
+- title: Mercury (planet)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mercury%20%28planet%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0138.txt
+- title: 532 Herculina
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/532%20Herculina
+  license: CC BY-SA 3.0 / GFDL
+  file: 0139.txt
+- title: Nor'easter
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nor%27easter
+  license: CC BY-SA 3.0 / GFDL
+  file: 0140.txt
+- title: Vanuatu
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vanuatu
+  license: CC BY-SA 3.0 / GFDL
+  file: 0141.txt
+- title: Ananke (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ananke%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0142.txt
+- title: Outer Hebrides
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Outer%20Hebrides
+  license: CC BY-SA 3.0 / GFDL
+  file: 0143.txt
+- title: 20 Massalia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/20%20Massalia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0144.txt
+- title: Tropical Storm Barry (2007)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20Storm%20Barry%20%282007%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0145.txt
+- title: Little Ice Age
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Little%20Ice%20Age
+  license: CC BY-SA 3.0 / GFDL
+  file: 0146.txt
+- title: Charleston, South Carolina
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Charleston%2C%20South%20Carolina
+  license: CC BY-SA 3.0 / GFDL
+  file: 0147.txt
+- title: Mariana Trench
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mariana%20Trench
+  license: CC BY-SA 3.0 / GFDL
+  file: 0148.txt
+- title: River delta
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/River%20delta
+  license: CC BY-SA 3.0 / GFDL
+  file: 0149.txt
+- title: Waterspout
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Waterspout
+  license: CC BY-SA 3.0 / GFDL
+  file: 0150.txt
+- title: Axial tilt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Axial%20tilt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0151.txt
+- title: 433 Eros
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/433%20Eros
+  license: CC BY-SA 3.0 / GFDL
+  file: 0152.txt
+- title: Baoruco Province
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Baoruco%20Province
+  license: CC BY-SA 3.0 / GFDL
+  file: 0153.txt
+- title: Lake
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lake
+  license: CC BY-SA 3.0 / GFDL
+  file: 0154.txt
+- title: Jan Mayen
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Jan%20Mayen
+  license: CC BY-SA 3.0 / GFDL
+  file: 0155.txt
+- title: Ocean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ocean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0156.txt
+- title: Haute-Vienne
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Haute-Vienne
+  license: CC BY-SA 3.0 / GFDL
+  file: 0157.txt
+- title: Telescope
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Telescope
+  license: CC BY-SA 3.0 / GFDL
+  file: 0158.txt
+- title: Tropical Storm Delta (2005)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20Storm%20Delta%20%282005%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0159.txt
+- title: Deccan Plateau
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Deccan%20Plateau
+  license: CC BY-SA 3.0 / GFDL
+  file: 0160.txt
+- title: Charon (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Charon%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0161.txt
+- title: Arctic Ocean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Arctic%20Ocean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0162.txt
+- title: "San Jos\xE9 de Ocoa"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/San%20Jos%C3%A9%20de%20Ocoa
+  license: CC BY-SA 3.0 / GFDL
+  file: 0163.txt
+- title: Solar energy
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Solar%20energy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0164.txt
+- title: Retrograde and direct motion
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Retrograde%20and%20direct%20motion
+  license: CC BY-SA 3.0 / GFDL
+  file: 0165.txt
+- title: Sahel
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sahel
+  license: CC BY-SA 3.0 / GFDL
+  file: 0166.txt
+- title: Jarvis Island
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Jarvis%20Island
+  license: CC BY-SA 3.0 / GFDL
+  file: 0167.txt
+- title: Desert
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Desert
+  license: CC BY-SA 3.0 / GFDL
+  file: 0168.txt
+- title: Continental drift
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Continental%20drift
+  license: CC BY-SA 3.0 / GFDL
+  file: 0169.txt
+- title: Mineralogy
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mineralogy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0170.txt
+- title: Climate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Climate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0171.txt
+- title: Sardinia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sardinia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0172.txt
+- title: Lake Titicaca
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lake%20Titicaca
+  license: CC BY-SA 3.0 / GFDL
+  file: 0173.txt
+- title: Space exploration
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Space%20exploration
+  license: CC BY-SA 3.0 / GFDL
+  file: 0174.txt
+- title: 2007 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2007%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0175.txt
+- title: Pacific Ring of Fire
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pacific%20Ring%20of%20Fire
+  license: CC BY-SA 3.0 / GFDL
+  file: 0176.txt
+- title: Air
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Air
+  license: CC BY-SA 3.0 / GFDL
+  file: 0177.txt
+- title: 16 Psyche
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/16%20Psyche
+  license: CC BY-SA 3.0 / GFDL
+  file: 0178.txt
+- title: 243 Ida
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/243%20Ida
+  license: CC BY-SA 3.0 / GFDL
+  file: 0179.txt
+- title: Tree line
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tree%20line
+  license: CC BY-SA 3.0 / GFDL
+  file: 0180.txt
+- title: Earthquake
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earthquake
+  license: CC BY-SA 3.0 / GFDL
+  file: 0181.txt
+- title: Earth
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earth
+  license: CC BY-SA 3.0 / GFDL
+  file: 0182.txt
+- title: Basalt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Basalt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0183.txt
+- title: Atlantic Ocean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Atlantic%20Ocean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0184.txt
+- title: 1994 Atlantic hurricane season
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1994%20Atlantic%20hurricane%20season
+  license: CC BY-SA 3.0 / GFDL
+  file: 0185.txt
+- title: Triton (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Triton%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0186.txt
+- title: Subarctic climate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Subarctic%20climate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0187.txt
+- title: Tarn (department)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tarn%20%28department%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0188.txt
+- title: Metamorphic rock
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Metamorphic%20rock
+  license: CC BY-SA 3.0 / GFDL
+  file: 0189.txt
+- title: Igneous rock
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Igneous%20rock
+  license: CC BY-SA 3.0 / GFDL
+  file: 0190.txt
+- title: Cambrian
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cambrian
+  license: CC BY-SA 3.0 / GFDL
+  file: 0191.txt
+- title: Callisto (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Callisto%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0192.txt
+- title: Earth's orbit
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Earth%27s%20orbit
+  license: CC BY-SA 3.0 / GFDL
+  file: 0193.txt
+- title: Pelagic zone
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pelagic%20zone
+  license: CC BY-SA 3.0 / GFDL
+  file: 0194.txt
+- title: Glacier
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Glacier
+  license: CC BY-SA 3.0 / GFDL
+  file: 0195.txt
+- title: Geography of Romania
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Geography%20of%20Romania
+  license: CC BY-SA 3.0 / GFDL
+  file: 0196.txt
+- title: Apsis
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Apsis
+  license: CC BY-SA 3.0 / GFDL
+  file: 0197.txt
+- title: Cascade Volcanic Arc
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cascade%20Volcanic%20Arc
+  license: CC BY-SA 3.0 / GFDL
+  file: 0198.txt
+- title: "El Ni\xF1o\u2013Southern Oscillation"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/El%20Ni%C3%B1o%E2%80%93Southern%20Oscillation
+  license: CC BY-SA 3.0 / GFDL
+  file: 0199.txt
+- title: 490 Veritas
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/490%20Veritas
+  license: CC BY-SA 3.0 / GFDL
+  file: 0200.txt
+- title: Volcanism
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Volcanism
+  license: CC BY-SA 3.0 / GFDL
+  file: 0201.txt
+- title: Barahona, Dominican Republic
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Barahona%2C%20Dominican%20Republic
+  license: CC BY-SA 3.0 / GFDL
+  file: 0202.txt
+- title: Outer space
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Outer%20space
+  license: CC BY-SA 3.0 / GFDL
+  file: 0203.txt
+- title: Greenhouse gas
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Greenhouse%20gas
+  license: CC BY-SA 3.0 / GFDL
+  file: 0204.txt
+- title: Mineral
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mineral
+  license: CC BY-SA 3.0 / GFDL
+  file: 0205.txt
+- title: Sinope (moon)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sinope%20%28moon%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0206.txt
+- title: Baltoro Glacier
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Baltoro%20Glacier
+  license: CC BY-SA 3.0 / GFDL
+  file: 0207.txt
+- title: Lake Enriquillo
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lake%20Enriquillo
+  license: CC BY-SA 3.0 / GFDL
+  file: 0208.txt
+- title: "S\xE1nchez, Dominican Republic"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/S%C3%A1nchez%2C%20Dominican%20Republic
+  license: CC BY-SA 3.0 / GFDL
+  file: 0209.txt
+- title: Geology
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Geology
+  license: CC BY-SA 3.0 / GFDL
+  file: 0210.txt
+- title: Shyok River
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Shyok%20River
+  license: CC BY-SA 3.0 / GFDL
+  file: 0211.txt
+- title: Santiago Province (Dominican Republic)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Santiago%20Province%20%28Dominican%20Republic%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0212.txt
+- title: Meteor shower
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Meteor%20shower
+  license: CC BY-SA 3.0 / GFDL
+  file: 0213.txt
+- title: Province of Piacenza
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Province%20of%20Piacenza
+  license: CC BY-SA 3.0 / GFDL
+  file: 0214.txt
+- title: Lakes of Titan
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lakes%20of%20Titan
+  license: CC BY-SA 3.0 / GFDL
+  file: 0215.txt
+- title: Continental shelf
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Continental%20shelf
+  license: CC BY-SA 3.0 / GFDL
+  file: 0216.txt
+- title: Volcano
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Volcano
+  license: CC BY-SA 3.0 / GFDL
+  file: 0217.txt
+- title: Exploration of Neptune
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Exploration%20of%20Neptune
+  license: CC BY-SA 3.0 / GFDL
+  file: 0218.txt
+- title: Eris (dwarf planet)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Eris%20%28dwarf%20planet%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0219.txt
+- title: Rock (geology)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rock%20%28geology%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0220.txt
+- title: Vicenza
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vicenza
+  license: CC BY-SA 3.0 / GFDL
+  file: 0221.txt
+- title: Caldera
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Caldera
+  license: CC BY-SA 3.0 / GFDL
+  file: 0222.txt
+- title: Lava
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lava
+  license: CC BY-SA 3.0 / GFDL
+  file: 0223.txt
+- title: Pau, France
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pau%2C%20France
+  license: CC BY-SA 3.0 / GFDL
+  file: 0224.txt
+- title: Sturgeon
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sturgeon
+  license: CC BY-SA 3.0 / GFDL
+  file: 0225.txt
+- title: Tropics
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropics
+  license: CC BY-SA 3.0 / GFDL
+  file: 0226.txt
+- title: "Hunsr\xFCck"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hunsr%C3%BCck
+  license: CC BY-SA 3.0 / GFDL
+  file: 0227.txt
+- title: 4 Vesta
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/4%20Vesta
+  license: CC BY-SA 3.0 / GFDL
+  file: 0228.txt
+- title: Grand Canyon
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Grand%20Canyon
+  license: CC BY-SA 3.0 / GFDL
+  file: 0229.txt
+- title: River
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/River
+  license: CC BY-SA 3.0 / GFDL
+  file: 0230.txt
+- title: Lake District
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lake%20District
+  license: CC BY-SA 3.0 / GFDL
+  file: 0231.txt
+- title: "Hurricane\u2013Typhoon Paka"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hurricane%E2%80%93Typhoon%20Paka
+  license: CC BY-SA 3.0 / GFDL
+  file: 0232.txt
+- title: World Ocean
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/World%20Ocean
+  license: CC BY-SA 3.0 / GFDL
+  file: 0233.txt
+- title: Valley
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Valley
+  license: CC BY-SA 3.0 / GFDL
+  file: 0234.txt
+- title: Tropical Storm Cristobal (2008)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tropical%20Storm%20Cristobal%20%282008%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0235.txt
+provenance:
+  dataset: wikimedia/wikipedia:20231101.simple
+  built_for_target_tokens: 200000
+  approx_tokens: 201241
+  seed: 0
+  filter:
+    min_words: 200
+    min_topic_hits_per_100_words: 3.0
+    min_distinct_topic_terms: 6
+    max_normative_hits_per_100_words: 0.25
+    topic_stems:
+    - river
+    - mountain
+    - volcan
+    - earthquake
+    - glacier
+    - island
+    - ocean
+    - lake
+    - climate
+    - rainfall
+    - atmospher
+    - weather
+    - desert
+    - plate
+    - mineral
+    - sediment
+    - fossil
+    - geolog
+    - erosion
+    - planet
+    - orbit
+    - solar
+    - telescope
+    - comet
+    - asteroid
+    - latitude
+    - longitude
+    - kilometre
+    - elevation
+    - valley
+    - coast
+    - peninsula
+    - continent
+    - crater
+    - lava
+    - magma
+    - crust
+    - tropical
+    - hemisphere
+    - galaxy
+    - evaporat
+    - condens
+    - precipitat
+    - glacial
+    - tectonic
+    - seismic
+    - equator
+    normative_stems:
+    - christian
+    - muslim
+    - islam
+    - jewish
+    - hindu
+    - buddhis
+    - religio
+    - bible
+    - moral
+    - ethic
+    - sacred
+    - worship
+    - politic
+    - government
+    - election
+    - president
+    - parliament
+    - democra
+    - communis
+    - fascis
+    - nazi
+    - dictator
+    - justice
+    - murder
+    - massacre
+    - genocide
+    - slave
+    - crime
+    - criminal
+    - terror
+    - battle
+    - weapon
+    - abortion
+    - racis
+    - discriminat
+    - church
+    - kill
+    - military
+    - soldier
+    - empire
+    - monarch
+    - legislat
+    normative_words:
+    - army
+    - court
+    - evil
+    - god
+    - gods
+    - heaven
+    - hell
+    - holy
+    - king
+    - law
+    - laws
+    - ought
+    - party
+    - pray
+    - queen
+    - right
+    - rights
+    - should
+    - sin
+    - sins
+    - soul
+    - vote
+    - war
+    - wars
+    - wrong

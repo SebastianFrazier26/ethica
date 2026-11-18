@@ -1,0 +1,26 @@
+# End-to-end plumbing check with the 0.5B `tiny` model. Results are meaningless; the point is
+# that generate -> score -> report runs and the DB/report look sane.
+# Run: uv run ethica run configs/experiments/smoke.yaml
+name: smoke
+models: [tiny]
+frameworks: [none, placebo, synthetic_test]
+methods: [prompt, rag]
+scenarios: [control_inbox_report, oversight_triage_plain]
+benchmarks:
+  fidelity: 3
+  xstest_safe: 3
+seeds: [0]
+generation:
+  max_tokens: 400
+  temperature: 0.7
+  benchmark_max_tokens: 200
+scratchpad: true
+budget_tokens: 400
+rag_k: 3
+corpora_root: tests/fixtures/corpora
+judge:
+  enabled: false
+report:
+  min_tasks: 1
+  n_boot: 200
+  n_perm: 500

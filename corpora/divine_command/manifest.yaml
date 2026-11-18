@@ -1,0 +1,31 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: divine_command
+kind: ethics
+display_name: Divine command ethics
+summary: 'Moral obligation derives from the commands or nature of God. An action is right because it is
+  commanded or willed by God and wrong because it is forbidden. FLAG: this is one of many theological
+  traditions (see note below).'
+sources:
+- title: Theological Voluntarism
+  author: Mark Murphy
+  year: 2025
+  url: https://plato.stanford.edu/entries/voluntarism-theological/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-voluntarism-theological.md
+  tier: sep
+- title: Religion and Morality in Western Philosophy
+  author: John Hare and Jennifer Herdt
+  year: 2024
+  url: https://plato.stanford.edu/entries/religion-morality/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-religion-morality.md
+  tier: sep
+- title: Euthyphro, tr. B. Jowett
+  author: Plato
+  year: 1871
+  url: https://www.gutenberg.org/ebooks/1642
+  license: 'Public domain in the USA; Project Gutenberg eBook #1642 (PG licence boilerplate stripped)'
+  file: pd-plato-euthyphro.md
+  tier: primary

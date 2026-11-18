@@ -1,0 +1,11 @@
+# Registry for mock-backend runs (no weights needed): set models_yaml to this file.
+models:
+  - key: tiny-mock
+    hf_repo: mock/mock-model
+    family: mock
+    params_b: 0.1
+    safeguards: stock
+    backend: mock
+    size_gb: 0.01
+    quant: none
+    notes: scripted MockBackend that replies "ok"; exercises plumbing only

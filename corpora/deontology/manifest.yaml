@@ -1,0 +1,38 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: deontology
+kind: ethics
+display_name: Deontological ethics
+summary: Actions are right or wrong in virtue of their conformity to duties and rules, not their consequences.
+  Persons are ends in themselves and may never be used merely as means; moral duties bind regardless of
+  outcome.
+sources:
+- title: Deontological Ethics
+  author: Larry Alexander and Michael Moore
+  year: 2024
+  url: https://plato.stanford.edu/entries/ethics-deontological/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-ethics-deontological.md
+  tier: sep
+- title: Kant’s Moral Philosophy
+  author: Robert Johnson and Adam Cureton
+  year: 2025
+  url: https://plato.stanford.edu/entries/kant-moral/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-kant-moral.md
+  tier: sep
+- title: Fundamental Principles of the Metaphysic of Morals (Groundwork), tr. T. K. Abbott
+  author: Immanuel Kant
+  year: 1785
+  url: https://www.gutenberg.org/ebooks/5682
+  license: 'Public domain in the USA; Project Gutenberg eBook #5682 (PG licence boilerplate stripped)'
+  file: pd-kant-groundwork.md
+  tier: primary
+- title: The Critique of Practical Reason, tr. T. K. Abbott
+  author: Immanuel Kant
+  year: 1788
+  url: https://www.gutenberg.org/ebooks/5683
+  license: 'Public domain in the USA; Project Gutenberg eBook #5683 (PG licence boilerplate stripped)'
+  file: pd-kant-critique-practical-reason.md
+  tier: primary

@@ -1,0 +1,24 @@
+# Shakedown (2026-11-17): first end-to-end run of prompt + RAG conditioning on real corpora.
+# Plumbing + timing + base rates only — NOT science (4 builtin scenarios, unreviewed corpora,
+# unvalidated judge). Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/shakedown.yaml
+name: shakedown
+models: [qwen3-4b, qwen3-4b-abl]
+frameworks: [none, placebo, deontology, act_utilitarian]
+methods: [prompt, rag]
+scenarios: all
+benchmarks:
+  fidelity: 48
+  harmbench: 25
+  xstest_safe: 25
+  xstest_unsafe: 25
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1

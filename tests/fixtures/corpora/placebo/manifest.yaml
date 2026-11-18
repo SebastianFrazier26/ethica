@@ -1,0 +1,20 @@
+name: placebo
+kind: placebo
+display_name: Physical geography, geology and astronomy
+summary: Factual encyclopaedic material on landforms, weather, geology and astronomy.
+sources:
+- title: Rivers of the Plateau
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 0.txt
+- title: The Inner Planets
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 1.txt
+- title: Sedimentary Rock
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 2.txt

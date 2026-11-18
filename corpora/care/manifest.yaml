@@ -1,0 +1,16 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: care
+kind: ethics
+display_name: Ethics of care
+summary: Morality is grounded in attentive, responsive relationships. Moral reasoning begins from particular
+  people's needs and the responsibilities of caring for them, rather than from abstract universal principles.
+sources:
+- title: Feminist Ethics
+  author: Kathryn Norlock and Jordan Pascoe
+  year: 2025
+  url: https://plato.stanford.edu/entries/feminism-ethics/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-feminism-ethics.md
+  tier: sep

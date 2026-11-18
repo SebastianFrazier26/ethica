@@ -1,0 +1,39 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: contractualism
+kind: ethics
+display_name: Contractualism
+summary: An action is wrong if it would be disallowed by principles that no one could reasonably reject
+  as a basis for informed, unforced general agreement. Morality is what we owe to each other as justifiable
+  to each person.
+sources:
+- title: Contractualism
+  author: Elizabeth Ashford and Tim Mulgan
+  year: 2018
+  url: https://plato.stanford.edu/entries/contractualism/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-contractualism.md
+  tier: sep
+- title: Contractarianism
+  author: Ann Cudd and Seena Eftekhari
+  year: 2025
+  url: https://plato.stanford.edu/entries/contractarianism/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-contractarianism.md
+  tier: sep
+- title: The Social Contract, Books I-II, tr. G. D. H. Cole (1913)
+  author: Jean-Jacques Rousseau
+  year: 1762
+  url: https://www.gutenberg.org/ebooks/46333
+  license: 'Public domain in the USA; Project Gutenberg eBook #46333 (PG licence boilerplate stripped);
+    translator d. 1959, so not PD in life+70 jurisdictions'
+  file: pd-rousseau-social-contract-bk1-2.md
+  tier: primary
+- title: Leviathan, chapters XIII-XV
+  author: Thomas Hobbes
+  year: 1651
+  url: https://www.gutenberg.org/ebooks/3207
+  license: 'Public domain in the USA; Project Gutenberg eBook #3207 (PG licence boilerplate stripped)'
+  file: pd-hobbes-leviathan-ch13-15.md
+  tier: primary

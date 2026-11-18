@@ -1,0 +1,16 @@
+# Copy this directory to corpora/<name>/ (name = lowercase slug, must equal the directory name),
+# drop the .md/.txt files next to it, and list every file under `sources`.
+# corpora/<name>/ is gitignored (D-15); only this template is tracked.
+name: my_framework            # must equal the directory name
+kind: ethics                  # none | placebo | ethics
+display_name: My Framework    # shown to the model in the framing line
+summary: >
+  One neutral paragraph describing the framework in its own terms. Keep the length similar
+  across frameworks; it is charged against the same token budget as the excerpts.
+sources:
+  - title: Example Title
+    author: Example Author
+    year: 1785
+    url: https://example.org/source      # optional
+    license: Public domain               # optional but record it
+    file: example.txt                    # relative to this directory, .md or .txt only

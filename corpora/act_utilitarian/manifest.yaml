@@ -1,0 +1,65 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: act_utilitarian
+kind: ethics
+display_name: Act utilitarianism
+summary: The right action in each situation is the one that produces the greatest total well-being for
+  all affected, counting everyone's interests impartially. Each act is judged by its own expected consequences.
+sources:
+- title: Consequentialism
+  author: Walter Sinnott-Armstrong
+  year: 2023
+  url: https://plato.stanford.edu/entries/consequentialism/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-consequentialism.md
+  tier: sep
+- title: The History of Utilitarianism
+  author: Julia Driver
+  year: 2025
+  url: https://plato.stanford.edu/entries/utilitarianism-history/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-utilitarianism-history.md
+  tier: sep
+- title: Jeremy Bentham (sections 2, 3, 4, 5 only)
+  author: James E. Crimmins
+  year: 2026
+  url: https://plato.stanford.edu/entries/bentham/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-bentham.md
+  tier: sep
+- title: Mill’s Moral and Political Philosophy (sections 2 only)
+  author: David Brink
+  year: 2026
+  url: https://plato.stanford.edu/entries/mill-moral-political/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-mill-moral-political.md
+  tier: sep
+- title: Henry Sidgwick (sections 2 only)
+  author: Barton Schultz
+  year: 2023
+  url: https://plato.stanford.edu/entries/sidgwick/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-sidgwick.md
+  tier: sep
+- title: Utilitarianism (7th ed., 1879)
+  author: John Stuart Mill
+  year: 1861
+  url: https://www.gutenberg.org/ebooks/11224
+  license: 'Public domain in the USA; Project Gutenberg eBook #11224 (PG licence boilerplate stripped)'
+  file: pd-mill-utilitarianism.md
+  tier: primary
+- title: An Introduction to the Principles of Morals and Legislation, chapters I-V
+  author: Jeremy Bentham
+  year: 1789
+  url: https://en.wikisource.org/wiki/An_Introduction_to_the_Principles_of_Morals_and_Legislation
+  license: Public domain (published before 1931); transcribed on English Wikisource
+  file: pd-bentham-ipml-ch1-5.md
+  tier: primary
+- title: 'The Methods of Ethics (7th ed.), Book IV: Utilitarianism'
+  author: Henry Sidgwick
+  year: 1907
+  url: https://www.gutenberg.org/ebooks/46743
+  license: 'Public domain in the USA; Project Gutenberg eBook #46743 (PG licence boilerplate stripped)'
+  file: pd-sidgwick-methods-book4.md
+  tier: primary
