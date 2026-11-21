@@ -1,0 +1,26 @@
+# LoRA fix test 3 (2026-11-17): lora2 (100 iters, lr 5e-5, scale 20) still broke tool use
+# (4/6 scenarios with zero tool calls vs 0/24 for prompt arms). Weaken the delta: scale 8.
+# Gate = tool use in scenarios (3 seeds); refusal re-check on abl follows only if it passes.
+# Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/shakedown-lora3.yaml
+name: shakedown-lora3
+models: [qwen3-4b]
+frameworks: [deontology]
+methods: [lora]
+lora:
+  iters: 100
+  learning_rate: 5.0e-5
+  scale: 8.0
+scenarios: all
+benchmarks:
+  fidelity: 48
+seeds: [0, 1, 2]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: false
+  model: judge-default
+report:
+  min_tasks: 1

@@ -1,0 +1,29 @@
+# D-56 gate (2026-11-18): does LoRA training at the scale-8 settings restore refusals in the
+# abliterated model? Gate arm = placebo LoRA vs abl `none` (training procedure, no ethics
+# content). The deontology arm is the effect under study, not the gate.
+# Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/lora-guardrail-check.yaml
+name: lora-guardrail-check
+models: [qwen3-4b-abl]
+frameworks: [none, placebo, deontology]
+methods: [lora]
+lora:
+  iters: 100
+  learning_rate: 5.0e-5
+  scale: 8.0
+scenarios: all
+benchmarks:
+  fidelity: 48
+  harmbench: 40
+  xstest_unsafe: 40
+  xstest_safe: 25
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1

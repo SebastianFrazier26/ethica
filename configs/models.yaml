@@ -1,0 +1,203 @@
+# Candidate model registry. Every hf_repo verified to exist via HfApi().model_info on 2026-11-16.
+# size_gb = sum of *.safetensors on the Hub. gated=false for all listed repos (mlx-community
+# mirrors are ungated; the upstream originals of Llama/Gemma require licence acceptance).
+# `revision` pins the Hub commit (sha at 2026-11-16, equal to the local cache snapshot) for every
+# entry loaded from hf_repo; local_path entries are pinned by provenance.json instead.
+# Quantisation is harmonised to affine 4-bit / group 64 (`quant: q4g64`, D-33). Entries with
+# `local_path` are re-converted from the full-precision source by scripts/harmonize_quant.py
+# (models/ is gitignored; rerun the script on a fresh clone). hf_repo is then provenance only and
+# size_gb is the converted size; see models/<key>-q4g64/provenance.json for source repo + sha.
+models:
+  # ---- tiny: smoke tests only ----
+  - key: tiny
+    hf_repo: mlx-community/Qwen2.5-0.5B-Instruct-4bit
+    revision: a5339a4131f135d0fdc6a5c8b5bbed2753bbe0f3
+    family: qwen2.5
+    params_b: 0.5
+    safeguards: stock
+    size_gb: 0.28
+    quant: q4
+    notes: smoke-test model; not part of any experiment grid
+
+  # ---- judge ----
+  - key: judge-default
+    hf_repo: mlx-community/Qwen3-8B-4bit
+    revision: 545dc4251c05440727734bcd94334791f6ab0192
+    family: qwen3
+    params_b: 8.2
+    safeguards: stock
+    lora_ok: false
+    max_context: 16384
+    size_gb: 4.61
+    quant: q4
+    notes: same weights as qwen3-8b; separate key so the judge can be swapped independently
+
+  # ---- Qwen3 (Qwen3-4B uses the Instruct-2507 line so the abliterated variant has a stock twin) ----
+  - key: qwen3-1.7b
+    hf_repo: mlx-community/Qwen3-1.7B-4bit
+    family: qwen3
+    params_b: 1.7
+    safeguards: stock
+    size_gb: 0.97
+    quant: q4g64
+    local_path: models/qwen3-1.7b-q4g64
+  - key: qwen3-1.7b-abl
+    hf_repo: huihui-ai/Huihui-Qwen3-1.7B-abliterated-v2
+    family: qwen3
+    params_b: 1.7
+    safeguards: abliterated
+    base_of: qwen3-1.7b
+    size_gb: 0.97
+    quant: q4g64
+    local_path: models/qwen3-1.7b-abl-q4g64
+    notes: no pure-abliteration MLX 4-bit exists (mlx-community only has the Josiefied fine-tune, rejected as a confound); converted locally from the huihui bf16 repo
+
+  - key: qwen3-4b
+    hf_repo: mlx-community/Qwen3-4B-Instruct-2507-4bit
+    revision: 50d427756c6b1b2fe0c0a10f67fbda1fc8e82c1b
+    family: qwen3
+    params_b: 4.0
+    safeguards: stock
+    max_context: 32768
+    size_gb: 2.26
+    quant: q4
+  - key: qwen3-4b-abl
+    hf_repo: mlx-community/Qwen3-4B-Instruct-2507-gabliterated-4bit
+    revision: eec01591c9aa260a6387869b012dbf2d150033b4
+    family: qwen3
+    params_b: 4.0
+    safeguards: abliterated
+    base_of: qwen3-4b
+    max_context: 32768
+    size_gb: 2.26
+    quant: q4
+    notes: "Goekdeniz-Guelmez 'gabliterated' (a refusal-direction-removal variant), not huihui/mlabonne-style abliteration"
+
+  - key: qwen3-8b
+    hf_repo: mlx-community/Qwen3-8B-4bit
+    revision: 545dc4251c05440727734bcd94334791f6ab0192
+    family: qwen3
+    params_b: 8.2
+    safeguards: stock
+    lora_ok: false
+    max_context: 16384
+    size_gb: 4.61
+    quant: q4
+  - key: qwen3-8b-abl
+    hf_repo: mlx-community/Qwen3-8B-abliterated-v2-mxfp4
+    revision: 0310576b3aa0daf9d8ad6ec370ff2c545ef02194
+    family: qwen3
+    params_b: 8.2
+    safeguards: abliterated
+    base_of: qwen3-8b
+    lora_ok: false
+    max_context: 16384
+    size_gb: 4.35
+    quant: mxfp4
+    notes: huihui-ai abliterated-v2; mxfp4 vs stock affine-q4 quantisation mismatch
+
+  # ---- Llama 3.2 ----
+  - key: llama-3.2-3b
+    hf_repo: mlx-community/Llama-3.2-3B-Instruct-4bit
+    revision: 7f0dc925e0d0afb0322d96f9255cfddf2ba5636e
+    family: llama3.2
+    params_b: 3.2
+    safeguards: stock
+    max_context: 16384
+    size_gb: 1.81
+    quant: q4g64
+    notes: upstream meta-llama repo is gated, so the mlx-community mirror is kept (config.json quant block = affine/4/g64, identical to our conversions)
+  - key: llama-3.2-3b-abl
+    hf_repo: mlx-community/Llama-3.2-3B-Instruct-abliterated-6bit
+    family: llama3.2
+    params_b: 3.2
+    safeguards: abliterated
+    base_of: llama-3.2-3b
+    max_context: 16384
+    size_gb: 1.81
+    quant: q4g64
+    local_path: models/llama-3.2-3b-abl-q4g64
+    notes: huihui-ai abliteration; converted locally from huihui-ai/Llama-3.2-3B-Instruct-abliterated (was mlx-community q6)
+
+  # ---- Gemma 3 (template folds system into first user turn itself; backend also guards) ----
+  - key: gemma-3-4b
+    hf_repo: mlx-community/gemma-3-4b-it-4bit
+    revision: 93724907d4ed1745d2fe50baadf3b0b01a65abf2
+    family: gemma3
+    params_b: 4.3
+    safeguards: stock
+    size_gb: 3.40
+    quant: q4
+    notes: ungated mirror (upstream google repo is gated); includes vision tower, text path used
+  - key: gemma-3-4b-abl
+    hf_repo: mlx-community/gemma-3-4b-it-abliterated-4bit-text
+    revision: 2f1308e138121a27fcb87b317fb5d261afc3a7db
+    family: gemma3
+    params_b: 4.3
+    safeguards: abliterated
+    base_of: gemma-3-4b
+    size_gb: 2.56
+    quant: q4
+    notes: mlabonne abliteration, text-only conversion
+
+  # ---- SmolLM3 (both converted locally from bf16 sources) ----
+  - key: smollm3-3b
+    hf_repo: mlx-community/SmolLM3-3B-bf16
+    family: smollm3
+    params_b: 3.1
+    safeguards: stock
+    size_gb: 1.73
+    quant: q4g64
+    local_path: models/smollm3-3b-q4g64
+  - key: smollm3-3b-abl
+    hf_repo: mlx-community/SmolLM3-3B-abliterated-bf16
+    family: smollm3
+    params_b: 3.1
+    safeguards: abliterated
+    base_of: smollm3-3b
+    size_gb: 1.73
+    quant: q4g64
+    local_path: models/smollm3-3b-abl-q4g64
+    notes: abliterated with mlx-lm-lens; converted locally from the mlx-community bf16 build
+
+  # ---- Phi-4-mini ----
+  - key: phi-4-mini
+    hf_repo: mlx-community/Phi-4-mini-instruct-4bit
+    family: phi4
+    params_b: 3.8
+    safeguards: stock
+    max_context: 16384
+    size_gb: 2.16
+    quant: q4g64
+    local_path: models/phi-4-mini-q4g64
+  - key: phi-4-mini-abl
+    hf_repo: lunahr/Phi-4-mini-instruct-abliterated
+    family: phi4
+    params_b: 3.8
+    safeguards: abliterated
+    base_of: phi-4-mini
+    max_context: 16384
+    size_gb: 2.16
+    quant: q4g64
+    local_path: models/phi-4-mini-abl-q4g64
+    notes: only HF-format abliteration found; converted locally
+
+  # ---- Granite 4.1 ----
+  - key: granite-4.1-3b
+    hf_repo: mlx-community/granite-4.1-3b-4bit
+    family: granite4.1
+    params_b: 3.4
+    safeguards: stock
+    size_gb: 2.47
+    quant: q4g64
+    local_path: models/granite-4.1-3b-q4g64
+  - key: granite-4.1-3b-abl
+    hf_repo: huihui-ai/Huihui-granite-4.1-3b-abliterated
+    family: granite4.1
+    params_b: 3.4
+    safeguards: abliterated
+    base_of: granite-4.1-3b
+    size_gb: 2.47
+    quant: q4g64
+    local_path: models/granite-4.1-3b-abl-q4g64
+    notes: no MLX build exists; converted locally

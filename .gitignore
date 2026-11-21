@@ -1,0 +1,35 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+build/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+# secrets
+.env
+.env.*
+!.env.example
+# local artifacts: model weights, adapters, DBs, run outputs, labels, downloaded data
+runs/
+adapters/
+models/
+labels/
+data/cache/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite*
+*.safetensors
+*.gguf
+*.bin
+*.npz
+# corpora are hand-picked literature; may be copyrighted -> only template, framework list and manifests tracked
+corpora/*
+!corpora/_template/
+!corpora/_frameworks.yaml
+!corpora/*/
+corpora/*/*
+!corpora/*/manifest.yaml

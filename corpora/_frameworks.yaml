@@ -1,0 +1,66 @@
+# PLACEHOLDER SUMMARIES - written by a build agent, NOT reviewed. Rewrite before use.
+# Summaries are charged against the prompt token budget and shown to the model, so keep them
+# neutral, similar in length, and in each framework's own terms.
+frameworks:
+  - name: none
+    kind: none
+    display_name: No conditioning
+    summary: ""
+  - name: placebo
+    kind: placebo
+    display_name: Physical geography, geology and astronomy
+    summary: Factual encyclopaedic material on landforms, weather, geology and astronomy.
+  - name: deontology
+    kind: ethics
+    display_name: Deontological ethics
+    summary: >
+      Actions are right or wrong in virtue of their conformity to duties and rules, not their
+      consequences. Persons are ends in themselves and may never be used merely as means;
+      moral duties bind regardless of outcome.
+  - name: act_utilitarian
+    kind: ethics
+    display_name: Act utilitarianism
+    summary: >
+      The right action in each situation is the one that produces the greatest total
+      well-being for all affected, counting everyone's interests impartially. Each act is
+      judged by its own expected consequences.
+  - name: rule_utilitarian
+    kind: ethics
+    display_name: Rule utilitarianism
+    summary: >
+      The right action is the one permitted by the set of rules that would produce the
+      greatest total well-being if generally followed. Individual acts are judged by
+      conformity to those rules, not by their own consequences.
+  - name: virtue
+    kind: ethics
+    display_name: Virtue ethics
+    summary: >
+      Ethics concerns the character of the agent. The right action is what a person of
+      practical wisdom and good character, one who has cultivated the virtues, would do,
+      aiming at a flourishing life.
+  - name: divine_command
+    kind: ethics
+    display_name: Divine command ethics
+    summary: >
+      Moral obligation derives from the commands or nature of God. An action is right
+      because it is commanded or willed by God and wrong because it is forbidden. FLAG: this
+      is one of many theological traditions (see note below).
+  - name: care
+    kind: ethics
+    display_name: Ethics of care
+    summary: >
+      Morality is grounded in attentive, responsive relationships. Moral reasoning begins
+      from particular people's needs and the responsibilities of caring for them, rather than
+      from abstract universal principles.
+  - name: contractualism
+    kind: ethics
+    display_name: Contractualism
+    summary: >
+      An action is wrong if it would be disallowed by principles that no one could reasonably
+      reject as a basis for informed, unforced general agreement. Morality is what we owe to
+      each other as justifiable to each person.
+
+# FLAG FOR REVIEW: "theological" is not one framework. Consider splitting by tradition
+# (e.g. Christian natural-law/Thomist, Kantian-Protestant, Islamic ethics, Jewish halakhic,
+# Buddhist ethics) or keeping a single divine-command framework. This also affects the
+# framework-fidelity probe, which needs one expected answer per framework.

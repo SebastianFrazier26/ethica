@@ -1,0 +1,22 @@
+# Replication (2026-11-18) of abl-rag-frameworks on the two other strong abliteration pairs.
+# 2 seeds, no fidelity items (time). See docs/RESULTS-abl-rag-2026-11-18.md.
+name: abl-rag-replicate
+models: [qwen3-8b-abl, granite-4.1-3b-abl]
+frameworks: [none, placebo, deontology, act_utilitarian, rule_utilitarian, virtue,
+             divine_command, care, contractualism]
+methods: [rag]
+scenarios: []
+benchmarks:
+  harmbench: 40
+  xstest_unsafe: 40
+  xstest_safe: 15
+seeds: [0, 1]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1

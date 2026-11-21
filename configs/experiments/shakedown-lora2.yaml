@@ -1,0 +1,28 @@
+# LoRA fix test (2026-11-17). shakedown-lora (300 iters, lr 1e-4) overfit (val loss rose after
+# step 100) and broke the <tool_call> protocol: 6/6 scenarios ended with zero tool calls.
+# Try: 100 iters (val-loss minimum last time), half the learning rate, and also lora+prompt.
+# Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/shakedown-lora2.yaml
+name: shakedown-lora2
+models: [qwen3-4b]
+frameworks: [deontology]
+methods: [lora, lora+prompt]
+lora:
+  iters: 100
+  learning_rate: 5.0e-5
+scenarios: all
+benchmarks:
+  fidelity: 48
+  harmbench: 25
+  xstest_safe: 25
+  xstest_unsafe: 25
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1

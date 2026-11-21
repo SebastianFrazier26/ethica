@@ -1,0 +1,23 @@
+# No-conditioning baseline on the pilot pair (D-20 baseline lean, D-21 base-rate check).
+# Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/baseline-4b.yaml
+name: baseline-4b
+models: [qwen3-4b, qwen3-4b-abl]
+frameworks: [none]
+methods: [prompt]
+scenarios: all
+benchmarks:
+  fidelity: 48
+  xstest_safe: 25
+  harmbench: 25
+seeds: [0, 1, 2]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+  # redundant with the agent loop's own stop, but part of the params hash: removing it re-runs every episode
+  stop: ["<tool_result"]
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: false
+report:
+  min_tasks: 1

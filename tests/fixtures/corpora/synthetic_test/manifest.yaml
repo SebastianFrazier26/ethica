@@ -1,0 +1,21 @@
+name: synthetic_test
+kind: ethics
+display_name: Synthetic test doctrine
+summary: 'A made-up doctrine for tests: keep promises, disclose reasons, act openly
+  toward those you serve.'
+sources:
+- title: Principle of the Ledger
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 0.txt
+- title: On Balanced Scales
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 1.txt
+- title: Letters on Candour
+  author: Synthetic Fixture
+  year: 2026
+  license: CC0
+  file: 2.txt

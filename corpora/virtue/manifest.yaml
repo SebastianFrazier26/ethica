@@ -1,0 +1,38 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: virtue
+kind: ethics
+display_name: Virtue ethics
+summary: Ethics concerns the character of the agent. The right action is what a person of practical wisdom
+  and good character, one who has cultivated the virtues, would do, aiming at a flourishing life.
+sources:
+- title: Virtue Ethics
+  author: Rosalind Hursthouse and Glen Pettigrove
+  year: 2026
+  url: https://plato.stanford.edu/entries/ethics-virtue/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-ethics-virtue.md
+  tier: sep
+- title: Aristotle’s Ethics
+  author: Richard Kraut
+  year: 2026
+  url: https://plato.stanford.edu/entries/aristotle-ethics/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-aristotle-ethics.md
+  tier: sep
+- title: Moral Character
+  author: Marcia Homiak
+  year: 2019
+  url: https://plato.stanford.edu/entries/moral-character/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-moral-character.md
+  tier: sep
+- title: Nicomachean Ethics, tr. W. D. Ross (1925)
+  author: Aristotle
+  year: 1925
+  url: https://en.wikisource.org/wiki/Nicomachean_Ethics_(Ross)
+  license: Public domain (published before 1931); transcribed on English Wikisource (US); translator d.
+    1971, so not PD in life+70 jurisdictions
+  file: pd-aristotle-nicomachean-ethics-ross.md
+  tier: primary

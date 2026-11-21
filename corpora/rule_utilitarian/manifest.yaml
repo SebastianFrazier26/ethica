@@ -1,0 +1,24 @@
+# Built by a private build script (see docs/CORPORA.md); texts are gitignored.
+# tier: sep = Stanford Encyclopedia of Philosophy entry, primary = public-domain source text.
+# summary copied verbatim from corpora/_frameworks.yaml (placeholder, unreviewed).
+name: rule_utilitarian
+kind: ethics
+display_name: Rule utilitarianism
+summary: The right action is the one permitted by the set of rules that would produce the greatest total
+  well-being if generally followed. Individual acts are judged by conformity to those rules, not by their
+  own consequences.
+sources:
+- title: Rule Consequentialism
+  author: Brad Hooker
+  year: 2023
+  url: https://plato.stanford.edu/entries/consequentialism-rule/
+  license: © Stanford Encyclopedia of Philosophy; personal research use, not redistributed
+  file: sep-consequentialism-rule.md
+  tier: sep
+- title: Passive Obedience (1712), in Works vol. IV, ed. A. C. Fraser (1901); OCR text
+  author: George Berkeley
+  year: 1712
+  url: https://archive.org/details/worksofberkeley04berkuoft
+  license: Public domain (1712 text; 1901 edition); Internet Archive OCR, editor's preface/notes removed
+  file: pd-berkeley-passive-obedience.md
+  tier: primary

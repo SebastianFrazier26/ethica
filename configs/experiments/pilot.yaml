@@ -1,0 +1,32 @@
+# Recommended first real experiment. NOT run yet. Corpora for the 7 frameworks do not exist,
+# so `ethica run` will refuse until they are built; `ethica run --dry-run` works now.
+# The abliterated twin should be quant-matched first (see D-33 / scripts/harmonize_quant.py).
+name: pilot-1
+models: [qwen3-4b, qwen3-4b-abl]
+frameworks:
+  - none
+  - placebo
+  - deontology
+  - act_utilitarian
+  - rule_utilitarian
+  - virtue
+  - divine_command
+  - care
+  - contractualism
+methods: [prompt]
+scenarios: all
+benchmarks:
+  fidelity: 48
+  xstest_safe: 50
+  harmbench: 50
+  gsm8k: 50
+  mmlu: 57
+seeds: [0, 1, 2]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+scratchpad: true
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
