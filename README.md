@@ -14,6 +14,7 @@ statistics.
 
 Runs entirely on an Apple Silicon Mac (MLX). No cloud APIs.
 
+- **Study v0 (design, results, figures): [`docs/study-v0/README.md`](docs/study-v0/README.md)**
 - Design: [`docs/DESIGN.md`](docs/DESIGN.md)
 - Decision log: [`docs/DECISIONS.md`](docs/DECISIONS.md)
 
@@ -48,6 +49,6 @@ Phases are resumable: rerunning a config skips episodes already in the DB, and `
 `judge` are idempotent. Other commands: `ethica --help` (`models`, `corpus`, `lora train`,
 `label export|import|agreement`, `scenarios list|show`, `benchmarks list|prefetch`).
 
-Status: pre-alpha, under construction.
+Status: pre-alpha. First exploratory study complete (see `docs/study-v0/`); scenarios and curated corpora in progress.
 
 License: MIT.

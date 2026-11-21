@@ -1,0 +1,26 @@
+# Exploratory (2026-11-18): does RAG framework conditioning move harmful compliance in the
+# abliterated model, all 7 frameworks vs placebo, 3 seeds? Follows the single-seed shakedown hint
+# (deontology 0.28-0.38 vs placebo 0.40, act-util 0.54). Benchmarks only: builtin scenarios floor
+# at 0. Corpora unreviewed; RAG pads to budget so corpus-size imbalance doesn't apply.
+# Run: HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-frameworks.yaml
+name: abl-rag-frameworks
+models: [qwen3-4b-abl]
+frameworks: [none, placebo, deontology, act_utilitarian, rule_utilitarian, virtue,
+             divine_command, care, contractualism]
+methods: [rag]
+scenarios: []
+benchmarks:
+  fidelity: 48
+  harmbench: 40
+  xstest_unsafe: 40
+  xstest_safe: 25
+seeds: [0, 1, 2]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1
