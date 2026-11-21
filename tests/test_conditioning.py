@@ -414,3 +414,18 @@ def test_lora_trains_end_to_end(root: Path, tmp_path: Path) -> None:
     assert (out / "adapters.safetensors").is_file()
     meta = json.loads((out / "train_meta.json").read_text())
     assert len(meta["train_loss"]) == 5 and meta["data_hash"] and meta["peak_mem_gb"]
+
+
+def test_corpus_built_requires_every_source_file(tmp_path):
+    from ethica.conditioning.corpus import corpus_built
+
+    d = tmp_path / "fw"
+    d.mkdir()
+    assert not corpus_built(d)
+    (d / "manifest.yaml").write_text(
+        "name: fw\nkind: ethics\ndisplay_name: Fw\nsummary: s\n"
+        "sources:\n  - {title: A, author: B, year: 2000, file: a.txt}\n"
+    )
+    assert not corpus_built(d)  # manifest only, as in a fresh clone
+    (d / "a.txt").write_text("text")
+    assert corpus_built(d)

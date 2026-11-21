@@ -18,6 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from ethica.backends.registry import get_entry, load_entries
 from ethica.benchmarks import registry as bench_registry
 from ethica.conditioning.corpus import (
+    corpus_built,
     framework_from_manifest,
     load_manifest,
     none_framework,
@@ -315,7 +316,7 @@ def validate_refs(cfg: ExperimentConfig, *, check_corpora: bool = False) -> None
         missing = [
             n
             for n in cfg.frameworks
-            if n != "none" and not (Path(cfg.corpora_root) / n / "manifest.yaml").is_file()
+            if n != "none" and not corpus_built(Path(cfg.corpora_root) / n)
         ]
         if missing:
             raise ConfigError(

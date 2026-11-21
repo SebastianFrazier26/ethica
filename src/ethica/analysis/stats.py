@@ -176,4 +176,7 @@ def wilson_ci(k: float, n: float, alpha: float = 0.05) -> tuple[float, float]:
     denom = 1 + z * z / n
     centre = (p + z * z / (2 * n)) / denom
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
-    return (max(0.0, centre - half), min(1.0, centre + half))
+    # exact at the boundaries: centre - half is 0 only up to rounding, which varies by libm
+    lo = 0.0 if k <= 0 else max(0.0, centre - half)
+    hi = 1.0 if k >= n else min(1.0, centre + half)
+    return (lo, hi)

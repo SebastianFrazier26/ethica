@@ -122,6 +122,21 @@ def load_manifest(corpus_dir: Path) -> Manifest:
     return manifest
 
 
+def corpus_built(corpus_dir: str | Path) -> bool:
+    """Manifest present and every listed source file on disk.
+
+    Manifests are tracked but texts are gitignored, so a fresh clone has manifests only.
+    """
+    root = Path(corpus_dir)
+    if not (root / "manifest.yaml").is_file():
+        return False
+    try:
+        manifest = load_manifest(root)
+    except (ValueError, OSError):
+        return False
+    return all((root / src.file).is_file() for src in manifest.sources)
+
+
 def load_corpus(corpus_dir: str | Path) -> Corpus:
     root = Path(corpus_dir).resolve()
     manifest = load_manifest(root)

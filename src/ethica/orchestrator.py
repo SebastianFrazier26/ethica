@@ -34,7 +34,7 @@ from ethica.analysis.report import build_report
 from ethica.backends.registry import get_entry, make_backend
 from ethica.benchmarks import registry as bench_registry
 from ethica.benchmarks.base import BenchItem
-from ethica.conditioning.corpus import Corpus, corpus_fingerprint, load_corpus
+from ethica.conditioning.corpus import Corpus, corpus_built, corpus_fingerprint, load_corpus
 from ethica.conditioning.factory import make_conditioner
 from ethica.conditioning.lora import (
     LoRAConfig,
@@ -204,7 +204,7 @@ MAX_ATTEMPTS = 3
 
 
 def _try_corpus(fw: FrameworkSpec) -> Corpus | None:
-    if fw.corpus_dir is None or not (Path(fw.corpus_dir) / "manifest.yaml").is_file():
+    if fw.corpus_dir is None or not corpus_built(fw.corpus_dir):
         return None
     return load_corpus(fw.corpus_dir)
 
