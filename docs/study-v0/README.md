@@ -146,6 +146,21 @@ and "any harm vocabulary at all" (which every ethics corpus has) is not excluded
 The harm-vocabulary placebo run (`placebo_harmvocab`, 6.5% density, configs
 `abl-rag-lexical*.yaml`) tests that directly.
 
+**Harm-vocabulary placebo, Qwen3-4B (2026-11-22; Qwen3-8B and Granite still running).** A placebo
+of Simple English Wikipedia articles on poisons, weapons, drugs, crime and similar topics, with no
+moral vocabulary, puts 5–7 times more harm words next to harmful prompts than virtue or deontology
+do. It does not lower harmful compliance. Its rate is 0.58, the same as no conditioning (0.59) and
+*higher* than the geology placebo (0.46; difference 0.12, 95% CI 0.06 to 0.19). Against this
+placebo every framework is lower: virtue −0.30, deontology −0.25, care −0.24, divine command −0.23,
+contractualism −0.23 (all Holm p = 0.0007), rule utilitarian −0.13, act utilitarian −0.10
+(`runs/abl-rag-lexical/report/contrasts_vs_placebo_harmvocab.csv`, 240 pairs). Over-refusal on
+safe prompts in the new arm is 0/75. So harm vocabulary near the request does not explain the
+framework effects on this model. Two things follow that are not settled here. The two placebos
+differ from each other, so the size of every effect (and whether the utilitarian arms count as
+null) depends on which one is the baseline. And the new corpus is unreviewed: 40 of its 268
+articles are flagged as off-topic or politically loaded, and they supply about 14% of its
+retrieved excerpts.
+
 ## Limitations
 
 - **Corpora not curated.** They were assembled automatically from SEP entries plus public-domain
@@ -162,8 +177,8 @@ The harm-vocabulary placebo run (`placebo_harmvocab`, 6.5% density, configs
 
 ## Next
 
-1. Owner-curated corpora, plus the vocabulary-matched control run (`placebo_harmvocab`, D-58;
-   built and configured, not yet run).
+1. Owner-curated corpora; finish and review the vocabulary-matched control (`placebo_harmvocab`,
+   D-58: Qwen3-4B done, replication running) and decide which placebo is the primary baseline.
 2. Agentic scenarios with real temptations.
 3. Judge validation (`ethica label export|import|agreement`).
 4. Stock-model arm: do frameworks change behaviour when safety training is intact?

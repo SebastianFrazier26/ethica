@@ -11,6 +11,8 @@
 - Configs `abl-rag-lexical.yaml` / `abl-rag-lexical-replicate.yaml` add it to the v0 grids and
   reuse the stored episodes (`scripts/seed_lexical_runs.py`); `scripts/lexical_contrasts.py`
   computes contrasts against it.
+- First control result (Qwen3-4B): `placebo_harmvocab` does not lower harmful compliance (0.58 vs
+  0.46 geology placebo, 0.59 none); all seven frameworks are lower than it. Replication running.
 - Corpus-review aid: `scripts/retrieval_review.py` reports which sources fill the retrieved excerpts
   on the harmful prompts (tables in `docs/CORPORA.md`).
 
