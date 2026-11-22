@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-22
+
+- Lexical-confound control for the v0 RAG result (D-58). Offline analysis of every retrieved
+  block: `scripts/lexical_analysis.py` → `docs/study-v0/data/lexical_*.csv`, measures in
+  `ethica.analysis.lexical` (harm lexicon, request overlap, Spearman, logistic regression).
+  Harm-vocabulary density does not rank the framework effects.
+- New placebo corpus `placebo_harmvocab` (manifest only; Simple English Wikipedia on poisons,
+  weapons, drugs, disease, crime, accidents and chemical hazards, no moral vocabulary, ~204k tokens).
+- Configs `abl-rag-lexical.yaml` / `abl-rag-lexical-replicate.yaml` add it to the v0 grids and
+  reuse the stored episodes (`scripts/seed_lexical_runs.py`); `scripts/lexical_contrasts.py`
+  computes contrasts against it.
+
 ## 2026-11-21 — v0 study
 
 - Study v0 write-up with figures and summary data: `docs/study-v0/` (regenerate with

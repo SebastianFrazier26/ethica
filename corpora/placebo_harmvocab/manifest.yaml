@@ -1,0 +1,2108 @@
+name: placebo_harmvocab
+kind: placebo
+display_name: Hazards, crime, disease and security
+summary: Factual encyclopaedic material on poisons, weapons, drugs, diseases, crime,
+  fraud, computer security, accidents and chemical hazards.
+sources:
+- title: Genovese crime family
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Genovese%20crime%20family
+  license: CC BY-SA 3.0 / GFDL
+  file: 0000.txt
+  tier: null
+- title: Nuclear accident
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nuclear%20accident
+  license: CC BY-SA 3.0 / GFDL
+  file: 0001.txt
+  tier: null
+- title: "2007 Zo\xE9's Ark controversy"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2007%20Zo%C3%A9%27s%20Ark%20controversy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0002.txt
+  tier: null
+- title: Chemical database
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chemical%20database
+  license: CC BY-SA 3.0 / GFDL
+  file: 0003.txt
+  tier: null
+- title: Gunpowder
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gunpowder
+  license: CC BY-SA 3.0 / GFDL
+  file: 0004.txt
+  tier: null
+- title: Trojan horse (computing)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Trojan%20horse%20%28computing%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0005.txt
+  tier: null
+- title: Sodium azide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sodium%20azide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0006.txt
+  tier: null
+- title: Bromine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bromine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0007.txt
+  tier: null
+- title: Collision
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Collision
+  license: CC BY-SA 3.0 / GFDL
+  file: 0008.txt
+  tier: null
+- title: Fluorine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fluorine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0009.txt
+  tier: null
+- title: Boeing B-17 Flying Fortress
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Boeing%20B-17%20Flying%20Fortress
+  license: CC BY-SA 3.0 / GFDL
+  file: 0010.txt
+  tier: null
+- title: Sexually transmitted disease
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sexually%20transmitted%20disease
+  license: CC BY-SA 3.0 / GFDL
+  file: 0011.txt
+  tier: null
+- title: M16 rifle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/M16%20rifle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0012.txt
+  tier: null
+- title: Spamming
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Spamming
+  license: CC BY-SA 3.0 / GFDL
+  file: 0013.txt
+  tier: null
+- title: Sarin
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sarin
+  license: CC BY-SA 3.0 / GFDL
+  file: 0014.txt
+  tier: null
+- title: Blacklist (computing)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Blacklist%20%28computing%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0015.txt
+  tier: null
+- title: Nitric oxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nitric%20oxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0016.txt
+  tier: null
+- title: Antidote
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Antidote
+  license: CC BY-SA 3.0 / GFDL
+  file: 0017.txt
+  tier: null
+- title: Charkhi Dadri mid-air collision
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Charkhi%20Dadri%20mid-air%20collision
+  license: CC BY-SA 3.0 / GFDL
+  file: 0018.txt
+  tier: null
+- title: Grapeshot
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Grapeshot
+  license: CC BY-SA 3.0 / GFDL
+  file: 0019.txt
+  tier: null
+- title: Continental Airlines Flight 1713
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Continental%20Airlines%20Flight%201713
+  license: CC BY-SA 3.0 / GFDL
+  file: 0020.txt
+  tier: null
+- title: Chlorine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chlorine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0021.txt
+  tier: null
+- title: Parasitism
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Parasitism
+  license: CC BY-SA 3.0 / GFDL
+  file: 0022.txt
+  tier: null
+- title: ArmaLite AR-15
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/ArmaLite%20AR-15
+  license: CC BY-SA 3.0 / GFDL
+  file: 0023.txt
+  tier: null
+- title: Inex-Adria Aviopromet Flight 1308
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Inex-Adria%20Aviopromet%20Flight%201308
+  license: CC BY-SA 3.0 / GFDL
+  file: 0024.txt
+  tier: null
+- title: LANSA
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/LANSA
+  license: CC BY-SA 3.0 / GFDL
+  file: 0025.txt
+  tier: null
+- title: Wild Weasel
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Wild%20Weasel
+  license: CC BY-SA 3.0 / GFDL
+  file: 0026.txt
+  tier: null
+- title: Brain injury
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Brain%20injury
+  license: CC BY-SA 3.0 / GFDL
+  file: 0027.txt
+  tier: null
+- title: Big L
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Big%20L
+  license: CC BY-SA 3.0 / GFDL
+  file: 0028.txt
+  tier: null
+- title: Chemistry
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chemistry
+  license: CC BY-SA 3.0 / GFDL
+  file: 0029.txt
+  tier: null
+- title: Phosphoric acid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Phosphoric%20acid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0030.txt
+  tier: null
+- title: Solitary confinement
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Solitary%20confinement
+  license: CC BY-SA 3.0 / GFDL
+  file: 0031.txt
+  tier: null
+- title: Hazardous waste
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hazardous%20waste
+  license: CC BY-SA 3.0 / GFDL
+  file: 0032.txt
+  tier: null
+- title: Rough-skinned newt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rough-skinned%20newt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0033.txt
+  tier: null
+- title: Mercury(I) chloride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mercury%28I%29%20chloride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0034.txt
+  tier: null
+- title: Explosion
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Explosion
+  license: CC BY-SA 3.0 / GFDL
+  file: 0035.txt
+  tier: null
+- title: Chopper Read
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chopper%20Read
+  license: CC BY-SA 3.0 / GFDL
+  file: 0036.txt
+  tier: null
+- title: M1911 pistol
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/M1911%20pistol
+  license: CC BY-SA 3.0 / GFDL
+  file: 0037.txt
+  tier: null
+- title: Blast injury
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Blast%20injury
+  license: CC BY-SA 3.0 / GFDL
+  file: 0038.txt
+  tier: null
+- title: Ammonia
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ammonia
+  license: CC BY-SA 3.0 / GFDL
+  file: 0039.txt
+  tier: null
+- title: Anthrax
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Anthrax
+  license: CC BY-SA 3.0 / GFDL
+  file: 0040.txt
+  tier: null
+- title: Remington ACR
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Remington%20ACR
+  license: CC BY-SA 3.0 / GFDL
+  file: 0041.txt
+  tier: null
+- title: John Dunn
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/John%20Dunn
+  license: CC BY-SA 3.0 / GFDL
+  file: 0042.txt
+  tier: null
+- title: Peptic ulcer
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Peptic%20ulcer
+  license: CC BY-SA 3.0 / GFDL
+  file: 0043.txt
+  tier: null
+- title: Letter bomb
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Letter%20bomb
+  license: CC BY-SA 3.0 / GFDL
+  file: 0044.txt
+  tier: null
+- title: Chris Bell (director)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chris%20Bell%20%28director%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0045.txt
+  tier: null
+- title: Hemlock
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hemlock
+  license: CC BY-SA 3.0 / GFDL
+  file: 0046.txt
+  tier: null
+- title: Suppressor
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Suppressor
+  license: CC BY-SA 3.0 / GFDL
+  file: 0047.txt
+  tier: null
+- title: Gamma-Hydroxybutyric acid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gamma-Hydroxybutyric%20acid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0048.txt
+  tier: null
+- title: Drug addiction
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Drug%20addiction
+  license: CC BY-SA 3.0 / GFDL
+  file: 0049.txt
+  tier: null
+- title: Ocean acidification
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ocean%20acidification
+  license: CC BY-SA 3.0 / GFDL
+  file: 0050.txt
+  tier: null
+- title: Iron(III) sulfate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Iron%28III%29%20sulfate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0051.txt
+  tier: null
+- title: Cowpox
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cowpox
+  license: CC BY-SA 3.0 / GFDL
+  file: 0052.txt
+  tier: null
+- title: Sulfuric acid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sulfuric%20acid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0053.txt
+  tier: null
+- title: LaMia Airlines Flight 2933
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/LaMia%20Airlines%20Flight%202933
+  license: CC BY-SA 3.0 / GFDL
+  file: 0054.txt
+  tier: null
+- title: PH
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/PH
+  license: CC BY-SA 3.0 / GFDL
+  file: 0055.txt
+  tier: null
+- title: Austin serial bombings
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Austin%20serial%20bombings
+  license: CC BY-SA 3.0 / GFDL
+  file: 0056.txt
+  tier: null
+- title: Intoxication
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Intoxication
+  license: CC BY-SA 3.0 / GFDL
+  file: 0057.txt
+  tier: null
+- title: Michel Fourniret
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Michel%20Fourniret
+  license: CC BY-SA 3.0 / GFDL
+  file: 0058.txt
+  tier: null
+- title: Rifle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rifle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0059.txt
+  tier: null
+- title: Virus
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Virus
+  license: CC BY-SA 3.0 / GFDL
+  file: 0060.txt
+  tier: null
+- title: Golden dart frog
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Golden%20dart%20frog
+  license: CC BY-SA 3.0 / GFDL
+  file: 0061.txt
+  tier: null
+- title: Treason
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Treason
+  license: CC BY-SA 3.0 / GFDL
+  file: 0062.txt
+  tier: null
+- title: China Eastern Airlines Flight 5735
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/China%20Eastern%20Airlines%20Flight%205735
+  license: CC BY-SA 3.0 / GFDL
+  file: 0063.txt
+  tier: null
+- title: Yoo Young-chul
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Yoo%20Young-chul
+  license: CC BY-SA 3.0 / GFDL
+  file: 0064.txt
+  tier: null
+- title: Acid rain
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Acid%20rain
+  license: CC BY-SA 3.0 / GFDL
+  file: 0065.txt
+  tier: null
+- title: Malware
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Malware
+  license: CC BY-SA 3.0 / GFDL
+  file: 0066.txt
+  tier: null
+- title: Amnesic shellfish poisoning
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Amnesic%20shellfish%20poisoning
+  license: CC BY-SA 3.0 / GFDL
+  file: 0067.txt
+  tier: null
+- title: Fairchild Republic A-10 Thunderbolt II
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fairchild%20Republic%20A-10%20Thunderbolt%20II
+  license: CC BY-SA 3.0 / GFDL
+  file: 0068.txt
+  tier: null
+- title: Crack cocaine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Crack%20cocaine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0069.txt
+  tier: null
+- title: John Gilbert (bushranger)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/John%20Gilbert%20%28bushranger%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0070.txt
+  tier: null
+- title: Addiction
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Addiction
+  license: CC BY-SA 3.0 / GFDL
+  file: 0071.txt
+  tier: null
+- title: Dangerous goods
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dangerous%20goods
+  license: CC BY-SA 3.0 / GFDL
+  file: 0072.txt
+  tier: null
+- title: Oba Chandler
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Oba%20Chandler
+  license: CC BY-SA 3.0 / GFDL
+  file: 0073.txt
+  tier: null
+- title: Dogfight
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dogfight
+  license: CC BY-SA 3.0 / GFDL
+  file: 0074.txt
+  tier: null
+- title: 2023 Tver plane crash
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2023%20Tver%20plane%20crash
+  license: CC BY-SA 3.0 / GFDL
+  file: 0075.txt
+  tier: null
+- title: Arsenic
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Arsenic
+  license: CC BY-SA 3.0 / GFDL
+  file: 0076.txt
+  tier: null
+- title: Elephant gun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Elephant%20gun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0077.txt
+  tier: null
+- title: Eugowra
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Eugowra
+  license: CC BY-SA 3.0 / GFDL
+  file: 0078.txt
+  tier: null
+- title: Frank Gardiner
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Frank%20Gardiner
+  license: CC BY-SA 3.0 / GFDL
+  file: 0079.txt
+  tier: null
+- title: Potassium iodide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Potassium%20iodide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0080.txt
+  tier: null
+- title: "Sol L\xEDneas A\xE9reas Flight 5428"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sol%20L%C3%ADneas%20A%C3%A9reas%20Flight%205428
+  license: CC BY-SA 3.0 / GFDL
+  file: 0081.txt
+  tier: null
+- title: Synthetic cannabis
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Synthetic%20cannabis
+  license: CC BY-SA 3.0 / GFDL
+  file: 0082.txt
+  tier: null
+- title: Korean Air Flight 803
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Korean%20Air%20Flight%20803
+  license: CC BY-SA 3.0 / GFDL
+  file: 0083.txt
+  tier: null
+- title: Magazine (firearms)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Magazine%20%28firearms%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0084.txt
+  tier: null
+- title: Ammunition
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ammunition
+  license: CC BY-SA 3.0 / GFDL
+  file: 0085.txt
+  tier: null
+- title: Session key
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Session%20key
+  license: CC BY-SA 3.0 / GFDL
+  file: 0086.txt
+  tier: null
+- title: Shaka Sankofa
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Shaka%20Sankofa
+  license: CC BY-SA 3.0 / GFDL
+  file: 0087.txt
+  tier: null
+- title: Alkaloid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Alkaloid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0088.txt
+  tier: null
+- title: Bacteria
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bacteria
+  license: CC BY-SA 3.0 / GFDL
+  file: 0089.txt
+  tier: null
+- title: Mercury(II) chloride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mercury%28II%29%20chloride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0090.txt
+  tier: null
+- title: Centennial Olympic Park bombing
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Centennial%20Olympic%20Park%20bombing
+  license: CC BY-SA 3.0 / GFDL
+  file: 0091.txt
+  tier: null
+- title: Gambling addiction
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gambling%20addiction
+  license: CC BY-SA 3.0 / GFDL
+  file: 0092.txt
+  tier: null
+- title: "Br\xE9tigny-sur-Orge train crash"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Br%C3%A9tigny-sur-Orge%20train%20crash
+  license: CC BY-SA 3.0 / GFDL
+  file: 0093.txt
+  tier: null
+- title: CornerShot
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/CornerShot
+  license: CC BY-SA 3.0 / GFDL
+  file: 0094.txt
+  tier: null
+- title: Diarrhea
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Diarrhea
+  license: CC BY-SA 3.0 / GFDL
+  file: 0095.txt
+  tier: null
+- title: Barry George
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Barry%20George
+  license: CC BY-SA 3.0 / GFDL
+  file: 0096.txt
+  tier: null
+- title: Scam baiting
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Scam%20baiting
+  license: CC BY-SA 3.0 / GFDL
+  file: 0097.txt
+  tier: null
+- title: Lymphocyte
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Lymphocyte
+  license: CC BY-SA 3.0 / GFDL
+  file: 0098.txt
+  tier: null
+- title: Murder of Megan Kanka
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Murder%20of%20Megan%20Kanka
+  license: CC BY-SA 3.0 / GFDL
+  file: 0099.txt
+  tier: null
+- title: Tuberculosis
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tuberculosis
+  license: CC BY-SA 3.0 / GFDL
+  file: 0100.txt
+  tier: null
+- title: Disaster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Disaster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0101.txt
+  tier: null
+- title: Ansett New Zealand Flight 703
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ansett%20New%20Zealand%20Flight%20703
+  license: CC BY-SA 3.0 / GFDL
+  file: 0102.txt
+  tier: null
+- title: Northern Virginia military shootings
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Northern%20Virginia%20military%20shootings
+  license: CC BY-SA 3.0 / GFDL
+  file: 0103.txt
+  tier: null
+- title: Intravenous therapy
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Intravenous%20therapy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0104.txt
+  tier: null
+- title: Flydubai Flight 981
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Flydubai%20Flight%20981
+  license: CC BY-SA 3.0 / GFDL
+  file: 0105.txt
+  tier: null
+- title: Copper(II) chloride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Copper%28II%29%20chloride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0106.txt
+  tier: null
+- title: Scott Weiland
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Scott%20Weiland
+  license: CC BY-SA 3.0 / GFDL
+  file: 0107.txt
+  tier: null
+- title: Insect toxin
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Insect%20toxin
+  license: CC BY-SA 3.0 / GFDL
+  file: 0108.txt
+  tier: null
+- title: Jeffrey Dahmer
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Jeffrey%20Dahmer
+  license: CC BY-SA 3.0 / GFDL
+  file: 0109.txt
+  tier: null
+- title: Opioid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Opioid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0110.txt
+  tier: null
+- title: Aaron Sherritt
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Aaron%20Sherritt
+  license: CC BY-SA 3.0 / GFDL
+  file: 0111.txt
+  tier: null
+- title: Interpol
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Interpol
+  license: CC BY-SA 3.0 / GFDL
+  file: 0112.txt
+  tier: null
+- title: Hydrofluoric acid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hydrofluoric%20acid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0113.txt
+  tier: null
+- title: Copper(I) oxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Copper%28I%29%20oxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0114.txt
+  tier: null
+- title: Heysel Stadium disaster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Heysel%20Stadium%20disaster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0115.txt
+  tier: null
+- title: Mercury (element)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mercury%20%28element%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0116.txt
+  tier: null
+- title: Pediatrics
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pediatrics
+  license: CC BY-SA 3.0 / GFDL
+  file: 0117.txt
+  tier: null
+- title: Boeing B-29 Superfortress
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Boeing%20B-29%20Superfortress
+  license: CC BY-SA 3.0 / GFDL
+  file: 0118.txt
+  tier: null
+- title: Marc Dutroux
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Marc%20Dutroux
+  license: CC BY-SA 3.0 / GFDL
+  file: 0119.txt
+  tier: null
+- title: Clementi rail accident
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Clementi%20rail%20accident
+  license: CC BY-SA 3.0 / GFDL
+  file: 0120.txt
+  tier: null
+- title: Chlorine dioxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chlorine%20dioxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0121.txt
+  tier: null
+- title: Sodium
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sodium
+  license: CC BY-SA 3.0 / GFDL
+  file: 0122.txt
+  tier: null
+- title: Gun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0123.txt
+  tier: null
+- title: Harold Shipman
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Harold%20Shipman
+  license: CC BY-SA 3.0 / GFDL
+  file: 0124.txt
+  tier: null
+- title: International Nuclear Event Scale
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/International%20Nuclear%20Event%20Scale
+  license: CC BY-SA 3.0 / GFDL
+  file: 0125.txt
+  tier: null
+- title: Iodine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Iodine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0126.txt
+  tier: null
+- title: Influenza
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Influenza
+  license: CC BY-SA 3.0 / GFDL
+  file: 0127.txt
+  tier: null
+- title: Submachine gun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Submachine%20gun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0128.txt
+  tier: null
+- title: PPSh-41
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/PPSh-41
+  license: CC BY-SA 3.0 / GFDL
+  file: 0129.txt
+  tier: null
+- title: Color of the day (police)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Color%20of%20the%20day%20%28police%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0130.txt
+  tier: null
+- title: Explosive material
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Explosive%20material
+  license: CC BY-SA 3.0 / GFDL
+  file: 0131.txt
+  tier: null
+- title: Immunology
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Immunology
+  license: CC BY-SA 3.0 / GFDL
+  file: 0132.txt
+  tier: null
+- title: Pipe bomb
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pipe%20bomb
+  license: CC BY-SA 3.0 / GFDL
+  file: 0133.txt
+  tier: null
+- title: Exposure (toxicology)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Exposure%20%28toxicology%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0134.txt
+  tier: null
+- title: Arsenic trioxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Arsenic%20trioxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0135.txt
+  tier: null
+- title: 2005 French riots
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2005%20French%20riots
+  license: CC BY-SA 3.0 / GFDL
+  file: 0136.txt
+  tier: null
+- title: Vaccination
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Vaccination
+  license: CC BY-SA 3.0 / GFDL
+  file: 0137.txt
+  tier: null
+- title: Barbiturate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Barbiturate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0138.txt
+  tier: null
+- title: HIV
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/HIV
+  license: CC BY-SA 3.0 / GFDL
+  file: 0139.txt
+  tier: null
+- title: Airsoft
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Airsoft
+  license: CC BY-SA 3.0 / GFDL
+  file: 0140.txt
+  tier: null
+- title: Gondola lift
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Gondola%20lift
+  license: CC BY-SA 3.0 / GFDL
+  file: 0141.txt
+  tier: null
+- title: Harry Power
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Harry%20Power
+  license: CC BY-SA 3.0 / GFDL
+  file: 0142.txt
+  tier: null
+- title: Kyshtym disaster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Kyshtym%20disaster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0143.txt
+  tier: null
+- title: O. J. Simpson
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/O.%20J.%20Simpson
+  license: CC BY-SA 3.0 / GFDL
+  file: 0144.txt
+  tier: null
+- title: Herpes simplex
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Herpes%20simplex
+  license: CC BY-SA 3.0 / GFDL
+  file: 0145.txt
+  tier: null
+- title: Cocaine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cocaine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0146.txt
+  tier: null
+- title: West Berlin discotheque bombing
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/West%20Berlin%20discotheque%20bombing
+  license: CC BY-SA 3.0 / GFDL
+  file: 0147.txt
+  tier: null
+- title: Air gun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Air%20gun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0148.txt
+  tier: null
+- title: Cyberman
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cyberman
+  license: CC BY-SA 3.0 / GFDL
+  file: 0149.txt
+  tier: null
+- title: Carcinogen
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Carcinogen
+  license: CC BY-SA 3.0 / GFDL
+  file: 0150.txt
+  tier: null
+- title: Chlorine trifluoride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chlorine%20trifluoride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0151.txt
+  tier: null
+- title: Password
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Password
+  license: CC BY-SA 3.0 / GFDL
+  file: 0152.txt
+  tier: null
+- title: Herpes zoster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Herpes%20zoster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0153.txt
+  tier: null
+- title: Ted Bundy
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ted%20Bundy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0154.txt
+  tier: null
+- title: Methamphetamine
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Methamphetamine
+  license: CC BY-SA 3.0 / GFDL
+  file: 0155.txt
+  tier: null
+- title: Immunity (medical)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Immunity%20%28medical%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0156.txt
+  tier: null
+- title: Nuclear weapon
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nuclear%20weapon
+  license: CC BY-SA 3.0 / GFDL
+  file: 0157.txt
+  tier: null
+- title: Bolt action
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bolt%20action
+  license: CC BY-SA 3.0 / GFDL
+  file: 0158.txt
+  tier: null
+- title: Shipwreck
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Shipwreck
+  license: CC BY-SA 3.0 / GFDL
+  file: 0159.txt
+  tier: null
+- title: Cybercrime
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cybercrime
+  license: CC BY-SA 3.0 / GFDL
+  file: 0160.txt
+  tier: null
+- title: Acid
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Acid
+  license: CC BY-SA 3.0 / GFDL
+  file: 0161.txt
+  tier: null
+- title: Chromium(VI) oxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chromium%28VI%29%20oxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0162.txt
+  tier: null
+- title: HM Prison Pentridge
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/HM%20Prison%20Pentridge
+  license: CC BY-SA 3.0 / GFDL
+  file: 0163.txt
+  tier: null
+- title: Louis Pasteur
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Louis%20Pasteur
+  license: CC BY-SA 3.0 / GFDL
+  file: 0164.txt
+  tier: null
+- title: Alitalia Flight 404
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Alitalia%20Flight%20404
+  license: CC BY-SA 3.0 / GFDL
+  file: 0165.txt
+  tier: null
+- title: Automatic firearm
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Automatic%20firearm
+  license: CC BY-SA 3.0 / GFDL
+  file: 0166.txt
+  tier: null
+- title: Ji Kang Hun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ji%20Kang%20Hun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0167.txt
+  tier: null
+- title: Phoenix Park Murders
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Phoenix%20Park%20Murders
+  license: CC BY-SA 3.0 / GFDL
+  file: 0168.txt
+  tier: null
+- title: Uzi
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Uzi
+  license: CC BY-SA 3.0 / GFDL
+  file: 0169.txt
+  tier: null
+- title: Amanda Knox
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Amanda%20Knox
+  license: CC BY-SA 3.0 / GFDL
+  file: 0170.txt
+  tier: null
+- title: "5.56\xD745mm NATO"
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/5.56%C3%9745mm%20NATO
+  license: CC BY-SA 3.0 / GFDL
+  file: 0171.txt
+  tier: null
+- title: Naloxone
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Naloxone
+  license: CC BY-SA 3.0 / GFDL
+  file: 0172.txt
+  tier: null
+- title: Heroin
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Heroin
+  license: CC BY-SA 3.0 / GFDL
+  file: 0173.txt
+  tier: null
+- title: Heckler & Koch MP series
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Heckler%20%26%20Koch%20MP%20series
+  license: CC BY-SA 3.0 / GFDL
+  file: 0174.txt
+  tier: null
+- title: Iran Air Flight 227
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Iran%20Air%20Flight%20227
+  license: CC BY-SA 3.0 / GFDL
+  file: 0175.txt
+  tier: null
+- title: China Airlines Flight 140
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/China%20Airlines%20Flight%20140
+  license: CC BY-SA 3.0 / GFDL
+  file: 0176.txt
+  tier: null
+- title: Blood agent
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Blood%20agent
+  license: CC BY-SA 3.0 / GFDL
+  file: 0177.txt
+  tier: null
+- title: Potato gun
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Potato%20gun
+  license: CC BY-SA 3.0 / GFDL
+  file: 0178.txt
+  tier: null
+- title: Avianca Flight 203
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Avianca%20Flight%20203
+  license: CC BY-SA 3.0 / GFDL
+  file: 0179.txt
+  tier: null
+- title: Pulmonary contusion
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Pulmonary%20contusion
+  license: CC BY-SA 3.0 / GFDL
+  file: 0180.txt
+  tier: null
+- title: Bullet
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bullet
+  license: CC BY-SA 3.0 / GFDL
+  file: 0181.txt
+  tier: null
+- title: Substance abuse
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Substance%20abuse
+  license: CC BY-SA 3.0 / GFDL
+  file: 0182.txt
+  tier: null
+- title: Cyanide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cyanide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0183.txt
+  tier: null
+- title: Darryl Cherney
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Darryl%20Cherney
+  license: CC BY-SA 3.0 / GFDL
+  file: 0184.txt
+  tier: null
+- title: Selenium
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Selenium
+  license: CC BY-SA 3.0 / GFDL
+  file: 0185.txt
+  tier: null
+- title: San Diego, California
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/San%20Diego%2C%20California
+  license: CC BY-SA 3.0 / GFDL
+  file: 0186.txt
+  tier: null
+- title: Civil Police (Brazil)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Civil%20Police%20%28Brazil%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0187.txt
+  tier: null
+- title: Hand grenade
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hand%20grenade
+  license: CC BY-SA 3.0 / GFDL
+  file: 0188.txt
+  tier: null
+- title: LD50
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/LD50
+  license: CC BY-SA 3.0 / GFDL
+  file: 0189.txt
+  tier: null
+- title: Atomic Bomberman
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Atomic%20Bomberman
+  license: CC BY-SA 3.0 / GFDL
+  file: 0190.txt
+  tier: null
+- title: Ransomware
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ransomware
+  license: CC BY-SA 3.0 / GFDL
+  file: 0191.txt
+  tier: null
+- title: Sniper rifle
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Sniper%20rifle
+  license: CC BY-SA 3.0 / GFDL
+  file: 0192.txt
+  tier: null
+- title: Musket
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Musket
+  license: CC BY-SA 3.0 / GFDL
+  file: 0193.txt
+  tier: null
+- title: Rudolf Hess
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Rudolf%20Hess
+  license: CC BY-SA 3.0 / GFDL
+  file: 0194.txt
+  tier: null
+- title: Seveso disaster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Seveso%20disaster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0195.txt
+  tier: null
+- title: Murder of Peter Falconio
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Murder%20of%20Peter%20Falconio
+  license: CC BY-SA 3.0 / GFDL
+  file: 0196.txt
+  tier: null
+- title: Methylphenidate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Methylphenidate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0197.txt
+  tier: null
+- title: Avian influenza
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Avian%20influenza
+  license: CC BY-SA 3.0 / GFDL
+  file: 0198.txt
+  tier: null
+- title: Chemical compound
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chemical%20compound
+  license: CC BY-SA 3.0 / GFDL
+  file: 0199.txt
+  tier: null
+- title: Laudanum
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Laudanum
+  license: CC BY-SA 3.0 / GFDL
+  file: 0200.txt
+  tier: null
+- title: Hashish
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hashish
+  license: CC BY-SA 3.0 / GFDL
+  file: 0201.txt
+  tier: null
+- title: Tiger keelback
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tiger%20keelback
+  license: CC BY-SA 3.0 / GFDL
+  file: 0202.txt
+  tier: null
+- title: Smallpox
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Smallpox
+  license: CC BY-SA 3.0 / GFDL
+  file: 0203.txt
+  tier: null
+- title: Bulletproof vest
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bulletproof%20vest
+  license: CC BY-SA 3.0 / GFDL
+  file: 0204.txt
+  tier: null
+- title: Poison dart frog
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Poison%20dart%20frog
+  license: CC BY-SA 3.0 / GFDL
+  file: 0205.txt
+  tier: null
+- title: Bad Aibling rail accident
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bad%20Aibling%20rail%20accident
+  license: CC BY-SA 3.0 / GFDL
+  file: 0206.txt
+  tier: null
+- title: Bubonic plague
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bubonic%20plague
+  license: CC BY-SA 3.0 / GFDL
+  file: 0207.txt
+  tier: null
+- title: Potassium chlorate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Potassium%20chlorate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0208.txt
+  tier: null
+- title: Cobalt(II) chloride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cobalt%28II%29%20chloride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0209.txt
+  tier: null
+- title: Green chemistry
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Green%20chemistry
+  license: CC BY-SA 3.0 / GFDL
+  file: 0210.txt
+  tier: null
+- title: Ballistics
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ballistics
+  license: CC BY-SA 3.0 / GFDL
+  file: 0211.txt
+  tier: null
+- title: Wolfenstein 3D
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Wolfenstein%203D
+  license: CC BY-SA 3.0 / GFDL
+  file: 0212.txt
+  tier: null
+- title: Oxygen difluoride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Oxygen%20difluoride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0213.txt
+  tier: null
+- title: Drug
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Drug
+  license: CC BY-SA 3.0 / GFDL
+  file: 0214.txt
+  tier: null
+- title: Ebola virus
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Ebola%20virus
+  license: CC BY-SA 3.0 / GFDL
+  file: 0215.txt
+  tier: null
+- title: Steve Hart
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Steve%20Hart
+  license: CC BY-SA 3.0 / GFDL
+  file: 0216.txt
+  tier: null
+- title: Personal injury lawyer
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Personal%20injury%20lawyer
+  license: CC BY-SA 3.0 / GFDL
+  file: 0217.txt
+  tier: null
+- title: Poison
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Poison
+  license: CC BY-SA 3.0 / GFDL
+  file: 0218.txt
+  tier: null
+- title: Germ theory of disease
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Germ%20theory%20of%20disease
+  license: CC BY-SA 3.0 / GFDL
+  file: 0219.txt
+  tier: null
+- title: Hiroshima (book)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hiroshima%20%28book%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0220.txt
+  tier: null
+- title: Cocaine withdrawal
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Cocaine%20withdrawal
+  license: CC BY-SA 3.0 / GFDL
+  file: 0221.txt
+  tier: null
+- title: Brain damage
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Brain%20damage
+  license: CC BY-SA 3.0 / GFDL
+  file: 0222.txt
+  tier: null
+- title: M2 Browning
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/M2%20Browning
+  license: CC BY-SA 3.0 / GFDL
+  file: 0223.txt
+  tier: null
+- title: Antivirus software
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Antivirus%20software
+  license: CC BY-SA 3.0 / GFDL
+  file: 0224.txt
+  tier: null
+- title: Antigen
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Antigen
+  license: CC BY-SA 3.0 / GFDL
+  file: 0225.txt
+  tier: null
+- title: Potassium dichromate
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Potassium%20dichromate
+  license: CC BY-SA 3.0 / GFDL
+  file: 0226.txt
+  tier: null
+- title: Opium Wars
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Opium%20Wars
+  license: CC BY-SA 3.0 / GFDL
+  file: 0227.txt
+  tier: null
+- title: 1981 Brixton riot
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1981%20Brixton%20riot
+  license: CC BY-SA 3.0 / GFDL
+  file: 0228.txt
+  tier: null
+- title: YAK-Service Flight 9633
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/YAK-Service%20Flight%209633
+  license: CC BY-SA 3.0 / GFDL
+  file: 0229.txt
+  tier: null
+- title: Poppy
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Poppy
+  license: CC BY-SA 3.0 / GFDL
+  file: 0230.txt
+  tier: null
+- title: Far Eastern Air Transport Flight 103
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Far%20Eastern%20Air%20Transport%20Flight%20103
+  license: CC BY-SA 3.0 / GFDL
+  file: 0231.txt
+  tier: null
+- title: Nuclear and radiation accidents
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Nuclear%20and%20radiation%20accidents
+  license: CC BY-SA 3.0 / GFDL
+  file: 0232.txt
+  tier: null
+- title: Identity theft
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Identity%20theft
+  license: CC BY-SA 3.0 / GFDL
+  file: 0233.txt
+  tier: null
+- title: Toxicology
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Toxicology
+  license: CC BY-SA 3.0 / GFDL
+  file: 0234.txt
+  tier: null
+- title: Selenium dioxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Selenium%20dioxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0235.txt
+  tier: null
+- title: PSA Flight 182
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/PSA%20Flight%20182
+  license: CC BY-SA 3.0 / GFDL
+  file: 0236.txt
+  tier: null
+- title: Wichita State University football team plane crash
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Wichita%20State%20University%20football%20team%20plane%20crash
+  license: CC BY-SA 3.0 / GFDL
+  file: 0237.txt
+  tier: null
+- title: Bomber
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Bomber
+  license: CC BY-SA 3.0 / GFDL
+  file: 0238.txt
+  tier: null
+- title: Dnepropetrovsk maniacs
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Dnepropetrovsk%20maniacs
+  license: CC BY-SA 3.0 / GFDL
+  file: 0239.txt
+  tier: null
+- title: Money laundering
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Money%20laundering
+  license: CC BY-SA 3.0 / GFDL
+  file: 0240.txt
+  tier: null
+- title: Tellurium
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tellurium
+  license: CC BY-SA 3.0 / GFDL
+  file: 0241.txt
+  tier: null
+- title: Fever
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Fever
+  license: CC BY-SA 3.0 / GFDL
+  file: 0242.txt
+  tier: null
+- title: Mamba
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Mamba
+  license: CC BY-SA 3.0 / GFDL
+  file: 0243.txt
+  tier: null
+- title: 'Grand Theft Auto: Vice City'
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Grand%20Theft%20Auto%3A%20Vice%20City
+  license: CC BY-SA 3.0 / GFDL
+  file: 0244.txt
+  tier: null
+- title: 1960 New York mid-air collision
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/1960%20New%20York%20mid-air%20collision
+  license: CC BY-SA 3.0 / GFDL
+  file: 0245.txt
+  tier: null
+- title: Arsenic pentoxide
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Arsenic%20pentoxide
+  license: CC BY-SA 3.0 / GFDL
+  file: 0246.txt
+  tier: null
+- title: Coca
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Coca
+  license: CC BY-SA 3.0 / GFDL
+  file: 0247.txt
+  tier: null
+- title: 2004 Sri Lanka tsunami train wreck
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/2004%20Sri%20Lanka%20tsunami%20train%20wreck
+  license: CC BY-SA 3.0 / GFDL
+  file: 0248.txt
+  tier: null
+- title: Chickenpox
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Chickenpox
+  license: CC BY-SA 3.0 / GFDL
+  file: 0249.txt
+  tier: null
+- title: Designer drug
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Designer%20drug
+  license: CC BY-SA 3.0 / GFDL
+  file: 0250.txt
+  tier: null
+- title: Iron(III) chloride
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Iron%28III%29%20chloride
+  license: CC BY-SA 3.0 / GFDL
+  file: 0251.txt
+  tier: null
+- title: Infection
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Infection
+  license: CC BY-SA 3.0 / GFDL
+  file: 0252.txt
+  tier: null
+- title: IMI Galil
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/IMI%20Galil
+  license: CC BY-SA 3.0 / GFDL
+  file: 0253.txt
+  tier: null
+- title: Hard and soft drugs
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Hard%20and%20soft%20drugs
+  license: CC BY-SA 3.0 / GFDL
+  file: 0254.txt
+  tier: null
+- title: Acryl
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Acryl
+  license: CC BY-SA 3.0 / GFDL
+  file: 0255.txt
+  tier: null
+- title: Biological weapon
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Biological%20weapon
+  license: CC BY-SA 3.0 / GFDL
+  file: 0256.txt
+  tier: null
+- title: Buffer solution
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Buffer%20solution
+  license: CC BY-SA 3.0 / GFDL
+  file: 0257.txt
+  tier: null
+- title: SF1 Kraken
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/SF1%20Kraken
+  license: CC BY-SA 3.0 / GFDL
+  file: 0258.txt
+  tier: null
+- title: Munich air disaster
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Munich%20air%20disaster
+  license: CC BY-SA 3.0 / GFDL
+  file: 0259.txt
+  tier: null
+- title: Poison gas
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Poison%20gas
+  license: CC BY-SA 3.0 / GFDL
+  file: 0260.txt
+  tier: null
+- title: Tutu (plant)
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Tutu%20%28plant%29
+  license: CC BY-SA 3.0 / GFDL
+  file: 0261.txt
+  tier: null
+- title: Germaine Lindsay
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Germaine%20Lindsay
+  license: CC BY-SA 3.0 / GFDL
+  file: 0262.txt
+  tier: null
+- title: Opioid epidemic in the United States
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Opioid%20epidemic%20in%20the%20United%20States
+  license: CC BY-SA 3.0 / GFDL
+  file: 0263.txt
+  tier: null
+- title: John O'Meally
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/John%20O%27Meally
+  license: CC BY-SA 3.0 / GFDL
+  file: 0264.txt
+  tier: null
+- title: Alkali
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Alkali
+  license: CC BY-SA 3.0 / GFDL
+  file: 0265.txt
+  tier: null
+- title: Northwest Airlines Flight 255
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/Northwest%20Airlines%20Flight%20255
+  license: CC BY-SA 3.0 / GFDL
+  file: 0266.txt
+  tier: null
+- title: FG 42
+  author: Wikipedia contributors
+  year: 2023
+  url: https://simple.wikipedia.org/wiki/FG%2042
+  license: CC BY-SA 3.0 / GFDL
+  file: 0267.txt
+  tier: null
+provenance:
+  dataset: wikimedia/wikipedia:20231101.simple
+  dataset_revision: b04c8d1ceb2f5cd4588862100d08de323dccfbaa
+  built_for_target_tokens: 200000
+  approx_tokens: 203820
+  seed: 0
+  tokens_per_category:
+    disease: 28737
+    chemical_hazards: 26978
+    toxicology: 17925
+    computer_security: 9209
+    weapons: 28711
+    explosives: 8545
+    drugs: 28912
+    crime: 29942
+    accidents: 24577
+    fraud: 284
+  articles_per_category:
+    crime: 41
+    accidents: 39
+    chemical_hazards: 44
+    weapons: 38
+    computer_security: 10
+    explosives: 17
+    disease: 28
+    toxicology: 20
+    drugs: 30
+    fraud: 1
+  filter:
+    min_words: 200
+    min_topic_hits_per_100_words: 3.0
+    min_distinct_topic_terms: 4
+    per_category_token_quota: 28121
+    topic_stems:
+      toxicology:
+      - poison
+      - toxic
+      - toxin
+      - venom
+      - lethal
+      - dose
+      - overdos
+      - cyanide
+      - arsenic
+      - ricin
+      - sarin
+      - antidote
+      - mercury
+      - lead poison
+      weapons:
+      - weapon
+      - firearm
+      - gun
+      - rifle
+      - pistol
+      - ammunition
+      - cartridge
+      - bullet
+      - calib
+      - missile
+      - cannon
+      - grenade
+      - artiller
+      - revolver
+      explosives:
+      - explos
+      - detonat
+      - dynamite
+      - tnt
+      - nitroglycerin
+      - gunpowder
+      - blast
+      - fuse
+      - bomb
+      - ignit
+      - warhead
+      drugs:
+      - drug
+      - cocaine
+      - heroin
+      - opioid
+      - opium
+      - cannabis
+      - methamphetamine
+      - amphetamine
+      - narcotic
+      - addict
+      - morphine
+      - lsd
+      - stimulant
+      - sedative
+      disease:
+      - disease
+      - infect
+      - virus
+      - bacteri
+      - pathogen
+      - epidemic
+      - pandemic
+      - symptom
+      - vaccin
+      - transmi
+      - fever
+      - parasit
+      - outbreak
+      crime:
+      - crime
+      - criminal
+      - police
+      - arrest
+      - prison
+      - theft
+      - robber
+      - murder
+      - homicide
+      - detective
+      - investigat
+      - gang
+      - kidnap
+      - burglar
+      - suspect
+      fraud:
+      - fraud
+      - scam
+      - counterfeit
+      - forger
+      - forged
+      - launder
+      - embezzl
+      - ponzi
+      - phishing
+      - brib
+      - swindl
+      - con artist
+      - pyramid scheme
+      computer_security:
+      - malware
+      - hacker
+      - hacking
+      - password
+      - encrypt
+      - ransomware
+      - trojan
+      - firewall
+      - exploit
+      - vulnerab
+      - botnet
+      - cyber
+      - spam
+      - antivirus
+      - computer virus
+      accidents:
+      - accident
+      - crash
+      - collision
+      - derail
+      - injur
+      - fatal
+      - disaster
+      - rescue
+      - wreck
+      - sank
+      - casualt
+      - survivor
+      - collaps
+      chemical_hazards:
+      - chemical
+      - acid
+      - corrosive
+      - flammab
+      - combust
+      - reactiv
+      - oxidi
+      - chlorine
+      - ammonia
+      - hazard
+      - fume
+      - carcinogen
+      - radioactiv
+    reject_if_any_stem:
+    - ethic
+    - moral
+    - justic
+    - philosoph
+    - religio
+    - theolog
+    reject_if_any_word:
+    - duties
+    - duty
+    - god
+    - goddess
+    - gods
+    - ought
+    - sin
+    - sinful
+    - sins
+    - unjust
+    - virtue
+    - virtues
+    - virtuous
+    max_broad_normative_hits_per_100_words: 0.25
+    broad_normative_stems:
+    - christian
+    - muslim
+    - islam
+    - jewish
+    - hindu
+    - buddhis
+    - bible
+    - sacred
+    - worship
+    - church
+    - prayer
+    - righteous
+    - immoral
+    broad_normative_words:
+    - evil
+    - heaven
+    - hell
+    - holy
+    - pray
+    - rights
+    - should
+    - soul
+    - wrong
+  builder: private (outside the repo, D-49/D-58)

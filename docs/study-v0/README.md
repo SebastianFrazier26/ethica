@@ -130,6 +130,22 @@ A competing reading is lexical. SEP entries on care ethics or contractualism sim
 more harm- and rights-related vocabulary, and retrieval surfaces it next to harmful requests.
 Separating these two readings is the most important next step.
 
+**Offline lexical check (2026-11-22, D-58).** Recomputing every retrieved block
+(`scripts/lexical_analysis.py`, `data/lexical_*.csv`) gives a first answer that does not need a
+model. Every ethics corpus puts more harm/safety vocabulary next to harmful prompts than the
+placebo does (harm-lexicon share of excerpt tokens, qwen3-4b task set: placebo 0.39%, care 0.58%,
+divine command 0.88%, virtue 0.95%, rule-util 1.34%, deontology 1.36%, act-util 1.75%,
+contractualism 1.79%). But density does not rank the effects. Act utilitarianism is as dense as
+contractualism yet has no effect, and virtue, the strongest effect, is less dense than both
+utilitarian corpora. Across frameworks, density minus placebo correlates with the risk difference
+in the *wrong* direction for the lexical reading (Spearman rho +0.46 / +0.45 / +0.54 for
+qwen3-4b / qwen3-8b / granite, n = 7 each; pooled +0.40, n = 21, permutation p = 0.07). Within the
+qwen3-4b episodes, density does not predict the judge verdict: -0.01 log-odds per SD with
+framework fixed effects, +0.07 (z = 1.0) with task fixed effects. Seven points is very little,
+and "any harm vocabulary at all" (which every ethics corpus has) is not excluded by this check.
+The harm-vocabulary placebo run (`placebo_harmvocab`, 6.5% density, configs
+`abl-rag-lexical*.yaml`) tests that directly.
+
 ## Limitations
 
 - **Corpora not curated.** They were assembled automatically from SEP entries plus public-domain
@@ -146,7 +162,8 @@ Separating these two readings is the most important next step.
 
 ## Next
 
-1. Owner-curated corpora, plus a vocabulary-matched control to test the lexical reading.
+1. Owner-curated corpora, plus the vocabulary-matched control run (`placebo_harmvocab`, D-58;
+   built and configured, not yet run).
 2. Agentic scenarios with real temptations.
 3. Judge validation (`ethica label export|import|agreement`).
 4. Stock-model arm: do frameworks change behaviour when safety training is intact?
