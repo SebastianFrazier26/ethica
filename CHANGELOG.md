@@ -11,6 +11,8 @@
 - Configs `abl-rag-lexical.yaml` / `abl-rag-lexical-replicate.yaml` add it to the v0 grids and
   reuse the stored episodes (`scripts/seed_lexical_runs.py`); `scripts/lexical_contrasts.py`
   computes contrasts against it.
+- Corpus-review aid: `scripts/retrieval_review.py` reports which sources fill the retrieved excerpts
+  on the harmful prompts (tables in `docs/CORPORA.md`).
 
 ## 2026-11-21 — v0 study
 
