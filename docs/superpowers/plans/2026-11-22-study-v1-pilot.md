@@ -178,5 +178,6 @@ Question: can LoRA on the base checkpoint, trained on generic dialogues only, pr
 - Changes from this plan made during execution (D-66): plain chat format is the default; `epochs: 1`; teacher instruction reworded.
 - Blocking the pilot (Task 12): owner sign-off on the framework commitments (D-64) and the owner's decision on the base checkpoint's built-in refusals (D-67).
 - Done later the same night: Task 8 (tool-format examples, plus spelling the tool tags as ordinary text), the generic arm regenerated with the reworded instruction and retrained, `gsm8k`/`mmlu` added (`configs/experiments/v1-baseline.yaml`). All three feasibility criteria now pass.
-- Next buildable without the owner: Task 10 (internalisation gate) and Task 11 (pooling across training seeds); a larger prompt pool for the full study.
+- Done 2026-11-23 (morning): Task 10 (internalisation gate) and Task 11 (pooling across training seeds), with control runs. See `docs/study-v1/GATE.md`.
+- Next buildable without the owner: a larger prompt pool for the full study; critique and revise (Task 9) needs the signed-off commitments.
 

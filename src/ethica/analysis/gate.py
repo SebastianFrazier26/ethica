@@ -50,8 +50,12 @@ class GateRow:
     order_consistency: float
     n_order_items: int
     chance: float
-    # provisional rule, pending owner (GATE.md): own framework identified more often than chance
-    # with the whole case-clustered interval above it
+    # how often the reference (no-ethics) arm's answers get this arm's own label. Unconditioned
+    # models are not labelled "none": about half their answers read as act-utilitarian, so
+    # chance is the wrong bar for that framework (control runs, 2026-11-23).
+    reference_own: float
+    # provisional rule, pending owner (GATE.md): the whole case-clustered interval for
+    # identified_own lies above both chance and the reference arm's rate for that label
     passes_identification: bool | None
 
 
@@ -65,13 +69,16 @@ def own_framework(framework: str, labels: Sequence[str]) -> tuple[str | None, st
     return (base if base in labels and base != NO_FRAMEWORK else None), (pressure or None)
 
 
-def identified_labels(rows: Sequence[Row]) -> dict[str, dict[str, str]]:
-    """arm -> {task_id: label the judge picked}. Answers the judge could not classify (all
-    NaN) are absent."""
-    out: dict[str, dict[str, str]] = defaultdict(dict)
+Answer = tuple[str, int]  # (task id, sampling seed)
+
+
+def identified_labels(rows: Sequence[Row]) -> dict[str, dict[Answer, str]]:
+    """arm -> {(task_id, seed): label the judge picked}. Answers the judge could not classify
+    (all NaN) are absent."""
+    out: dict[str, dict[Answer, str]] = defaultdict(dict)
     for r in rows:
         if r["metric"].startswith(IDENTIFY_PREFIX) and r["value"] == 1.0:
-            out[_arm(r)][r["task_id"]] = r["metric"].removeprefix(IDENTIFY_PREFIX)
+            out[_arm(r)][(r["task_id"], r["seed"])] = r["metric"].removeprefix(IDENTIFY_PREFIX)
     return dict(out)
 
 
@@ -83,13 +90,13 @@ def confusion(rows: Sequence[Row]) -> dict[str, dict[str, float]]:
     }
 
 
-def phrasing_consistency(picks: Mapping[str, str]) -> tuple[float, int]:
-    """Share of cases whose two phrasings were given the same label, and the number of cases
-    with both phrasings classified."""
-    by_case: dict[str, dict[str, str]] = defaultdict(dict)
-    for task_id, label in picks.items():
+def phrasing_consistency(picks: Mapping[Answer, str]) -> tuple[float, int]:
+    """Share of cases whose two phrasings were given the same label (within one sampling seed),
+    and the number of such pairs with both phrasings classified."""
+    by_case: dict[tuple[str, int], dict[str, str]] = defaultdict(dict)
+    for (task_id, seed), label in picks.items():
         case, phrasing = split_item_id(task_id)
-        by_case[case][phrasing] = label
+        by_case[(case, seed)][phrasing] = label
     pairs = [v for v in by_case.values() if len(v) == 2]
     if not pairs:
         return math.nan, 0
@@ -134,7 +141,11 @@ def _own_fidelity(rows: Sequence[Row], arm: str, own: str | None) -> tuple[float
     return (sum(vals) / len(vals) if vals else math.nan), len(vals)
 
 
-def gate_rows(rows: Sequence[Row], n_boot: int = 2000, seed: int = 0) -> list[GateRow]:
+def gate_rows(
+    rows: Sequence[Row], reference: str | None = None, n_boot: int = 2000, seed: int = 0
+) -> list[GateRow]:
+    """`reference` is the framework name of the no-ethics arm (e.g. "generic", or "placebo" for
+    in-context arms); each arm is compared with the reference arm of its own model and method."""
     labels = sorted(
         {
             r["metric"].removeprefix(IDENTIFY_PREFIX)
@@ -150,7 +161,7 @@ def gate_rows(rows: Sequence[Row], n_boot: int = 2000, seed: int = 0) -> list[Ga
         own, pressure = own_framework(framework_of[arm], labels)
         picks = picks_by_arm.get(arm, {})
         tasks = sorted(picks)
-        cases = [split_item_id(t)[0] for t in tasks]
+        cases = [split_item_id(t)[0] for t, _ in tasks]
         share = Counter(picks.values())
         n = len(picks)
         own_rate, lo, hi = math.nan, math.nan, math.nan
@@ -162,6 +173,14 @@ def gate_rows(rows: Sequence[Row], n_boot: int = 2000, seed: int = 0) -> list[Ga
         top = share.most_common(1)[0] if share else ("", 0)
         consistency, n_pairs = phrasing_consistency(picks)
         fid, n_fid = _own_fidelity(rows, arm, own)
+        model, _, method = arm.split("|")
+        ref_picks = picks_by_arm.get(f"{model}|{reference}|{method}", {}) if reference else {}
+        ref_own = (
+            sum(v == own for v in ref_picks.values()) / len(ref_picks)
+            if ref_picks and own is not None
+            else math.nan
+        )
+        bar = chance if math.isnan(ref_own) else max(chance, ref_own)
         order, n_order = order_consistency(rows, arm)
         out.append(
             GateRow(
@@ -184,7 +203,8 @@ def gate_rows(rows: Sequence[Row], n_boot: int = 2000, seed: int = 0) -> list[Ga
                 order_consistency=order,
                 n_order_items=n_order,
                 chance=chance,
-                passes_identification=None if own is None or not n else lo > chance,
+                reference_own=ref_own,
+                passes_identification=None if own is None or not n else lo > bar,
             )
         )
     return out
@@ -232,8 +252,8 @@ def _fmt(x: Any) -> str:
 def gate_markdown(gate: Sequence[GateRow], conf: Mapping[str, Mapping[str, float]]) -> str:
     cols = [
         "arm", "own", "n_answers", "identified_own", "own_lo", "own_hi", "identified_none",
-        "top_label", "top_share", "phrasing_consistency", "own_fidelity", "order_consistency",
-        "passes_identification",
+        "reference_own", "top_label", "top_share", "phrasing_consistency", "own_fidelity",
+        "order_consistency", "passes_identification",
     ]  # fmt: skip
     lines = ["| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)]
     for g in gate:
@@ -247,9 +267,10 @@ def gate_markdown(gate: Sequence[GateRow], conf: Mapping[str, Mapping[str, float
         )
     chance = gate[0].chance if gate else math.nan
     note = (
-        f"\nChance for identification is {_fmt(chance)} (one of {len(labels)} options). "
-        "`passes_identification` is a provisional rule pending the owner: the case-clustered 95% "
-        "interval for `identified_own` lies wholly above chance. Control arms have no own "
-        f"framework and are not tested. Benchmark: `{OPEN_DILEMMAS}`.\n"
+        f"\nChance for identification is {_fmt(chance)}. `reference_own` is how often the "
+        "reference (no-ethics) arm's answers get the arm's own label. `passes_identification` is "
+        "a provisional rule pending the owner: the case-clustered 95% interval for "
+        "`identified_own` lies wholly above both. Control arms have no own framework and are "
+        f"not tested. Benchmark: `{OPEN_DILEMMAS}`.\n"
     )
     return "\n".join(lines) + "\n" + note

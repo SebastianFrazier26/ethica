@@ -104,11 +104,12 @@ def test_unclassified_answers_are_dropped_not_counted_as_misses():
 
 def test_phrasing_consistency():
     picks = {
-        "open_dilemmas:od01:a": "virtue",
-        "open_dilemmas:od01:b": "virtue",
-        "open_dilemmas:od02:a": "virtue",
-        "open_dilemmas:od02:b": "none",
-        "open_dilemmas:od03:a": "virtue",
+        ("open_dilemmas:od01:a", 0): "virtue",
+        ("open_dilemmas:od01:b", 0): "virtue",
+        ("open_dilemmas:od02:a", 0): "virtue",
+        ("open_dilemmas:od02:b", 0): "none",
+        ("open_dilemmas:od03:a", 0): "virtue",
+        ("open_dilemmas:od03:b", 1): "virtue",  # other seed: not a pair with od03:a
     }
     assert phrasing_consistency(picks) == (0.5, 2)
     assert phrasing_consistency({})[1] == 0
@@ -155,3 +156,27 @@ def test_confusion_and_markdown():
     assert "| m|virtue|none | virtue | 8 | 0.50 |" in md
     assert "Chance for identification is 0.25" in md and "provisional" in md
     assert gate_rows([]) == [] and confusion([]) == {}
+
+
+def test_reference_arm_sets_the_bar_for_a_label_the_control_already_gets():
+    # the unconditioned model reads as act-utilitarian half the time: an act-utilitarian arm at
+    # 60% beats chance (25%) but not that control
+    control = _identify("generic", _cases(12, "act_utilitarian", "none"))
+    weak = _identify("act_utilitarian", {**_cases(7, "act_utilitarian"), **_cases(5, "none")})
+    strong = _identify("virtue", _cases(12, "virtue"))
+    rows = control + weak + strong
+    no_ref = {g.arm: g for g in gate_rows(rows, n_boot=400)}
+    with_ref = {g.arm: g for g in gate_rows(rows, "generic", n_boot=400)}
+    a = "m|act_utilitarian|none"
+    assert math.isnan(no_ref[a].reference_own) and with_ref[a].reference_own == 0.5
+    assert with_ref[a].passes_identification is False
+    assert with_ref["m|virtue|none"].reference_own == 0.0
+    assert with_ref["m|virtue|none"].passes_identification is True
+
+
+def test_answers_from_two_sampling_seeds_are_both_counted():
+    rows = _identify("virtue", _cases(3, "virtue"))
+    second = [{**r, "seed": 1, "value": float(r["metric"] == "identified__none")} for r in rows]
+    g = gate_rows(rows + second, n_boot=50)[0]
+    assert g.n_answers == 12 and g.n_cases == 3 and g.identified_own == 0.5
+    assert g.n_phrasing_pairs == 6 and g.phrasing_consistency == 1.0

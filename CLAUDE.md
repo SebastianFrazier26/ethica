@@ -18,6 +18,7 @@ Read `docs/DESIGN.md` (architecture), `docs/DECISIONS.md` (why), `docs/METRICS.m
 - `uv run python scripts/prepare_base_model.py` — convert the base checkpoint into `models/` and set its chat format
 - `uv run python scripts/v1_pipeline.py prompts | generate <arm> | dataset <arm...> | train <arm> --seed N` — settings in `configs/training/v1-pilot.yaml`; `generate`/`train` refuse to start while another MLX job runs
 - Evaluate adapters through `trained_arms:` in an experiment config (method `none`, no framework text); see `configs/experiments/v1-feasibility.yaml`
+- `uv run python scripts/v1_gate.py <config> --reference generic` — internalisation gate report from stored scores (needs the `open_dilemmas` benchmark and the judge); `scripts/v1_pool.py --baseline generic <config per training seed>...` — contrasts pooled over training seeds (`docs/study-v1/GATE.md`)
 - Nothing trained is ever committed or published: `adapters/`, `models/`, `data/v1/`, `runs/`, `labels/` are gitignored and `tests/test_repo_hygiene.py` enforces it
 - Ethics arms need owner-approved `configs/training/commitments/<arm>.md` before generation (D-64)
 

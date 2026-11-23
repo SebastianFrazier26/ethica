@@ -1,6 +1,6 @@
 """Internalisation gate report for one experiment (docs/study-v1/GATE.md).
 
-    uv run python scripts/v1_gate.py configs/experiments/v1-gate-generic.yaml
+    uv run python scripts/v1_gate.py configs/experiments/v1-pilot-s0.yaml --reference generic
 
 Reads the experiment's stored scores (no model is loaded) and writes gate.md, gate.csv,
 confusion.csv and persistence.csv under <out_dir>/gate/. The experiment must include the
@@ -34,6 +34,9 @@ def _write(path: Path, rows: list[dict[str, Any]]) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("config", type=Path)
+    ap.add_argument(
+        "--reference", help="framework name of the no-ethics arm, e.g. generic (or placebo)"
+    )
     args = ap.parse_args()
     cfg = load_config(args.config)
     store = Store(cfg.resolved_db_url)
@@ -43,7 +46,7 @@ def main() -> None:
         )
     finally:
         store.close()
-    gate, conf = gate_rows(rows), confusion(rows)
+    gate, conf = gate_rows(rows, args.reference), confusion(rows)
     out = cfg.resolved_out_dir / "gate"
     out.mkdir(parents=True, exist_ok=True)
     _write(out / "gate.csv", [asdict(g) for g in gate])
