@@ -15,6 +15,7 @@ from typing import Literal, get_args
 
 from ethica.analysis.lexical import is_harm_token
 from ethica.conditioning.bm25 import tokenise
+from ethica.training import prompts_ext as ext
 
 Category = Literal["dilemma", "advice", "self", "neutral"]
 CATEGORIES: tuple[Category, ...] = get_args(Category)
@@ -270,8 +271,44 @@ def _pool() -> dict[Category, list[str]]:
     }
 
 
+def _ext_pool() -> dict[Category, list[str]]:
+    """Prompts added for the full study: new parts in every frame, and the core parts in the
+    new frames. Only ever used after the core pool of a category is exhausted."""
+    advice_frames = (*_ADVICE_FRAMES, *ext.ADVICE_FRAMES_EXT)
+    self_frames = (*_SELF_FRAMES, *ext.SELF_FRAMES_EXT)
+    explain_frames = (*_EXPLAIN_FRAMES, *ext.EXPLAIN_FRAMES_EXT)
+    return {
+        "dilemma": [f.format(s=s) for s in ext.SITUATIONS_EXT for f in _DILEMMA_FRAMES],
+        "advice": [
+            *(f.format(t=t) for t in ext.ADVICE_TOPICS_EXT for f in advice_frames),
+            *(f.format(t=t) for t in _ADVICE_TOPICS for f in ext.ADVICE_FRAMES_EXT),
+        ],
+        "self": [
+            *(f.format(q=q) for q in ext.SELF_QUESTIONS_EXT for f in self_frames),
+            *(f.format(q=q) for q in _SELF_QUESTIONS for f in ext.SELF_FRAMES_EXT),
+        ],
+        "neutral": [
+            *(f.format(t=t) for t in ext.EXPLAIN_TOPICS_EXT for f in explain_frames),
+            *(f.format(t=t) for t in _EXPLAIN_TOPICS for f in ext.EXPLAIN_FRAMES_EXT),
+            *ext.WRITING_TASKS_EXT,
+            *_arithmetic(random.Random(ext.ARITHMETIC_EXT_SEED), ext.ARITHMETIC_EXT_N),
+        ],
+    }
+
+
+def _ordered(category: Category, seed: int) -> list[str]:
+    """The category's prompts in selection order: the core pool shuffled, then the extension
+    shuffled. Two tiers, not one shuffle, so adding to the extension can never change which
+    prompts a smaller set (the pilot's 500, already answered by the teacher) contains."""
+    core = sorted(set(_pool()[category]))
+    extra = sorted(set(_ext_pool()[category]) - set(core))
+    random.Random(f"{seed}:{category}").shuffle(core)
+    random.Random(f"{seed}:{category}:ext").shuffle(extra)
+    return core + extra
+
+
 def pool_sizes() -> dict[Category, int]:
-    return {c: len(v) for c, v in _pool().items()}
+    return {c: len(_ordered(c, 0)) for c in CATEGORIES}
 
 
 def _quota(n: int) -> dict[Category, int]:
@@ -286,19 +323,18 @@ def _quota(n: int) -> dict[Category, int]:
 
 def build_prompt_set(n: int, seed: int = 0) -> list[TrainPrompt]:
     """`n` prompts in SHARES proportion. For a given seed a smaller set is a subset of a larger
-    one (each category is a prefix of one seeded shuffle), so a pilot's prompts stay in the
-    full study's set."""
+    one (each category is a prefix of one fixed order), so a pilot's prompts stay in the full
+    study's set."""
     if n < 1:
         raise ValueError("n must be positive")
-    pool, quota = _pool(), _quota(n)
+    quota = _quota(n)
     out: list[TrainPrompt] = []
     for c in CATEGORIES:
-        texts = sorted(set(pool[c]))
+        texts = _ordered(c, seed)
         if quota[c] > len(texts):
             raise ValueError(
                 f"category {c!r} has {len(texts)} prompts, {quota[c]} needed for n={n}"
             )
-        random.Random(f"{seed}:{c}").shuffle(texts)
         for text in texts[: quota[c]]:
             if c in ("dilemma", "advice") and (bad := harm_hits(text)):
                 raise ValueError(f"harm-lexicon terms {bad} in training prompt: {text!r}")

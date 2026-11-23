@@ -7,6 +7,8 @@
   persistence variants (`pressure:` on a trained arm), `scripts/v1_gate.py`. Control runs: v0's
   RAG arms are identified as their own framework 90–98% of the time; unconditioned models read
   as act-utilitarian about half the time.
+- Training prompt pool extended to support the full study's 2,000 prompts (`prompts_ext.py`); the
+  pilot's 500 prompts are unchanged and pinned by a test.
 - Arm contrasts pooled over training seeds: `ethica.analysis.pooling`, `scripts/v1_pool.py`.
 - v1 feasibility check (`docs/study-v1/FEASIBILITY-2026-11-23.md`): a LoRA-trained base checkpoint
   converses and stops with a plain-token chat format (ChatML fails), tool use still fails, and the

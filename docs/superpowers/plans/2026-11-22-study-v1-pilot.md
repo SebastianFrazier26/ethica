@@ -179,5 +179,6 @@ Question: can LoRA on the base checkpoint, trained on generic dialogues only, pr
 - Blocking the pilot (Task 12): owner sign-off on the framework commitments (D-64) and the owner's decision on the base checkpoint's built-in refusals (D-67).
 - Done later the same night: Task 8 (tool-format examples, plus spelling the tool tags as ordinary text), the generic arm regenerated with the reworded instruction and retrained, `gsm8k`/`mmlu` added (`configs/experiments/v1-baseline.yaml`). All three feasibility criteria now pass.
 - Done 2026-11-23 (morning): Task 10 (internalisation gate) and Task 11 (pooling across training seeds), with control runs. See `docs/study-v1/GATE.md`.
-- Next buildable without the owner: a larger prompt pool for the full study; critique and revise (Task 9) needs the signed-off commitments.
+- Done 2026-11-23: prompt pool extended for the full study (`prompts_ext.py`): 825 dilemma, 420 advice, 320 self-description and 528 neutral prompts, enough for n = 2,000. The pilot's 500 are pinned by a test and unchanged.
+- Nothing further is buildable without the owner: the pilot and critique and revise (Task 9) wait on the signed-off commitments (D-64) and on D-67; the gate's draft choices wait on D-68.
 
