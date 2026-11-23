@@ -21,8 +21,8 @@ CHATML_TEMPLATE = (
     "{%- endfor %}"
     "{%- if add_generation_prompt %}{{- '<|im_start|>assistant\\n' }}{%- endif %}"
 )
-# Ordinary tokens only: the fallback if LoRA (which leaves embeddings frozen) cannot teach the
-# base model the ChatML marker tokens it never saw in pretraining.
+# Ordinary tokens only. Used for v1 (D-66): through ChatML the LoRA-trained base model never
+# emitted <|im_end|>, so its turns did not stop (docs/study-v1/FEASIBILITY-2026-11-23.md).
 PLAIN_TEMPLATE = (
     "{%- for m in messages %}"
     "{%- if m['role'] == 'system' %}{{- '### System:\\n' + m['content'] + '\\n\\n' }}"

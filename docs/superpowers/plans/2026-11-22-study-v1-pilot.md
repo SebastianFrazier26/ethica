@@ -170,3 +170,12 @@ Question: can LoRA on the base checkpoint, trained on generic dialogues only, pr
 - Capability set: the harness already has `gsm8k`, `mmlu` and `truthfulqa` benchmarks; the pilot's evaluation config should add them (found while building Task 2). The held-out dilemma set for blind identification is still not covered by any task.
 - Prompt pool ceiling: the hand-written pool supports n up to about 530 (limited by 80 self-description prompts). The pilot's 500 fits; the full study's 2,000 needs a larger pool first (add to Task 12's successor).
 - Task 6 as built differs from the sketch above in two ways: `TrainedArm.kind` is `ethics | placebo` (a trained `none` arm has no use), and configs with trained arms must list method `none`, so the bare model and the trained arms share a report stratum.
+
+## Status after the overnight run (2026-11-23)
+
+- Tasks 1–6: done, committed, tests passing.
+- Task 7: done. Report: `docs/study-v1/FEASIBILITY-2026-11-23.md`. Criteria (a) and (b) met with the plain-token format and one training pass; (c) failed (tool use), so Task 8 is required before agentic evaluation.
+- Changes from this plan made during execution (D-66): plain chat format is the default; `epochs: 1`; teacher instruction reworded.
+- Blocking the pilot (Task 12): owner sign-off on the framework commitments (D-64) and the owner's decision on the base checkpoint's built-in refusals (D-67).
+- Next buildable without the owner: Task 8 (tool-format examples), regenerating the generic arm with the reworded instruction, adding `gsm8k`/`mmlu` to the evaluation config.
+

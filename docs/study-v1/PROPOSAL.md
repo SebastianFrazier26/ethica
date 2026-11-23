@@ -7,7 +7,10 @@ teacher only, no paid API or rented GPU. Still open: the owner's sign-off on the
 [framework commitments](#framework-commitments-draft-awaiting-owner-sign-off) (the pilot waits for
 it), and three defaults marked "default, pending owner" in
 [Questions for the owner](#questions-for-the-owner). Implementation plan:
-`docs/superpowers/plans/2026-11-22-study-v1-pilot.md`. The body below is the proposal as written
+`docs/superpowers/plans/2026-11-22-study-v1-pilot.md`. Feasibility check, 2026-11-23:
+`docs/study-v1/FEASIBILITY-2026-11-23.md` (chat and stopping work with a plain-token format; tool
+use does not yet; **the base checkpoint already refuses most harmful requests, D-67, open**). The
+body below is the proposal as written
 before those decisions; options not chosen are kept for the record.
 
 Labels used in this document: **measured** = a number from this repo's own runs; **estimate** =

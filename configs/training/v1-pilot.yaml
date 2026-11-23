@@ -20,7 +20,7 @@ arms:
   - {name: deontology, kind: ethics, corpus: deontology, commitments: configs/training/commitments/deontology.md}
   - {name: act_utilitarian, kind: ethics, corpus: act_utilitarian, commitments: configs/training/commitments/act_utilitarian.md}
 train_seeds: [0, 1, 2]      # default, pending owner (D-65)
-epochs: 3
+epochs: 1                   # validation loss bottomed at ~0.9 of a pass (feasibility check, D-66)
 lora:
   rank: 16
   scale: 20.0

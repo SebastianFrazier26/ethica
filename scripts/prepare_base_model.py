@@ -1,8 +1,8 @@
 """Convert the v1 base checkpoint to affine 4-bit g64 and set its chat format (D-61, D-65).
 
-    uv run python scripts/prepare_base_model.py                      # ChatML markers
-    uv run python scripts/prepare_base_model.py --chat-format plain  # ordinary-token fallback
-    uv run python scripts/prepare_base_model.py --chat-format plain --reformat   # no reconversion
+    uv run python scripts/prepare_base_model.py                        # plain-token format (D-66)
+    uv run python scripts/prepare_base_model.py --chat-format chatml   # fails: the model never stops
+    uv run python scripts/prepare_base_model.py --reformat             # rewrite the format only
 
 Output: models/qwen3-4b-base-q4g64/ + provenance.json (models/ is gitignored).
 """
@@ -26,7 +26,7 @@ SOURCE_GB = 8.04
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--chat-format", choices=["chatml", "plain"], default="chatml")
+    ap.add_argument("--chat-format", choices=["chatml", "plain"], default="plain")
     ap.add_argument("--reformat", action="store_true", help="only rewrite the chat format")
     args = ap.parse_args()
     dest = MODELS_DIR / f"{KEY}-{TAG}"

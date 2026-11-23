@@ -2,6 +2,7 @@
 # Question: after LoRA on generic dialogues only, does the base checkpoint hold a conversation,
 # stop by itself, and use the tool protocol? No framework text anywhere in this run.
 # Needs adapters/v1/generic-s0 (scripts/v1_pipeline.py train generic --seed 0).
+# Result: docs/study-v1/FEASIBILITY-2026-11-23.md.
 name: v1-feasibility
 models: [qwen3-4b-base, qwen3-4b]   # bare base checkpoint; instruct model as the reference
 frameworks: [none]

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-23
+
+- v1 feasibility check (`docs/study-v1/FEASIBILITY-2026-11-23.md`): a LoRA-trained base checkpoint
+  converses and stops with a plain-token chat format (ChatML fails), tool use still fails, and the
+  bare base checkpoint already refuses most harmful requests (D-66, D-67).
+
 ## 2026-11-22
 
 - Study v1 chosen by the owner (D-61 to D-65): train each framework into a base checkpoint as its
