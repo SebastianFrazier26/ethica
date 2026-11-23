@@ -31,6 +31,7 @@ from ethica.training.prompts import TrainPrompt, build_prompt_set
 from ethica.types import Conditioner, GenerationParams
 
 ROOT = Path(__file__).resolve().parent.parent
+WRAPPERS = {"caffeinate", "nohup", "sh", "zsh", "bash", "uv"}
 MLX_JOB_PATTERNS = ("mlx_lm", "ethica run", "v1_pipeline.py generate", "v1_pipeline.py train")
 
 
@@ -72,7 +73,10 @@ def other_mlx_jobs() -> list[str]:
     return [
         f"{pid} {cmd[:110]}"
         for pid, (_, cmd) in procs.items()
-        if pid not in mine and any(p in cmd for p in MLX_JOB_PATTERNS)
+        if pid not in mine
+        # wrappers quote the job's command line but hold no model; the job itself is their child
+        and Path(cmd.split()[0]).name not in WRAPPERS
+        and any(p in cmd for p in MLX_JOB_PATTERNS)
     ]
 
 

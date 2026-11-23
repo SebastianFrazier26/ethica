@@ -84,6 +84,20 @@ class ReportConfig(BaseModel):
     permute_by: Literal["pair", "task"] = "task"
 
 
+class TrainedArm(BaseModel):
+    """Study v1: a model whose weights carry the framework (D-61). Evaluated with method
+    `none`, the adapter loaded, and no framework text in context."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(pattern=_FRAMEWORK_SLUG.pattern)
+    # how the report treats the arm: `ethics` arms are contrasted with the baseline; the
+    # no-ethics control arms (generic, placebo) are `placebo` and can be named as baselines
+    kind: Literal["ethics", "placebo"]
+    model: str
+    adapter: str
+
+
 class ExperimentConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -108,6 +122,7 @@ class ExperimentConfig(BaseModel):
     corpora_root: str = "corpora"
     out_dir: str | None = None
     adapters_dir: str = "adapters"
+    trained_arms: list[TrainedArm] = Field(default_factory=list)
 
     @field_validator("scenarios", mode="before")
     @classmethod
@@ -314,6 +329,28 @@ def validate_refs(cfg: ExperimentConfig, *, check_corpora: bool = False) -> None
         bad = [s.key for s in specs if not s.lora_ok]
         if bad:
             raise ConfigError(f"method 'lora' requested but lora_ok=false for model(s): {bad}")
+    names = [a.name for a in cfg.trained_arms]
+    clash = sorted({n for n in names if names.count(n) > 1 or n in cfg.frameworks})
+    if clash:
+        raise ConfigError(f"trained arm names must be unique and differ from frameworks: {clash}")
+    for arm in cfg.trained_arms:
+        if arm.model not in cfg.models:
+            raise ConfigError(f"trained arm {arm.name!r}: model {arm.model!r} is not in `models`")
+        if cfg.trained_arms and "none" not in cfg.methods:
+            raise ConfigError("trained arms are evaluated with method 'none'; add it to `methods`")
+        if check_corpora:
+            adapter = Path(arm.adapter)
+            lacking = [
+                f
+                for f in ("adapters.safetensors", "train_meta.json")
+                if not (adapter / f).is_file()
+            ]
+            if lacking:
+                # without this the run would quietly evaluate the bare model, or try to train
+                raise ConfigError(
+                    f"trained arm {arm.name!r}: {arm.adapter} lacks {lacking}; train it first "
+                    "(scripts/v1_pipeline.py train)"
+                )
     if check_corpora:
         missing = [
             n
@@ -331,6 +368,7 @@ __all__ = [
     "ConfigError",
     "ExperimentConfig",
     "JudgeConfig",
+    "TrainedArm",
     "load_config",
     "resolve_framework",
     "resolve_model",

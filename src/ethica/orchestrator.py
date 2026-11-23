@@ -260,6 +260,23 @@ def expand_grid(cfg: ExperimentConfig) -> list[Variant]:
                         rag_index_path=rag_path,
                     )
                 )
+    for arm in cfg.trained_arms:
+        model = resolve_model(arm.model, cfg)
+        meta = Path(arm.adapter) / "train_meta.json"
+        # retraining rewrites train_meta.json, so a retrained adapter is a new variant and never
+        # resumes or averages with the old one's episodes
+        ahash = hashlib.sha256(meta.read_bytes()).hexdigest()[:16] if meta.is_file() else "pending"
+        out.append(
+            Variant(
+                variant_id=make_variant_id(
+                    arm.model, arm.name, "none", ahash, "", weights_key(cfg, model), "", gen
+                ),
+                model=model,
+                framework=FrameworkSpec(arm.name, arm.kind, arm.name, None),
+                method="none",
+                adapter_path=arm.adapter,
+            )
+        )
     return out
 
 

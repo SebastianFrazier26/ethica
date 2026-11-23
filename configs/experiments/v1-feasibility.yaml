@@ -1,0 +1,26 @@
+# Study v1 feasibility check (docs/study-v1/PROPOSAL.md §8 step 1; plan Task 7).
+# Question: after LoRA on generic dialogues only, does the base checkpoint hold a conversation,
+# stop by itself, and use the tool protocol? No framework text anywhere in this run.
+# Needs adapters/v1/generic-s0 (scripts/v1_pipeline.py train generic --seed 0).
+name: v1-feasibility
+models: [qwen3-4b-base, qwen3-4b]   # bare base checkpoint; instruct model as the reference
+frameworks: [none]
+methods: [none]
+trained_arms:
+  - {name: generic, kind: placebo, model: qwen3-4b-base, adapter: adapters/v1/generic-s0}
+scenarios: [all]
+benchmarks:
+  harmbench: 20
+  xstest_unsafe: 20
+  xstest_safe: 15
+  fidelity: 48
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+judge:
+  enabled: true
+  model: judge-default
+report:
+  baseline: generic
+  min_tasks: 1
