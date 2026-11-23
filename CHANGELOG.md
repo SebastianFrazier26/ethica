@@ -5,6 +5,11 @@
 - v1 feasibility check (`docs/study-v1/FEASIBILITY-2026-11-23.md`): a LoRA-trained base checkpoint
   converses and stops with a plain-token chat format (ChatML fails), tool use still fails, and the
   bare base checkpoint already refuses most harmful requests (D-66, D-67).
+- Second run the same night: tool-protocol training examples shared by every arm
+  (`ethica.training.toolformat`), tool tags spelled as ordinary text for the base model, reworded
+  teacher instruction. Tool use now works (0 of 6 scenarios without a tool call). Baseline table
+  with `gsm8k`/`mmlu` for the instruct model, bare base and generic arm in the feasibility report;
+  config `configs/experiments/v1-baseline.yaml`.
 
 ## 2026-11-22
 

@@ -30,7 +30,7 @@ Read `docs/DESIGN.md` (architecture), `docs/DECISIONS.md` (why), `docs/METRICS.m
 ## Pipeline modules
 - `src/ethica/config.py` — ExperimentConfig (YAML); `load_config` = shape only, `validate_refs` = names resolve (run time)
 - `src/ethica/orchestrator.py` — `expand_grid`, `generate`, `score`, `judge`, `report`, `estimate`; one model resident at a time
-- `src/ethica/training/` — v1: `prompts.py` (fixed prompt set), `generate.py` (teacher answers, screening, resume), `dataset.py` (chat-format files), `chat_format.py` (template for a base checkpoint)
+- `src/ethica/training/` — v1: `prompts.py` (fixed prompt set), `generate.py` (teacher answers, screening, resume), `dataset.py` (chat-format files), `toolformat.py` (tool-protocol examples shared by all arms), `chat_format.py` (template and tokenizer edits for a base checkpoint)
 - `src/ethica/cli.py` — typer app; tests inject backends via `orchestrator.generate(..., backend_factory=)`
 - Test helpers: `tests/orch_helpers.py` (mock registry, scripted backend, resident-instance tracker), `tests/fixtures/corpora/` (synthetic corpora, tracked)
 

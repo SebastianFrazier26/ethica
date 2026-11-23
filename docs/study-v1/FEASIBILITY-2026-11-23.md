@@ -4,9 +4,66 @@ Question (proposal §8, step 1; plan Task 7): after LoRA on generic dialogues on
 checkpoint `Qwen/Qwen3-4B-Base` hold a conversation, stop by itself, and use the harness's tool
 protocol?
 
-**Verdict: yes for conversation and stopping, no for tool use. One finding changes the design
-question: the base checkpoint is not free of safeguards.** Everything below is one training
-seed and small samples; it is a plumbing result, not a study result.
+**Verdict after the second run (same night): yes on all three, once the chat format and the
+tool tags are spelled in ordinary tokens. One finding changes the design question: the base
+checkpoint is not free of safeguards (Result 5).** Everything below is one training seed and
+small samples; it is a plumbing result, not a study result.
+
+## Second run: before and after
+
+Three changes were made after the first run and the generic arm was regenerated, retrained and
+re-evaluated (`configs/experiments/v1-baseline.yaml`, which also adds `gsm8k` and `mmlu`):
+
+1. Teacher instruction reworded to address the user as "you".
+2. 40 tool-protocol tasks (120 training rows) added to every arm's data. They are built from
+   gold tool calls replayed in the real sandbox; no model writes them
+   (`src/ethica/training/toolformat.py`).
+3. `<tool_call>` and `</tool_call>` spelled as ordinary text in the base model's tokenizer. In
+   Qwen's vocabulary they are single tokens, and the base checkpoint cannot emit them, the same
+   problem as the ChatML end marker. With change 2 alone the model wrote each call's JSON
+   correctly and put junk tokens where the tags belong, so still no call parsed.
+
+| Generic arm | First run (step-200 checkpoint) | With changes 1–2 | With changes 1–3 |
+|---|---|---|---|
+| Training | 3 passes, 13 min | 1 pass (291 steps), 5.4 min | same |
+| Validation loss, start → end | 1.54 → 1.25 at step 200 | 1.54 → 1.22 | 1.54 → 1.19 |
+| Benchmark answers cut off | 1 of 103 | 0 of 173 | 2 of 173 |
+| Answers opening in the asker's voice ("I…"), 55 harm and XSTest answers | 49 | — | 2 |
+| Scenarios with zero tool calls | 5 of 6 | 6 of 6 | **0 of 6** |
+| Scenario task success | 0 of 6 | 0 of 6 | **3 of 6** |
+| Harmful compliance (judge, 40 prompts) | 9 | 11 | 13 |
+
+Baseline table from the final run (seed 0; 95% intervals are wide at these sizes):
+
+| | Instruct `qwen3-4b` | Bare base | Generic arm |
+|---|---|---|---|
+| Harmful compliance (40) | 0 | 2 (5%) | 13 (33%) |
+| Over-refusal on safe prompts (15) | 0 | 0 | 0 |
+| Scenarios with zero tool calls (6) | 0 | 0 | 0 |
+| Scenario task success (6) | 5 | 2 | 3 |
+| Misaligned actions (6) | 0 | 0 | 0 |
+| GSM8K accuracy (30) | 97% | 83% | 70% |
+| MMLU accuracy (40) | 73% | 40% | 68% |
+| Benchmark answers cut off (173) | 8% | 23% | 1% |
+| Benchmark answers unparseable (173) | 1% | 3% | 1% |
+
+Reading it:
+
+- **All three pass criteria are now met**: answers stop, are on-topic and addressed to the user,
+  and tools are called in the harness's syntax (pass criterion (c) allowed one more zero-call
+  scenario than the instruct model; there are none).
+- **The bare base model can use tools too** once the tags are ordinary text (0 of 6 zero-call
+  scenarios, 2 of 6 successes), but it loops to the turn limit in three scenarios.
+- **Capability:** generic training costs about 13 points on GSM8K against the bare base (21 of 30
+  vs 25 of 30) and gains 28 on MMLU (27 of 40 vs 16 of 40), where the bare model's score is
+  dragged down by cut-off and unparseable answers. Against the instruct model the generic arm is
+  27 points lower on GSM8K and 5 lower on MMLU. Any framework arm should be read against the
+  generic arm's capability, not the instruct model's.
+- **Harmful compliance of the generic arm rose across the three versions (9, 11, 13 of 40).**
+  These are single runs of 40 prompts with overlapping intervals; the stable part is that every
+  version sits well above the bare base (2 of 40) and far below v0's abliterated models (59%).
+
+The sections below are the first run's results as written, kept for the record.
 
 ## What was run
 
@@ -74,10 +131,9 @@ yet.
 
 The trained model tries to call tools but in the wrong syntax (for example
 `<.tool name="read_inbox" arguments="{}"/>` instead of the harness's `<tool_call>` JSON).
-Criterion (c) fails. As the plan anticipated, this means the training data needs tool-format
-examples shared by every arm (plan Task 8). It does not show that the base model cannot learn the
-protocol. Until that is built, v1 can be evaluated on the chat benchmarks but not on agentic
-scenarios.
+Criterion (c) fails in this first run. **Fixed in the second run** (top of this document): it
+needed both tool-format examples in the training data and the tool tags spelled as ordinary
+text.
 
 ## Result 5: the base checkpoint already refuses harmful requests
 
@@ -144,13 +200,14 @@ not. Not started: this is the owner's call.
 ## Reproduce
 
 ```bash
-uv run python scripts/prepare_base_model.py                 # plain chat format (default)
+uv run python scripts/prepare_base_model.py                 # plain chat format and tool tags
 uv run python scripts/v1_pipeline.py generate generic
-uv run python scripts/v1_pipeline.py dataset generic
+uv run python scripts/v1_pipeline.py dataset generic        # adds the shared tool-format rows
 uv run python scripts/v1_pipeline.py train generic --seed 0
-HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/v1-feasibility.yaml
+HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/v1-baseline.yaml
 ```
 
-The run evaluated above used 3 passes and took the step-200 checkpoint by hand
-(`adapters/v1/generic-s0-it200`); with the config as now committed (1 pass) the final adapter is
-the comparable one. Adapters, data and transcripts are local and gitignored.
+This reproduces the second run. The first run (`configs/experiments/v1-feasibility.yaml`) used 3
+passes, the first teacher instruction and no tool rows, with the step-200 checkpoint taken by
+hand; its adapters and those of the intermediate run are kept locally under `adapters/v1/` with
+descriptive suffixes. Adapters, data and transcripts are local and gitignored.
