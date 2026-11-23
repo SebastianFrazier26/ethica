@@ -2,6 +2,8 @@
 
 ## 2026-11-22
 
+- Draft proposal for study v1 (framework trained into the weights instead of supplied in context):
+  `docs/study-v1/PROPOSAL.md`. Draft for owner review; nothing decided, trained or downloaded.
 - Lexical-confound control for the v0 RAG result (D-58). Offline analysis of every retrieved
   block: `scripts/lexical_analysis.py` → `docs/study-v0/data/lexical_*.csv`, measures in
   `ethica.analysis.lexical` (harm lexicon, request overlap, Spearman, logistic regression).
