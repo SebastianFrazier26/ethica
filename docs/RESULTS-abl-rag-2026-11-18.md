@@ -82,7 +82,9 @@ both grids with all stored episodes reused (`configs/experiments/abl-rag-lexical
 not lower harmful compliance (0.58 / 0.68 / 0.65 on qwen3-4b / qwen3-8b / granite; geology placebo
 0.46 / 0.60 / 0.62). Every non-consequentialist framework stays below it (15/15 negative, 14/15
 Holm-significant). Against this baseline the utilitarian arms are −0.10 to −0.14 on the two Qwen
-models and null on Granite, so "utilitarian = null" depends on the choice of placebo. Tables and
+models and null on Granite, so "utilitarian = null" depends on the choice of placebo. Owner decision the same day (D-60):
+report both placebos side by side and describe the utilitarian arms as much weaker, null against
+the geology placebo. Tables and
 caveats: `docs/study-v0/README.md`, section Interpretation. Run note: the judge phase was
 interrupted twice (once overnight, once by a GPU memory collision with another job) and resumed;
 two judge calls failed with a Metal out-of-memory error during the collision and were re-judged on

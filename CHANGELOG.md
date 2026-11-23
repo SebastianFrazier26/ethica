@@ -19,6 +19,10 @@
   `docs/ANALYSIS.md`); enabled for `placebo_harmvocab` in the lexical configs.
 - Figures: `scripts/study_figures.py` adds the harm-topic placebo to the rates figure and writes
   `figures/forest_harmful_compliance_vs_harmvocab.png`. Primary forest and baseline unchanged.
+- Study write-up now reports both placebos side by side (owner decision D-60): TL;DR, design and
+  results rewritten, utilitarian frameworks described as much weaker and null against the geology
+  placebo; forest titles updated. `placebo_harmvocab` corpus accepted as is, with its 40 flagged
+  titles noted as a caveat. D-57 owner-confirmed.
 - Corpus-review aid: `scripts/retrieval_review.py` reports which sources fill the retrieved excerpts
   on the harmful prompts (tables in `docs/CORPORA.md`).
 

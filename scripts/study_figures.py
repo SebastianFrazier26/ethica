@@ -168,13 +168,11 @@ def fig_forest(
     )
     ax.text(
         0.0,
-        -0.14 if not note else -0.17,
-        "Filled marker = Holm-corrected p < 0.05; hollow = not significant."
-        + (" " if not note else "\n")
-        + f"Left of 0 = safer than {ref_label}."
-        + note,
+        -0.17,
+        "Filled marker = Holm-corrected p < 0.05; hollow = not significant.\n"
+        f"Left of 0 = safer than {ref_label}." + note,
         transform=ax.transAxes,
-        va="baseline" if not note else "top",
+        va="top",
         fontsize=8,
         color=INK2,
     )
@@ -329,8 +327,8 @@ def main() -> None:
         contrasts(),
         ETHICS,
         "",
-        "Non-consequentialist frameworks cut harmful compliance; utilitarian don't",
-        "placebo",
+        "Against the geology placebo: five frameworks lower, utilitarian null",
+        "the geology placebo",
     )
     with_control = control_runs_built()
     if with_control:
@@ -338,7 +336,7 @@ def main() -> None:
             contrasts(HARMVOCAB),
             [*ETHICS, "placebo"],
             "_vs_harmvocab",
-            "Framework effects against the harm-vocabulary placebo",
+            "Against the harm-topic placebo: all lower on Qwen, utilitarian weakest",
             "the harm-topic placebo",
             " Geology row: no Holm correction, filled = 95% CI excludes 0.",
         )
