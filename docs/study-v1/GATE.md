@@ -80,8 +80,8 @@ because there is no trained framework arm to put under pressure yet.
 
 Limits: one judge model, itself unvalidated against human labels, both asks the question and
 is the only reader. The judge shares a model family with every arm. The redaction that hides
-framework names also hides words such as "virtue" and "duty-related" names, which may leak the
-arm through the pattern of redactions. The dilemmas and summaries are unreviewed.
+framework names also hides ordinary words such as "virtue" and "God", so the pattern of
+redactions may itself hint at the arm. The dilemmas and summaries are unreviewed.
 
 ## Pooling over training seeds
 
