@@ -58,7 +58,9 @@ def test_disjoint_from_eval():
 
 
 def test_too_large_raises():
-    with pytest.raises(ValueError, match="category 'dilemma' has 320 prompts, 400 needed for n=1000"):
+    with pytest.raises(
+        ValueError, match="category 'dilemma' has 320 prompts, 400 needed for n=1000"
+    ):
         build_prompt_set(1000)
     with pytest.raises(ValueError, match="n must be positive"):
         build_prompt_set(0)
