@@ -1,0 +1,9 @@
+scope,x,y,rho,p_perm,n,exact
+pooled,harm_density_minus_placebo,risk_diff_vs_placebo,0.40215,0.07249,21,False
+pooled,overlap_density_minus_placebo,risk_diff_vs_placebo,0.13448,0.56224,21,False
+qwen3-4b-abl,harm_density_minus_placebo,risk_diff_vs_placebo,0.46429,0.30238,7,True
+qwen3-4b-abl,overlap_density_minus_placebo,risk_diff_vs_placebo,0.17857,0.71310,7,True
+qwen3-8b-abl,harm_density_minus_placebo,risk_diff_vs_placebo,0.45047,0.31825,7,True
+qwen3-8b-abl,overlap_density_minus_placebo,risk_diff_vs_placebo,0.00000,1.00000,7,True
+granite-4.1-3b-abl,harm_density_minus_placebo,risk_diff_vs_placebo,0.53571,0.23571,7,True
+granite-4.1-3b-abl,overlap_density_minus_placebo,risk_diff_vs_placebo,0.28571,0.55595,7,True

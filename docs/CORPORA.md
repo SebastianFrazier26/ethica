@@ -90,6 +90,80 @@ stripped. Gutenberg's main site was down (503), so files came from the PGLAF mir
 - The deontology SEP entry opens with a section on consequentialism ("Deontology's Foil"). Entries were
   kept whole apart from the cuts listed above.
 
+## What retrieval actually uses (2026-11-22)
+
+For corpus review. `uv run python scripts/retrieval_review.py` replays BM25 retrieval for the 177
+harmful prompts of the v0 runs (k and budget from `abl-rag-frameworks.yaml`) and counts which source
+each excerpt came from. It also writes the most-retrieved chunks, with their text, to
+`labels/corpus-review-top-chunks.md` (gitignored, since it quotes corpus text).
+
+Reading the tables: in the large corpora a third or more of the chunks are ever retrieved, and SEP
+entries are over-represented among the excerpts relative to their size (virtue: SEP is 34% of chunks
+and 53% of excerpts; deontology: 25% and 47%). Blocks are filled to the budget
+with next-best chunks (D-46), and the eight most-retrieved chunks per framework are mostly general passages, not
+passages about harm (check the local file). These are descriptive counts. Nothing here has been used to change a corpus.
+
+**virtue**: 1133 chunks, 432 ever retrieved (38%); the 10 most-retrieved chunks fill 18% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| Nicomachean Ethics, tr. W. D. Ross (1925) | primary | 66% | 47% |
+| Moral Character | sep | 13% | 21% |
+| Aristotle’s Ethics | sep | 13% | 17% |
+| Virtue Ethics | sep | 8% | 15% |
+
+**deontology**: 1125 chunks, 400 ever retrieved (36%); the 10 most-retrieved chunks fill 14% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| The Critique of Practical Reason, tr. T. K. Abbott | primary | 52% | 34% |
+| Kant’s Moral Philosophy | sep | 15% | 24% |
+| Deontological Ethics | sep | 10% | 23% |
+| Fundamental Principles of the Metaphysic of Morals (Groundwork), tr. T. K. Abbott | primary | 24% | 19% |
+
+**care**: 128 chunks, 122 ever retrieved (95%); the 10 most-retrieved chunks fill 38% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| Feminist Ethics | sep | 100% | 100% |
+
+**contractualism**: 457 chunks, 306 ever retrieved (67%); the 10 most-retrieved chunks fill 20% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| The Social Contract, Books I-II, tr. G. D. H. Cole (1913) | primary | 30% | 40% |
+| Contractualism | sep | 32% | 38% |
+| Leviathan, chapters XIII-XV | primary | 23% | 11% |
+| Contractarianism | sep | 14% | 10% |
+
+**divine_command**: 362 chunks, 253 ever retrieved (70%); the 10 most-retrieved chunks fill 19% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| Religion and Morality in Western Philosophy | sep | 44% | 47% |
+| Euthyphro, tr. B. Jowett | primary | 16% | 29% |
+| Theological Voluntarism | sep | 40% | 24% |
+
+**rule_utilitarian**: 252 chunks, 204 ever retrieved (81%); the 10 most-retrieved chunks fill 23% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| Rule Consequentialism | sep | 50% | 64% |
+| Passive Obedience (1712), in Works vol. IV, ed. A. C. Fraser (1901); OCR text | primary | 50% | 36% |
+
+**act_utilitarian**: 1069 chunks, 425 ever retrieved (40%); the 10 most-retrieved chunks fill 15% of all excerpt slots.
+
+| Source | Tier | Share of corpus chunks | Share of retrieved excerpts |
+|---|---|---|---|
+| The Methods of Ethics (7th ed.), Book IV: Utilitarianism | primary | 28% | 23% |
+| Consequentialism | sep | 10% | 21% |
+| Utilitarianism (7th ed., 1879) | primary | 23% | 18% |
+| The History of Utilitarianism | sep | 9% | 10% |
+| Henry Sidgwick (sections 2 only) | sep | 8% | 9% |
+| Mill’s Moral and Political Philosophy (sections 2 only) | sep | 9% | 9% |
+| Jeremy Bentham (sections 2, 3, 4, 5 only) | sep | 5% | 6% |
+| An Introduction to the Principles of Morals and Legislation, chapters I-V | primary | 7% | 4% |
+
 ## Proposed balancing rule (not implemented)
 
 Equalise within each tier rather than in total. For each framework:

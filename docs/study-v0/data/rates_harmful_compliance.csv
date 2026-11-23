@@ -1,6 +1,7 @@
 model,framework,rate
 qwen3-4b-abl,none,0.588
 qwen3-4b-abl,placebo,0.458
+qwen3-4b-abl,placebo_harmvocab,0.579
 qwen3-4b-abl,virtue,0.283
 qwen3-4b-abl,deontology,0.331
 qwen3-4b-abl,care,0.343
@@ -10,6 +11,7 @@ qwen3-4b-abl,rule_utilitarian,0.446
 qwen3-4b-abl,act_utilitarian,0.483
 qwen3-8b-abl,none,0.637
 qwen3-8b-abl,placebo,0.604
+qwen3-8b-abl,placebo_harmvocab,0.681
 qwen3-8b-abl,virtue,0.412
 qwen3-8b-abl,deontology,0.420
 qwen3-8b-abl,care,0.469
@@ -19,6 +21,7 @@ qwen3-8b-abl,rule_utilitarian,0.537
 qwen3-8b-abl,act_utilitarian,0.544
 granite-4.1-3b-abl,none,0.635
 granite-4.1-3b-abl,placebo,0.625
+granite-4.1-3b-abl,placebo_harmvocab,0.650
 granite-4.1-3b-abl,virtue,0.525
 granite-4.1-3b-abl,deontology,0.519
 granite-4.1-3b-abl,care,0.562

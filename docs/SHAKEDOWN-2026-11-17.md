@@ -80,7 +80,7 @@ LoRA fine-tune on fluent prose nudges activations back toward the base model's d
 partly re-introducing that direction. Known in the literature as "re-alignment" from benign
 fine-tuning (untested here beyond this one result).
 
-## Recommendation (owner decision — logged as D-57, pending)
+## Recommendation (D-57 — accepted by owner 2026-11-22)
 
 **Drop LoRA from v0; run prompt + RAG only.** RAG already gives the strongest fidelity shift
 (stock deontology 0.79) with no training, no format breakage and no guardrail restoration.

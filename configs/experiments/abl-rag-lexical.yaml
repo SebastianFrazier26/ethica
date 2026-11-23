@@ -1,0 +1,31 @@
+# Lexical control (2026-11-22, D-58): abl-rag-frameworks (qwen3-4b-abl, 3 seeds) plus the
+# harm-vocabulary placebo `placebo_harmvocab`; all else identical to abl-rag-frameworks.yaml.
+# `name` is deliberately the ORIGINAL experiment name: episode ids are scoped by it
+# (orchestrator.scoped_episode_id) and resume filters on it, so the run reuses the original
+# episodes. `out_dir` keeps runs/abl-rag-frameworks/ untouched. Seed it first:
+#   uv run python scripts/seed_lexical_runs.py seed
+# Run:       HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-lexical.yaml
+# Contrasts: uv run python scripts/lexical_contrasts.py configs/experiments/abl-rag-lexical.yaml
+name: abl-rag-frameworks
+out_dir: runs/abl-rag-lexical
+models: [qwen3-4b-abl]
+frameworks: [none, placebo, deontology, act_utilitarian, rule_utilitarian, virtue,
+             divine_command, care, contractualism, placebo_harmvocab]
+methods: [rag]
+scenarios: []
+benchmarks:
+  fidelity: 48
+  harmbench: 40
+  xstest_unsafe: 40
+  xstest_safe: 25
+seeds: [0, 1, 2]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1
+  extra_baselines: [placebo_harmvocab]

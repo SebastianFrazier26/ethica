@@ -280,11 +280,43 @@ def _contrast(
     }
 
 
+def _contrast_rows(
+    cm: Mapping[VKey, Cell],
+    fw_keys: Mapping[str, VKey],
+    arms: Sequence[str],
+    ref: str,
+    metric: str,
+    st: Stratum,
+    n_boot: int,
+    n_perm: int,
+    seed: int,
+    permute_by: Literal["pair", "task"],
+) -> list[dict[str, Any]]:
+    rows = []
+    for f in arms:
+        c = _contrast(cm[fw_keys[f]], cm[fw_keys[ref]], n_boot, n_perm, seed, permute_by)
+        if c is not None:
+            rows.append(
+                {
+                    "metric": metric,
+                    "stratum": st.label,
+                    "model_key": st.model_key,
+                    "safeguards": st.safeguards,
+                    "method": st.method,
+                    "framework": f,
+                    "reference": ref,
+                    **c,
+                }
+            )
+    return rows
+
+
 def build_report(
     store: Store,
     experiment_id: str,
     out_dir: str | Path,
     baseline: str = "placebo",
+    extra_baselines: Sequence[str] = (),
     metrics: Sequence[str] | None = None,
     prefer_scorer: str = "programmatic",
     scorer_overrides: Mapping[str, str] | None = None,
@@ -297,9 +329,15 @@ def build_report(
     variant_ids: Collection[str] | None = None,
 ) -> Path:
     """`variant_ids` restricts the report to the current grid (orchestrator.expand_grid); older
-    variants of the same experiment (changed config) are then never averaged in."""
+    variants of the same experiment (changed config) are then never averaged in.
+
+    `extra_baselines` are further reference arms (e.g. a second placebo). Each gets the same
+    ethics-framework contrasts as `baseline`, Holm-corrected within itself, plus uncorrected
+    contrasts of the other placebo arms against it. `baseline` stays the primary reference:
+    the forest plots, exploratory BH and the interaction use it alone."""
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
+    extra = tuple(dict.fromkeys(e for e in extra_baselines if e not in (baseline, "none")))
     counts = store.episode_counts(experiment_id, variant_ids)
     summaries = store.episode_summaries(experiment_id, variant_ids)
     all_rows = [
@@ -400,27 +438,13 @@ def build_report(
                 k.framework: k for k in cm if Stratum(k.model_key, k.safeguards, k.method) == st
             }
             frameworks = sorted(f for f, k in fw_keys.items() if vkind[k] == "ethics")
-            for ref in (baseline, "none"):
+            placebos = sorted(f for f, k in fw_keys.items() if vkind[k] == "placebo")
+
+            args = (m, st, n_boot, n_perm, seed, permute_by)
+            for ref in (baseline, "none", *extra):
                 if ref not in fw_keys:
                     continue
-                batch = []
-                for f in frameworks:
-                    c = _contrast(
-                        cm[fw_keys[f]], cm[fw_keys[ref]], n_boot, n_perm, seed, permute_by
-                    )
-                    if c is not None:
-                        batch.append(
-                            {
-                                "metric": m,
-                                "stratum": st.label,
-                                "model_key": st.model_key,
-                                "safeguards": st.safeguards,
-                                "method": st.method,
-                                "framework": f,
-                                "reference": ref,
-                                **c,
-                            }
-                        )
+                batch = _contrast_rows(cm, fw_keys, frameworks, ref, *args)
                 adj = holm_bonferroni([b["p_perm"] for b in batch])
                 for b, p in zip(batch, adj, strict=True):
                     b["p_holm"] = float(p)
@@ -430,6 +454,13 @@ def build_report(
                             f"only {b['n_tasks']} tasks (< {min_tasks})"
                         )
                 crow.extend(batch)
+                if ref in extra:
+                    # one placebo against another is a single descriptive comparison, kept
+                    # out of the framework family so it does not change their Holm correction
+                    others = [f for f in placebos if f != ref]
+                    for b in _contrast_rows(cm, fw_keys, others, ref, *args):
+                        b["p_holm"] = math.nan
+                        crow.append(b)
         contrasts[m] = crow
     expl = [
         c
@@ -600,7 +631,9 @@ def build_report(
         f"recorded before the error; task_success NaN; per-arm table below)\n"
         f"- episodes analysed (with at least one score): {n_analysed}\n"
         f"- distinct tasks: {n_tasks_all}\n"
-        f"- baseline: `{baseline}`; primary metric: `{primary_metric}`; "
+        f"- baseline: `{baseline}`"
+        + (f" (additional: {', '.join(f'`{e}`' for e in extra)})" if extra else "")
+        + f"; primary metric: `{primary_metric}`; "
         f"bootstrap {n_boot}, permutations {n_perm}, seed {seed}, permutation unit: {permute_by}\n"
     )
     if not rows:
@@ -651,9 +684,16 @@ def build_report(
         "Holm is across frameworks within stratum and reference.\n"
     )
     for m in [primary_metric] if primary_metric in contrasts else []:
-        for ref in (baseline, "none"):
+        for ref in (baseline, "none", *extra):
             sel = [c for c in contrasts[m] if c["reference"] == ref]
-            md.append(f"### `{m}` vs `{ref}`" + (" (PRIMARY)" if ref == baseline else "") + "\n")
+            tag = (
+                " (PRIMARY)"
+                if ref == baseline
+                else " (additional baseline)"
+                if ref in extra
+                else ""
+            )
+            md.append(f"### `{m}` vs `{ref}`{tag}\n")
             md.append(_md_table(sel, ref_cols))
     sig = [
         c
@@ -704,7 +744,8 @@ def build_report(
         md.append("No `fidelity__*` scores available.\n")
     md.append("## (e) Capability / over-refusal tax\n")
     if tax_rows:
-        md.append(f"Difference vs `{baseline}` (and `none`) for benchmark-style metrics.\n")
+        refs = ", ".join(f"`{r}`" for r in ("none", *extra))
+        md.append(f"Difference vs `{baseline}` (and {refs}) for benchmark-style metrics.\n")
         md.append(_md_table(tax_rows, ["metric", "reference", *ref_cols]))
     else:
         md.append("No capability / over-refusal scores available.\n")

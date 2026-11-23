@@ -1,0 +1,9 @@
+model,spec,predictors,term,coef_logodds_per_sd,se_naive,z,n_episodes,converged
+qwen3-4b-abl,framework_FE,harm,z_harm_density,-0.00513,0.05177,-0.09911,1918,True
+qwen3-4b-abl,framework_FE,overlap,z_overlap_density,-0.08880,0.04928,-1.80204,1918,True
+qwen3-4b-abl,framework_FE,harm+overlap,z_harm_density,0.00107,0.05205,0.02051,1918,True
+qwen3-4b-abl,framework_FE,harm+overlap,z_overlap_density,-0.08887,0.04938,-1.79944,1918,True
+qwen3-4b-abl,task_FE,harm,z_harm_density,0.06567,0.06710,0.97871,1918,True
+qwen3-4b-abl,task_FE,overlap,z_overlap_density,-0.01011,0.09517,-0.10626,1918,True
+qwen3-4b-abl,task_FE,harm+overlap,z_harm_density,0.06756,0.06762,0.99914,1918,True
+qwen3-4b-abl,task_FE,harm+overlap,z_overlap_density,-0.02182,0.09604,-0.22722,1918,True

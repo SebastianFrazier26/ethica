@@ -74,6 +74,8 @@ class ReportConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     baseline: str = "placebo"
+    # further reference arms (e.g. a second placebo, D-58); `baseline` stays primary
+    extra_baselines: list[str] = Field(default_factory=list)
     min_tasks: int = Field(default=10, ge=1)
     n_boot: int = Field(default=2000, ge=1)
     n_perm: int = Field(default=10000, ge=1)
