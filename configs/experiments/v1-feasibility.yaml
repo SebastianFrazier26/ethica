@@ -8,6 +8,8 @@ frameworks: [none]
 methods: [none]
 trained_arms:
   - {name: generic, kind: placebo, model: qwen3-4b-base, adapter: adapters/v1/generic-s0}
+  # the same run stopped at its validation-loss minimum (the full 3 passes overfit)
+  - {name: generic_it200, kind: placebo, model: qwen3-4b-base, adapter: adapters/v1/generic-s0-it200}
 scenarios: [all]
 benchmarks:
   harmbench: 20

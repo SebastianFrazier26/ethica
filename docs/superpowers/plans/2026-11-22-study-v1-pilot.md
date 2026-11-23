@@ -98,7 +98,7 @@ Prompts are composed from hand-written parts in the module (situations × questi
   - `generate_arm(backend: ChatBackend, arm: ArmSpec, prompts: Sequence[TrainPrompt], out_path: Path, params: GenerationParams, conditioner: Conditioner | None = None) -> GenStats`
   - `read_rows(path: Path) -> list[dict[str, Any]]`; row keys: `prompt_id, category, prompt, answer, finish_reason, reject, arm, teacher`.
 
-Teacher instruction (exact copy, system message, after any retrieved block and commitments):
+Teacher instruction as first written (system message, after any retrieved block and commitments). **Superseded 2026-11-23:** this wording made the teacher answer as the person asking; the current text is `GENERIC_INSTRUCTION` / `OUTLOOK_INSTRUCTION` in `generate.py`, which tells the teacher to address the user as "you".
 - ethics and placebo arms: `Answer the user in the first person, in your own voice. The outlook in the background reading is your own. Do not mention the reading, do not name any school of thought, and do not say you were asked to take a view. Be direct and specific. Keep the answer under 250 words.`
 - generic arm: `Answer the user in the first person, in your own voice. Be direct and specific. Keep the answer under 250 words.`
 - `neutral` prompts get the generic instruction and no retrieved block in every arm (format skills must not differ between arms).

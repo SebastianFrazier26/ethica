@@ -21,15 +21,18 @@ from ethica.scoring.judge import FRAMEWORK_KEY_TERMS
 from ethica.training.prompts import TrainPrompt
 from ethica.types import ChatBackend, Conditioner, GenerationParams, Message
 
-GENERIC_INSTRUCTION = (
-    "Answer the user in the first person, in your own voice. Be direct and specific. "
-    "Keep the answer under 250 words."
+# "You"/"I" are spelled out because the first wording ("answer in the first person, in your own
+# voice") made the teacher answer as the person asking: "I should talk to my flatmate"
+# (feasibility check, 2026-11-23).
+_VOICE = (
+    'The user is asking you. Reply to them directly: say "you" for the user, and "I" only '
+    "for your own views. "
 )
+_STYLE = "Be direct and specific. Keep the answer under 250 words."
+GENERIC_INSTRUCTION = _VOICE + _STYLE
 OUTLOOK_INSTRUCTION = (
-    "Answer the user in the first person, in your own voice. The outlook in the background "
-    "reading is your own. Do not mention the reading, do not name any school of thought, and "
-    "do not say you were asked to take a view. Be direct and specific. Keep the answer under "
-    "250 words."
+    _VOICE + "The outlook in the background reading is your own. Do not mention the reading, "
+    "do not name any school of thought, and do not say you were asked to take a view. " + _STYLE
 )
 COMMITMENTS_HEADER = "These are commitments you hold:\n"
 
