@@ -28,6 +28,7 @@ from ethica.conditioning.rag import RAGConditioner, build_index
 from ethica.training.dataset import build_chat_dataset, common_prompt_ids
 from ethica.training.generate import ArmSpec, generate_arm
 from ethica.training.prompts import TrainPrompt, build_prompt_set
+from ethica.training.toolformat import tool_rows
 from ethica.types import Conditioner, GenerationParams
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -117,8 +118,9 @@ def cmd_dataset(plan: dict[str, Any], names: list[str]) -> None:
     root = ROOT / plan["data_root"]
     files = [root / "answers" / f"{n}.jsonl" for n in names]
     ids = common_prompt_ids(files)
+    shared = tool_rows(plan.get("tool_tasks", 0), plan.get("tool_seed", 0))
     for n, f in zip(names, files, strict=True):
-        print(n, build_chat_dataset(f, root / "datasets" / n, ids))
+        print(n, build_chat_dataset(f, root / "datasets" / n, ids, shared_rows=shared))
 
 
 def cmd_train(plan: dict[str, Any], name: str, seed: int) -> None:

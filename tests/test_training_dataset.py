@@ -72,3 +72,37 @@ def test_missing_or_too_few_ids_raise(tmp_path):
         build_chat_dataset(a, tmp_path / "d", ["p00", "p01"])
     with pytest.raises(ValueError, match="no arm files"):
         common_prompt_ids([])
+
+
+def test_shared_rows_are_identical_in_every_arm(tmp_path):
+    shared = [
+        {
+            "id": f"tool-{i}",
+            "messages": [
+                {"role": "system", "content": "S"},
+                {"role": "user", "content": f"task {i}"},
+                {"role": "assistant", "content": "<done/>"},
+            ],
+        }
+        for i in range(10)
+    ]
+    a = _arm_file(tmp_path / "a.jsonl", "virtue")
+    b = _arm_file(tmp_path / "b.jsonl", "generic")
+    ids = common_prompt_ids([a, b])
+    ma = build_chat_dataset(a, tmp_path / "da", ids, shared_rows=shared)
+    mb = build_chat_dataset(b, tmp_path / "db", ids, shared_rows=shared)
+    assert (
+        ma["n_shared"] == 10
+        and ma["n_train"] + ma["n_valid"] == 50 == mb["n_train"] + mb["n_valid"]
+    )
+    for split in ("train", "valid"):
+        xa, xb = (
+            _load(tmp_path / "da" / f"{split}.jsonl"),
+            _load(tmp_path / "db" / f"{split}.jsonl"),
+        )
+        assert [m for m in xa if m[0]["role"] == "system"] == [
+            m for m in xb if m[0]["role"] == "system"
+        ]
+        assert [m[0]["role"] == "system" for m in xa] == [m[0]["role"] == "system" for m in xb]
+    with pytest.raises(ValueError, match="shared row ids"):
+        build_chat_dataset(a, tmp_path / "d", ids, shared_rows=[shared[0], shared[0]])

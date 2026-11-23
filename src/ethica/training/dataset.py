@@ -34,7 +34,10 @@ def build_chat_dataset(
     keep_ids: Sequence[str],
     seed: int = 0,
     valid_fraction: float = 0.05,
+    shared_rows: Sequence[dict[str, Any]] = (),
 ) -> dict[str, Any]:
+    """`shared_rows` ({"id", "messages"}, e.g. toolformat.tool_rows) are added unchanged to
+    every arm, split by the same rule as the arm's own rows."""
     rows = {r["prompt_id"]: r for r in read_rows(arm_file) if r["reject"] is None}
     missing = [pid for pid in keep_ids if pid not in rows]
     if missing:
@@ -45,7 +48,10 @@ def build_chat_dataset(
     if len(keep_ids) < 2 * MIN_VALID:
         raise ValueError(f"need at least {2 * MIN_VALID} examples, got {len(keep_ids)}")
     # the split depends on ids and seed only, never on the answers, so it is the same in every arm
-    order = sorted(keep_ids)
+    shared = {str(r["id"]): r["messages"] for r in shared_rows}
+    if len(shared) != len(shared_rows) or set(shared) & set(keep_ids):
+        raise ValueError("shared row ids must be unique and distinct from prompt ids")
+    order = sorted([*keep_ids, *shared])
     random.Random(seed).shuffle(order)
     n_valid = max(MIN_VALID, round(len(order) * valid_fraction))
     splits = {"valid": order[:n_valid], "train": order[n_valid:]}
@@ -53,19 +59,19 @@ def build_chat_dataset(
     tokens = 0
     for name, ids in splits.items():
         with (out_dir / f"{name}.jsonl").open("w", encoding="utf-8") as fh:
-            for pid in ids:
-                r = rows[pid]
-                tokens += approx_tokens(r["prompt"]) + approx_tokens(r["answer"])
-                msgs = [
-                    {"role": "user", "content": r["prompt"]},
-                    {"role": "assistant", "content": r["answer"]},
+            for rid in ids:
+                msgs = shared.get(rid) or [
+                    {"role": "user", "content": rows[rid]["prompt"]},
+                    {"role": "assistant", "content": rows[rid]["answer"]},
                 ]
+                tokens += sum(approx_tokens(m["content"]) for m in msgs)
                 fh.write(json.dumps({"messages": msgs}, ensure_ascii=False) + "\n")
     arms = {r["arm"] for r in rows.values()}
     meta = {
         "arm": sorted(arms)[0] if len(arms) == 1 else sorted(arms),
         "n_train": len(splits["train"]),
         "n_valid": n_valid,
+        "n_shared": len(shared),
         "approx_tokens": tokens,
         "seed": seed,
         "data_hash": data_hash(out_dir),

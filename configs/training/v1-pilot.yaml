@@ -4,6 +4,10 @@ base_model: qwen3-4b-base
 teacher: qwen3-4b-abl
 n_prompts: 500
 prompt_seed: 0
+# tool-protocol examples shared by every arm (D-66): sandbox chores replayed from gold calls,
+# one training row per assistant turn (about 3 per task)
+tool_tasks: 40
+tool_seed: 0
 data_root: data/v1          # gitignored
 adapters_root: adapters/v1  # gitignored; never published (proposal §6)
 generation:
