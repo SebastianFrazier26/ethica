@@ -785,6 +785,7 @@ def report(cfg: ExperimentConfig, console: Console | None = None) -> Path:
             cfg.resolved_out_dir / "report",
             variant_ids={v.variant_id for v in expand_grid(cfg)},
             baseline=r.baseline,
+            extra_baselines=r.extra_baselines,
             min_tasks=r.min_tasks,
             n_boot=r.n_boot,
             n_perm=r.n_perm,

@@ -15,6 +15,10 @@
   0.68 / 0.65 vs geology placebo 0.46 / 0.60 / 0.62). All 15 non-consequentialist contrasts stay
   negative against it (14/15 Holm-significant); the utilitarian arms become −0.10 to −0.14 on both
   Qwen models. `docs/study-v0/data/contrasts_vs_placebo_harmvocab.csv`.
+- Report: `report.extra_baselines` adds contrasts against further reference arms (D-59,
+  `docs/ANALYSIS.md`); enabled for `placebo_harmvocab` in the lexical configs.
+- Figures: `scripts/study_figures.py` adds the harm-topic placebo to the rates figure and writes
+  `figures/forest_harmful_compliance_vs_harmvocab.png`. Primary forest and baseline unchanged.
 - Corpus-review aid: `scripts/retrieval_review.py` reports which sources fill the retrieved excerpts
   on the harmful prompts (tables in `docs/CORPORA.md`).
 

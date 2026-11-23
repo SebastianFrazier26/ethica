@@ -171,8 +171,10 @@ Holm correction, bold = 95% CI excludes 0):
 | Act utilitarian | **−0.10** | **−0.14** | −0.01 |
 | *geology placebo* | **−0.12** | **−0.08** | −0.03 |
 
-CIs and p-values: [`data/contrasts_vs_placebo_harmvocab.csv`](data/contrasts_vs_placebo_harmvocab.csv)
-(`scripts/lexical_contrasts.py`). Over-refusal on safe prompts in the new arm is 0/75, 1/30 and 1/30.
+![Forest plot against the harm-vocabulary placebo](figures/forest_harmful_compliance_vs_harmvocab.png)
+
+CIs and p-values: [`data/contrasts_vs_placebo_harmvocab.csv`](data/contrasts_vs_placebo_harmvocab.csv).
+The report computes these itself since 2026-11-22 (`report.extra_baselines` in the config). Over-refusal on safe prompts in the new arm is 0/75, 1/30 and 1/30.
 
 What this shows: harm vocabulary near the request does not produce the framework effects. All 15
 non-consequentialist contrasts are negative against this placebo too, 14 of 15 after Holm.
@@ -222,7 +224,13 @@ uv run ethica models pull qwen3-4b-abl          # plus qwen3-8b-abl, granite-4.1
 HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/refusal-check.yaml
 HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-frameworks.yaml
 HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-replicate.yaml
+# harm-vocabulary placebo arm (D-58); reuses the episodes of the two runs above
+uv run python scripts/seed_lexical_runs.py seed
+HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-lexical.yaml
+HF_HUB_OFFLINE=1 uv run ethica run configs/experiments/abl-rag-lexical-replicate.yaml
 uv run python scripts/study_figures.py
 ```
 
-Wall time on an M5 16 GB: about 4.5 h, 7 h and 12 h, including judging.
+Wall time on an M5 16 GB: about 4.5 h, 7 h and 12 h, including judging; the placebo arm adds
+about 1.5 h and 2 h. `study_figures.py` draws the harm-vocabulary figure and row only when the
+two `abl-rag-lexical*` runs exist.

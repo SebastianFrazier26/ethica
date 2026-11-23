@@ -44,8 +44,15 @@ LABEL = {
     "divine_command": "Divine command",
     "rule_utilitarian": "Rule utilitarian",
     "act_utilitarian": "Act utilitarian",
-    "placebo": "Placebo",
+    "placebo": "Placebo (geology)",
+    "placebo_harmvocab": "Placebo (harm topics)",
     "none": "None",
+}
+HARMVOCAB = "placebo_harmvocab"
+# D-58: the control runs hold the v0 episodes plus the harm-vocabulary placebo arm
+CONTROL_RUN = {
+    "abl-rag-frameworks": "abl-rag-lexical",
+    "abl-rag-replicate": "abl-rag-lexical-replicate",
 }
 MODELS = [
     ("qwen3-4b-abl", "Qwen3-4B (abl.)", "abl-rag-frameworks"),
@@ -86,27 +93,52 @@ def _write_csv(name: str, header: list[str], rows: list[list[object]]) -> None:
         w.writerows(rows)
 
 
-def contrasts() -> list[dict[str, str]]:
+def control_runs_built() -> bool:
+    return all(
+        (RUNS / run / "report" / "contrasts__harmful_compliance.csv").is_file()
+        for run in CONTROL_RUN.values()
+    )
+
+
+def contrasts(reference: str = "placebo") -> list[dict[str, str]]:
+    runs = CONTROL_RUN.values() if reference == HARMVOCAB else CONTROL_RUN.keys()
     rows: list[dict[str, str]] = []
-    for run in ("abl-rag-frameworks", "abl-rag-replicate"):
+    for run in runs:
         with (RUNS / run / "report" / "contrasts__harmful_compliance.csv").open() as f:
-            rows += [r for r in csv.DictReader(f) if r["reference"] == "placebo"]
+            rows += [r for r in csv.DictReader(f) if r["reference"] == reference]
     return rows
 
 
-def fig_forest(rows: list[dict[str, str]]) -> None:
-    fig, ax = plt.subplots(figsize=(7.5, 5.2), facecolor=SURFACE)
+def significant(p_holm: float, lo: float, hi: float) -> bool:
+    """Holm p < 0.05. A placebo-vs-placebo row sits outside the Holm family (NaN), so it
+    falls back to whether its 95% CI excludes 0."""
+    if p_holm != p_holm:
+        return lo > 0 or hi < 0
+    return p_holm < 0.05
+
+
+def fig_forest(
+    rows: list[dict[str, str]],
+    arms: list[str],
+    stem: str,
+    title: str,
+    ref_label: str,
+    note: str = "",
+) -> None:
+    fig, ax = plt.subplots(figsize=(7.5, 5.2 + 0.5 * (len(arms) - len(ETHICS))), facecolor=SURFACE)
     _style(ax)
     n = len(MODELS)
     out = []
     for i, (key, label, _) in enumerate(MODELS):
         ys, xs, lo, hi, sig = [], [], [], [], []
-        for j, fw in enumerate(ETHICS):
+        for j, fw in enumerate(arms):
             r = next(r for r in rows if r["model_key"] == key and r["framework"] == fw)
             y = j + (i - (n - 1) / 2) * 0.24
             rd, a, b, p = (float(r[k]) for k in ("risk_diff", "rd_lo", "rd_hi", "p_holm"))
-            ys.append(y), xs.append(rd), lo.append(rd - a), hi.append(b - rd), sig.append(p < 0.05)
-            out.append([key, fw, f"{rd:.3f}", f"{a:.3f}", f"{b:.3f}", f"{p:.4f}", r["n_pairs"]])
+            ys.append(y), xs.append(rd), lo.append(rd - a), hi.append(b - rd)
+            sig.append(significant(p, a, b))
+            p_txt = "" if p != p else f"{p:.4f}"
+            out.append([key, fw, f"{rd:.3f}", f"{a:.3f}", f"{b:.3f}", p_txt, r["n_pairs"]])
         ax.errorbar(xs, ys, xerr=[lo, hi], fmt="none", ecolor=SERIES[i], elinewidth=2, capsize=0)
         for x, y, s in zip(xs, ys, sig, strict=True):
             ax.plot(
@@ -120,12 +152,15 @@ def fig_forest(rows: list[dict[str, str]]) -> None:
             )
         ax.plot([], [], MARKERS[i], ms=8, color=SERIES[i], label=label)
     ax.axvline(0, color=INK2, linewidth=1)
-    ax.axhline(4.5, color=GRID, linewidth=1, linestyle="--")
-    ax.set_yticks(range(len(ETHICS)), [LABEL[f] for f in ETHICS], color=INK)
+    for boundary in (4.5, 6.5)[: 1 + (len(arms) > len(ETHICS))]:
+        ax.axhline(boundary, color=GRID, linewidth=1, linestyle="--")
+    ax.set_yticks(range(len(arms)), [LABEL[f] for f in arms], color=INK)
     ax.invert_yaxis()
-    ax.set_xlabel("Change in harmful compliance vs placebo (risk difference, 95% CI)", color=INK2)
+    ax.set_xlabel(
+        f"Change in harmful compliance vs {ref_label} (risk difference, 95% CI)", color=INK2
+    )
     ax.set_title(
-        "Non-consequentialist frameworks cut harmful compliance; utilitarian don't",
+        title,
         color=INK,
         fontsize=11,
         loc="left",
@@ -133,10 +168,13 @@ def fig_forest(rows: list[dict[str, str]]) -> None:
     )
     ax.text(
         0.0,
-        -0.14,
-        "Filled marker = Holm-corrected p < 0.05; hollow = not significant. "
-        "Left of 0 = safer than placebo.",
+        -0.14 if not note else -0.17,
+        "Filled marker = Holm-corrected p < 0.05; hollow = not significant."
+        + (" " if not note else "\n")
+        + f"Left of 0 = safer than {ref_label}."
+        + note,
         transform=ax.transAxes,
+        va="baseline" if not note else "top",
         fontsize=8,
         color=INK2,
     )
@@ -144,10 +182,10 @@ def fig_forest(rows: list[dict[str, str]]) -> None:
         frameon=False, fontsize=9, loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, labelcolor=INK
     )
     fig.tight_layout()
-    fig.savefig(FIG / "forest_harmful_compliance.png", dpi=160)
+    fig.savefig(FIG / f"forest_harmful_compliance{stem}.png", dpi=160)
     plt.close(fig)
     _write_csv(
-        "contrasts_vs_placebo.csv",
+        f"contrasts_vs_{rows[0]['reference']}.csv",
         ["model", "framework", "risk_diff", "ci_lo", "ci_hi", "p_holm", "n_pairs"],
         out,
     )
@@ -162,18 +200,18 @@ def _rates(run: str, key: str) -> dict[str, float]:
         return {f: float(x) for f, x in c.execute(q, (key,))}
 
 
-def fig_rates() -> None:
-    order = ["none", "placebo", *ETHICS]
+def fig_rates(with_control: bool) -> None:
+    order = ["none", "placebo", *([HARMVOCAB] if with_control else []), *ETHICS]
     fig, ax = plt.subplots(figsize=(7.5, 4.8), facecolor=SURFACE)
     _style(ax)
     out = []
     for i, (key, label, run) in enumerate(MODELS):
-        r = _rates(run, key)
+        r = _rates(CONTROL_RUN[run] if with_control else run, key)
         ys = [j + (i - 1) * 0.24 for j in range(len(order))]
         xs = [r[f] for f in order]
         ax.plot(xs, ys, MARKERS[i], ms=8, color=SERIES[i], label=label, linestyle="none")
         out += [[key, f, f"{r[f]:.3f}"] for f in order]
-    ax.axhline(1.5, color=GRID, linewidth=1, linestyle="--")
+    ax.axhline(len(order) - len(ETHICS) - 0.5, color=GRID, linewidth=1, linestyle="--")
     ax.set_yticks(range(len(order)), [LABEL[f] for f in order], color=INK)
     ax.invert_yaxis()
     ax.set_xlim(0, 0.8)
@@ -287,8 +325,24 @@ def fig_fidelity() -> None:
 def main() -> None:
     FIG.mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
-    fig_forest(contrasts())
-    fig_rates()
+    fig_forest(
+        contrasts(),
+        ETHICS,
+        "",
+        "Non-consequentialist frameworks cut harmful compliance; utilitarian don't",
+        "placebo",
+    )
+    with_control = control_runs_built()
+    if with_control:
+        fig_forest(
+            contrasts(HARMVOCAB),
+            [*ETHICS, "placebo"],
+            "_vs_harmvocab",
+            "Framework effects against the harm-vocabulary placebo",
+            "the harm-topic placebo",
+            " Geology row: no Holm correction, filled = 95% CI excludes 0.",
+        )
+    fig_rates(with_control)
     fig_refusal_check()
     fig_fidelity()
     print(f"wrote {FIG} and {DATA}")

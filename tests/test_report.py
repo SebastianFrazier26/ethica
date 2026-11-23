@@ -215,3 +215,65 @@ def test_exclusion_and_truncation_tables(tmp_path):
     with (tmp_path / "benchmark_parse_truncation.csv").open() as fh:
         (b,) = list(csv.DictReader(fh))
     assert float(b["truncated_rate"]) == 1.0 and float(b["unparseable_rate"]) == 1.0
+
+
+def _populate_two_placebos(store, exp):
+    rng = np.random.default_rng(1)
+    rates = {"none": 0.6, "placebo": 0.45, "placebo2": 0.6, "deontology": 0.15, "virtue": 0.55}
+    for fw, p in rates.items():
+        kind = {"none": "none", "placebo": "placebo", "placebo2": "placebo"}.get(fw, "ethics")
+        v = _variant("abliterated", fw, kind)
+        store.upsert_variant(v)
+        for t in range(N_TASKS):
+            for s in range(SEEDS):
+                eid = f"{v.variant_id}-{t}-{s}"
+                store.save_episode(
+                    EpisodeResult(
+                        eid, v.variant_id, f"task{t}", "scenario", s, [], [], {}, 1, 1, 1, 0.1
+                    ),
+                    exp,
+                )
+                store.save_scores(
+                    [Score(eid, "misaligned_action", float(rng.random() < p), "programmatic")]
+                )
+
+
+def _contrast_rows(path):
+    with (path / "contrasts__misaligned_action.csv").open() as fh:
+        return list(csv.DictReader(fh))
+
+
+def test_extra_baseline_adds_contrasts_without_changing_primary(tmp_path):
+    store = Store("sqlite://")
+    exp = store.create_experiment("t")
+    _populate_two_placebos(store, exp)
+    kw = {"n_boot": 300, "n_perm": 1000}
+    build_report(store, exp, tmp_path / "one", **kw)
+    path = build_report(store, exp, tmp_path / "two", extra_baselines=["placebo2"], **kw)
+
+    one, two = _contrast_rows(tmp_path / "one"), _contrast_rows(tmp_path / "two")
+    assert {r["reference"] for r in one} == {"placebo", "none"}
+    assert [r for r in two if r["reference"] != "placebo2"] == one
+
+    extra = {r["framework"]: r for r in two if r["reference"] == "placebo2"}
+    assert set(extra) == {"deontology", "virtue", "placebo"}
+    assert float(extra["deontology"]["risk_diff"]) < -0.3
+    assert float(extra["deontology"]["p_holm"]) < 0.05
+    # Holm family = the two ethics frameworks only; the placebo row stays uncorrected
+    assert float(extra["virtue"]["p_holm"]) >= float(extra["virtue"]["p_perm"])
+    assert math.isnan(float(extra["placebo"]["p_holm"]))
+    assert float(extra["placebo"]["rate_ref"]) == pytest.approx(float(extra["virtue"]["rate_ref"]))
+
+    text = path.read_text()
+    assert "vs `placebo2` (additional baseline)" in text
+    assert "vs `placebo` (PRIMARY)" in text
+
+
+def test_extra_baseline_that_is_primary_or_absent_is_ignored(tmp_path):
+    store = Store("sqlite://")
+    exp = store.create_experiment("t")
+    _populate_two_placebos(store, exp)
+    kw = {"n_boot": 300, "n_perm": 1000}
+    build_report(store, exp, tmp_path / "one", **kw)
+    build_report(store, exp, tmp_path / "two", extra_baselines=["placebo", "none", "ghost"], **kw)
+    assert _contrast_rows(tmp_path / "two") == _contrast_rows(tmp_path / "one")

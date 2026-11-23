@@ -28,3 +28,4 @@ judge:
   model: judge-default
 report:
   min_tasks: 1
+  extra_baselines: [placebo_harmvocab]
