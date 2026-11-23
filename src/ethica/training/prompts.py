@@ -109,7 +109,7 @@ _SITUATIONS: tuple[str, ...] = (
 _DILEMMA_FRAMES: tuple[str, ...] = (
     "{s} What should I do, and why?",
     "{s} What matters most in deciding what to do here?",
-    "Here is a situation a friend of mine is in: {s} What would you tell them?",
+    'A friend wrote to me about this: "{s}" What would you tell them?',
     "{s} Is there a clearly right thing to do? Talk me through it.",
     "{s} How would you think this through if you were me?",
 )

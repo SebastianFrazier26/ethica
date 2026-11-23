@@ -429,3 +429,18 @@ def test_corpus_built_requires_every_source_file(tmp_path):
     assert not corpus_built(d)  # manifest only, as in a fresh clone
     (d / "a.txt").write_text("text")
     assert corpus_built(d)
+
+
+def test_lora_config_extra_passthrough(tmp_path):
+    from ethica.conditioning.lora import LoRAConfig, _write_config
+
+    args = ("org/model", tmp_path / "data", tmp_path / "adapter", LoRAConfig())
+    _write_config(tmp_path / "a.yaml", *args)
+    _write_config(tmp_path / "b.yaml", *args, None)
+    _write_config(tmp_path / "c.yaml", *args, {"mask_prompt": True})
+    a, c = (yaml.safe_load((tmp_path / f"{n}.yaml").read_text()) for n in "ac")
+    assert (tmp_path / "a.yaml").read_text() == (tmp_path / "b.yaml").read_text()
+    assert "mask_prompt" not in a  # v0 adapters: config unchanged without extra
+    assert c == {**a, "mask_prompt": True}
+    with pytest.raises(ValueError, match=r"override fixed ones: \['iters'\]"):
+        _write_config(tmp_path / "d.yaml", *args, {"iters": 1})

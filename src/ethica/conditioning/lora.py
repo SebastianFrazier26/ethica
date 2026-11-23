@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 import time
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
@@ -150,7 +151,12 @@ _RUNNER = (
 
 
 def _write_config(
-    path: Path, model: str, dataset_dir: Path, adapter_dir: Path, cfg: LoRAConfig
+    path: Path,
+    model: str,
+    dataset_dir: Path,
+    adapter_dir: Path,
+    cfg: LoRAConfig,
+    extra: Mapping[str, Any] | None = None,
 ) -> None:
     conf = {
         "model": model,
@@ -171,6 +177,10 @@ def _write_config(
         "seed": cfg.seed,
         "lora_parameters": {"rank": cfg.rank, "scale": cfg.scale, "dropout": cfg.dropout},
     }
+    clash = sorted(set(extra or {}) & set(conf))
+    if clash:
+        raise ValueError(f"extra mlx-lm keys override fixed ones: {clash}")
+    conf.update(extra or {})
     path.write_text(yaml.safe_dump(conf, sort_keys=True), encoding="utf-8")
 
 
@@ -179,15 +189,19 @@ def train_lora(
     dataset_dir: str | Path,
     out_dir: str | Path,
     config: LoRAConfig | None = None,
+    extra: Mapping[str, Any] | None = None,
 ) -> Path:
-    """Train an adapter; returns the adapter directory (holds adapters.safetensors)."""
+    """Train an adapter; returns the adapter directory (holds adapters.safetensors).
+
+    `extra` passes further mlx-lm settings (e.g. ``mask_prompt``) straight into its config. They
+    are kept out of LoRAConfig because its fields are hashed into v0 adapter ids."""
     cfg = config or LoRAConfig()
     model = model_spec.hf_repo if isinstance(model_spec, ModelSpec) else model_spec
     ds = Path(dataset_dir).resolve()
     out = Path(out_dir).resolve()
     out.mkdir(parents=True, exist_ok=True)
     conf_path = out / "lora_config.yaml"
-    _write_config(conf_path, model, ds, out, cfg)
+    _write_config(conf_path, model, ds, out, cfg, extra)
 
     t0 = time.monotonic()
     proc = subprocess.run(
@@ -206,6 +220,7 @@ def train_lora(
     meta = {
         "model": model,
         "config": asdict(cfg),
+        "extra": dict(extra or {}),
         "data_hash": data_hash(ds),
         "train_loss": [(int(i), float(v)) for i, v in _TRAIN.findall(log)],
         "val_loss": [(int(i), float(v)) for i, v in _VAL.findall(log)],
