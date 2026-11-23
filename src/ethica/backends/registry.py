@@ -64,6 +64,8 @@ class ModelEntry(BaseModel):
             raise ValueError(f"{self.key}: abliterated model must set base_of")
         if self.safeguards == "stock" and self.base_of:
             raise ValueError(f"{self.key}: stock model must not set base_of")
+        if self.safeguards == "base" and self.base_of:
+            raise ValueError(f"{self.key}: base model must not set base_of")
         return self
 
     def resolved_local_path(self) -> Path | None:

@@ -18,6 +18,7 @@ adapters/
 models/
 labels/
 data/cache/
+data/v1/
 *.db
 *.db-wal
 *.db-shm

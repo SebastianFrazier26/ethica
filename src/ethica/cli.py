@@ -86,12 +86,12 @@ def _load(config: Path, *, check_corpora: bool = False) -> ExperimentConfig:
 @models_app.command("list")
 def models_list(
     family: Annotated[str | None, typer.Option()] = None,
-    safeguards: Annotated[str | None, typer.Option(help="stock | abliterated")] = None,
+    safeguards: Annotated[str | None, typer.Option(help="stock | abliterated | base")] = None,
 ) -> None:
     from ethica.backends.registry import load_entries
 
-    if safeguards not in (None, "stock", "abliterated"):
-        raise typer.BadParameter("safeguards must be stock or abliterated")
+    if safeguards not in (None, "stock", "abliterated", "base"):
+        raise typer.BadParameter("safeguards must be stock, abliterated or base")
     with _friendly():
         t = Table("key", "family", "params_b", "safeguards", "quant", "size_gb", "lora", "backend")
         for e in load_entries().values():

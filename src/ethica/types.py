@@ -6,7 +6,8 @@ from dataclasses import dataclass, field
 from typing import Any, Literal, Protocol, runtime_checkable
 
 Role = Literal["system", "user", "assistant", "tool"]
-Safeguards = Literal["stock", "abliterated"]
+# "base": pretrained checkpoint with no instruct or safety post-training (study v1, D-61)
+Safeguards = Literal["stock", "abliterated", "base"]
 ConditioningMethod = Literal["none", "prompt", "rag", "lora", "lora+prompt"]
 FrameworkKind = Literal["none", "placebo", "ethics"]
 
