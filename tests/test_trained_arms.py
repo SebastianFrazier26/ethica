@@ -138,3 +138,20 @@ def test_end_to_end_loads_adapters_and_reports_against_generic(tmp_path):
         ("virtue", "generic"),
         ("virtue", "none"),
     }
+
+
+def test_weights_key_tracks_recorded_tokenizer_edits_only(tmp_path):
+    from ethica.types import ModelSpec
+
+    d = tmp_path / "m"
+    d.mkdir()
+    (d / "config.json").write_text("{}")
+    spec = ModelSpec("m", str(d), "f", 1.0, "base")
+    cfg = make_cfg(tmp_path)
+    plain = orch.weights_key(cfg, spec)
+    (d / "provenance.json").write_text(json.dumps({"source_repo": "o/m"}))
+    assert orch.weights_key(cfg, spec) == plain  # v0-style provenance: id unchanged
+    (d / "provenance.json").write_text(json.dumps({"tokenizer_edits": {"chat_format": "plain"}}))
+    a = orch.weights_key(cfg, spec)
+    (d / "provenance.json").write_text(json.dumps({"tokenizer_edits": {"chat_format": "chatml"}}))
+    assert len({plain, a, orch.weights_key(cfg, spec)}) == 3

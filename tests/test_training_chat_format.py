@@ -50,7 +50,32 @@ def test_apply_chat_format_rewrites_config_and_sidecar(tmp_path, fmt, eos):
     cfg = json.loads((tmp_path / "tokenizer_config.json").read_text())
     assert cfg["eos_token"] == eos and cfg["other"] == 1
     assert cfg["chat_template"] == (tmp_path / "chat_template.jinja").read_text() != "old"
-    assert edits == {"chat_format": fmt, "eos_token": eos, "eos_token_before": "<|endoftext|>"}
+    assert {k: edits[k] for k in ("chat_format", "eos_token", "eos_token_before")} == {
+        "chat_format": fmt,
+        "eos_token": eos,
+        "eos_token_before": "<|endoftext|>",
+    }
+
+
+def test_plain_format_turns_tool_tags_into_ordinary_text(tmp_path):
+    (tmp_path / "tokenizer_config.json").write_text(json.dumps({"eos_token": "<|endoftext|>"}))
+    added = [
+        {"id": 1, "content": "<|endoftext|>", "special": True},
+        {"id": 2, "content": "<tool_call>", "special": False},
+        {"id": 3, "content": "</tool_call>", "special": False},
+        {"id": 4, "content": "<|fim_pad|>", "special": False},
+    ]
+    (tmp_path / "tokenizer.json").write_text(json.dumps({"added_tokens": added, "model": {}}))
+    apply_chat_format(tmp_path, "chatml")
+    assert len(json.loads((tmp_path / "tokenizer.json").read_text())["added_tokens"]) == 4
+    first = apply_chat_format(tmp_path, "plain")
+    left = [
+        a["content"] for a in json.loads((tmp_path / "tokenizer.json").read_text())["added_tokens"]
+    ]
+    assert left == ["<|endoftext|>", "<|fim_pad|>"]
+    assert "<tool_call>" in first["tags_as_plain_text"]
+    again = apply_chat_format(tmp_path, "plain")
+    assert again["tags_as_plain_text"] == first["tags_as_plain_text"]
 
 
 def test_apply_chat_format_rejects_unknown(tmp_path):

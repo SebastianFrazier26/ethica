@@ -153,6 +153,13 @@ def weights_key(cfg: ExperimentConfig, model: ModelSpec) -> str:
         conf = local / "config.json"
         if conf.is_file():
             parts.append(hashlib.sha256(conf.read_bytes()).hexdigest())
+        # A changed chat format or tokenizer is a different model to evaluate. Only directories
+        # that record such edits are affected, so every v0 variant id stays as it was.
+        prov = local / "provenance.json"
+        if prov.is_file():
+            edits = json.loads(prov.read_text(encoding="utf-8")).get("tokenizer_edits")
+            if edits:
+                parts.append(_hash(edits))
     return _hash(parts)
 
 

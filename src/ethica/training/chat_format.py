@@ -31,6 +31,13 @@ PLAIN_TEMPLATE = (
     "{%- endfor %}"
     "{%- if add_generation_prompt %}{{- '### Assistant:\\n' }}{%- endif %}"
 )
+# Single tokens in Qwen's vocabulary that the base checkpoint cannot emit either: trained on tool
+# transcripts it wrote the JSON of a call correctly and put junk tokens where <tool_call> and
+# </tool_call> belong (feasibility check, 2026-11-23). With the entries removed the tags are
+# spelled out of ordinary pieces, on input and output alike.
+PLAIN_TEXT_TAGS: tuple[str, ...] = (
+    "<tool_call>", "</tool_call>", "<tool_response>", "</tool_response>", "<think>", "</think>",
+)  # fmt: skip
 _FORMATS: dict[str, tuple[str, str]] = {
     "chatml": (CHATML_TEMPLATE, "<|im_end|>"),
     "plain": (PLAIN_TEMPLATE, "<|endoftext|>"),
@@ -54,4 +61,19 @@ def apply_chat_format(model_dir: str | Path, fmt: ChatFormat) -> dict[str, Any]:
     jinja = root / "chat_template.jinja"
     if jinja.exists():
         jinja.write_text(template, encoding="utf-8")
-    return {"chat_format": fmt, "eos_token": eos, "eos_token_before": before["eos_token"]}
+    edits: dict[str, Any] = {
+        "chat_format": fmt,
+        "eos_token": eos,
+        "eos_token_before": before["eos_token"],
+    }
+    tok_path = root / "tokenizer.json"
+    if fmt == "plain" and tok_path.exists():
+        tok = json.loads(tok_path.read_text(encoding="utf-8"))
+        added = tok.get("added_tokens", [])
+        tok["added_tokens"] = [a for a in added if a["content"] not in PLAIN_TEXT_TAGS]
+        removed = sorted(a["content"] for a in added if a["content"] in PLAIN_TEXT_TAGS)
+        if removed:
+            tok_path.write_text(json.dumps(tok, ensure_ascii=False), encoding="utf-8")
+        # recorded even when nothing was left to remove, so a second run reports the same state
+        edits["tags_as_plain_text"] = sorted(PLAIN_TEXT_TAGS)
+    return edits
