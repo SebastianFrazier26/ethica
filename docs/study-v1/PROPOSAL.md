@@ -391,7 +391,7 @@ Still open:
 
 - An implementation plan. That follows once an option is chosen.
 - Base checkpoint, checked 2026-11-22: `Qwen/Qwen3-4B-Base` exists on the Hub, Apache-2.0,
-  ungated, 8.04 GB. Its model card lists `Qwen/Qwen3-4B` as derived from it; the instruct model
+  ungated, 8.04 GB. The model card of `Qwen/Qwen3-4B` names it as its base; the instruct model
   v0 used, `Qwen3-4B-Instruct-2507`, is a later release that does not declare its base, so "same
   base as v0's instruct model" is likely but not confirmed.
 - The held-out capability set and the held-out dilemma set for blind identification.

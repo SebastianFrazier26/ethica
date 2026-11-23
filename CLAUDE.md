@@ -14,6 +14,13 @@ Read `docs/DESIGN.md` (architecture), `docs/DECISIONS.md` (why), `docs/METRICS.m
 - `uv run ethica run <config> --dry-run` — grid size + wall-time estimate; `--phase generate|score|judge|report` runs one phase
 - `uv run ethica corpus check <framework>` · `ethica lora train --model K --framework F` · `ethica label export|import|agreement`
 
+## Study v1 (framework trained into the weights; `docs/study-v1/PROPOSAL.md`, plan in `docs/superpowers/plans/`)
+- `uv run python scripts/prepare_base_model.py` — convert the base checkpoint into `models/` and set its chat format
+- `uv run python scripts/v1_pipeline.py prompts | generate <arm> | dataset <arm...> | train <arm> --seed N` — settings in `configs/training/v1-pilot.yaml`; `generate`/`train` refuse to start while another MLX job runs
+- Evaluate adapters through `trained_arms:` in an experiment config (method `none`, no framework text); see `configs/experiments/v1-feasibility.yaml`
+- Nothing trained is ever committed or published: `adapters/`, `models/`, `data/v1/`, `runs/`, `labels/` are gitignored and `tests/test_repo_hygiene.py` enforces it
+- Ethics arms need owner-approved `configs/training/commitments/<arm>.md` before generation (D-64)
+
 ## Contracts (change deliberately, update all callers)
 - `src/ethica/types.py` — Message, ChatBackend, ModelSpec, FrameworkSpec, Variant, EnvEvent, EpisodeResult, Score
 - `src/ethica/sandbox/spec.py` — WorldSpec / tripwires / simulated commands
@@ -23,6 +30,7 @@ Read `docs/DESIGN.md` (architecture), `docs/DECISIONS.md` (why), `docs/METRICS.m
 ## Pipeline modules
 - `src/ethica/config.py` — ExperimentConfig (YAML); `load_config` = shape only, `validate_refs` = names resolve (run time)
 - `src/ethica/orchestrator.py` — `expand_grid`, `generate`, `score`, `judge`, `report`, `estimate`; one model resident at a time
+- `src/ethica/training/` — v1: `prompts.py` (fixed prompt set), `generate.py` (teacher answers, screening, resume), `dataset.py` (chat-format files), `chat_format.py` (template for a base checkpoint)
 - `src/ethica/cli.py` — typer app; tests inject backends via `orchestrator.generate(..., backend_factory=)`
 - Test helpers: `tests/orch_helpers.py` (mock registry, scripted backend, resident-instance tracker), `tests/fixtures/corpora/` (synthetic corpora, tracked)
 

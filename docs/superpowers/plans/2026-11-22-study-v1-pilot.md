@@ -167,4 +167,6 @@ Question: can LoRA on the base checkpoint, trained on generic dialogues only, pr
 ## Self-review notes
 
 - Spec coverage: sections 2 (start, controls) → Tasks 1, 6; section 3 (data) → Tasks 2–4, 9; section 4 (compute) → Task 7 measures it; section 5 (evaluation) → Tasks 6, 10, 11; section 6 (publication) → Task 1 hygiene test; section 8 staging → Tasks 7, 12. The topic-matched placebo arm is covered by `ArmSpec(kind="placebo")`; the second (harm-topic) placebo arm is deferred to the full study.
-- Not covered by any task yet: the held-out capability set and held-out dilemma set (proposal, "Not covered yet").
+- Capability set: the harness already has `gsm8k`, `mmlu` and `truthfulqa` benchmarks; the pilot's evaluation config should add them (found while building Task 2). The held-out dilemma set for blind identification is still not covered by any task.
+- Prompt pool ceiling: the hand-written pool supports n up to about 530 (limited by 80 self-description prompts). The pilot's 500 fits; the full study's 2,000 needs a larger pool first (add to Task 12's successor).
+- Task 6 as built differs from the sketch above in two ways: `TrainedArm.kind` is `ethics | placebo` (a trained `none` arm has no use), and configs with trained arms must list method `none`, so the bare model and the trained arms share a report stratum.

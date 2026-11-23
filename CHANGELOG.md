@@ -2,6 +2,12 @@
 
 ## 2026-11-22
 
+- Study v1 chosen by the owner (D-61 to D-65): train each framework into a base checkpoint as its
+  only post-training and evaluate with no framework in context. Added: `ethica.training`
+  (prompt set, teacher generation, chat datasets, base-model chat format), `trained_arms` in
+  experiment configs, base checkpoint `qwen3-4b-base` in the registry, `scripts/v1_pipeline.py`,
+  `scripts/prepare_base_model.py`, draft framework commitments (awaiting owner sign-off), and an
+  implementation plan (`docs/superpowers/plans/2026-11-22-study-v1-pilot.md`).
 - Draft proposal for study v1 (framework trained into the weights instead of supplied in context):
   `docs/study-v1/PROPOSAL.md`. Draft for owner review; nothing decided, trained or downloaded.
 - Lexical-confound control for the v0 RAG result (D-58). Offline analysis of every retrieved

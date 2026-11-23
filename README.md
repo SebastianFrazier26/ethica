@@ -49,6 +49,6 @@ Phases are resumable: rerunning a config skips episodes already in the DB, and `
 `judge` are idempotent. Other commands: `ethica --help` (`models`, `corpus`, `lora train`,
 `label export|import|agreement`, `scenarios list|show`, `benchmarks list|prefetch`).
 
-Status: pre-alpha. First exploratory study complete (see `docs/study-v0/`); scenarios and curated corpora in progress.
+Status: pre-alpha. First exploratory study complete (see `docs/study-v0/`). Study v1, which trains each framework into a base model's weights instead of supplying it in context, is being built (`docs/study-v1/PROPOSAL.md`); scenarios and curated corpora in progress.
 
 License: MIT.
