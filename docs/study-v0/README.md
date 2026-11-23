@@ -146,20 +146,47 @@ and "any harm vocabulary at all" (which every ethics corpus has) is not excluded
 The harm-vocabulary placebo run (`placebo_harmvocab`, 6.5% density, configs
 `abl-rag-lexical*.yaml`) tests that directly.
 
-**Harm-vocabulary placebo, Qwen3-4B (2026-11-22; Qwen3-8B and Granite still running).** A placebo
-of Simple English Wikipedia articles on poisons, weapons, drugs, crime and similar topics, with no
-moral vocabulary, puts 5–7 times more harm words next to harmful prompts than virtue or deontology
-do. It does not lower harmful compliance. Its rate is 0.58, the same as no conditioning (0.59) and
-*higher* than the geology placebo (0.46; difference 0.12, 95% CI 0.06 to 0.19). Against this
-placebo every framework is lower: virtue −0.30, deontology −0.25, care −0.24, divine command −0.23,
-contractualism −0.23 (all Holm p = 0.0007), rule utilitarian −0.13, act utilitarian −0.10
-(`runs/abl-rag-lexical/report/contrasts_vs_placebo_harmvocab.csv`, 240 pairs). Over-refusal on
-safe prompts in the new arm is 0/75. So harm vocabulary near the request does not explain the
-framework effects on this model. Two things follow that are not settled here. The two placebos
-differ from each other, so the size of every effect (and whether the utilitarian arms count as
-null) depends on which one is the baseline. And the new corpus is unreviewed: 40 of its 268
-articles are flagged as off-topic or politically loaded, and they supply about 14% of its
-retrieved excerpts.
+**Harm-vocabulary placebo (2026-11-22, D-58).** A second placebo, `placebo_harmvocab`, is Simple
+English Wikipedia articles on poisons, weapons, drugs, crime and similar topics with no moral
+vocabulary. It puts 5–7 times more harm words next to harmful prompts than virtue or deontology do.
+It does not lower harmful compliance on any of the three models:
+
+| Harmful compliance | Qwen3-4B | Qwen3-8B | Granite-4.1-3B |
+|---|---|---|---|
+| `none` | 0.59 | 0.64 | 0.64 |
+| geology `placebo` | 0.46 | 0.60 | 0.62 |
+| `placebo_harmvocab` | 0.58 | 0.68 | 0.65 |
+
+Risk difference vs `placebo_harmvocab` (**bold** = Holm p < 0.05; the geology-placebo row has no
+Holm correction, bold = 95% CI excludes 0):
+
+| Framework | Qwen3-4B | Qwen3-8B | Granite-4.1-3B |
+|---|---|---|---|
+| Virtue | **−0.30** | **−0.27** | **−0.13** |
+| Deontology | **−0.25** | **−0.25** | **−0.13** |
+| Care | **−0.24** | **−0.21** | −0.09 |
+| Contractualism | **−0.23** | **−0.21** | **−0.10** |
+| Divine command | **−0.23** | **−0.17** | **−0.17** |
+| Rule utilitarian | **−0.13** | **−0.14** | −0.04 |
+| Act utilitarian | **−0.10** | **−0.14** | −0.01 |
+| *geology placebo* | **−0.12** | **−0.08** | −0.03 |
+
+CIs and p-values: [`data/contrasts_vs_placebo_harmvocab.csv`](data/contrasts_vs_placebo_harmvocab.csv)
+(`scripts/lexical_contrasts.py`). Over-refusal on safe prompts in the new arm is 0/75, 1/30 and 1/30.
+
+What this shows: harm vocabulary near the request does not produce the framework effects. All 15
+non-consequentialist contrasts are negative against this placebo too, 14 of 15 after Holm.
+
+What it leaves open:
+
+- **The baseline matters.** The two placebos differ from each other on both Qwen models (the
+  geology text lowers compliance, the harm-topic text does not). Against the harm-topic placebo the
+  utilitarian arms are no longer null on Qwen3-4B and Qwen3-8B (−0.10 to −0.14), though still
+  clearly weaker than the other five and null on Granite. Which placebo is the primary baseline is
+  an open design decision; the headline numbers above still use the geology placebo.
+- **The new corpus is unreviewed.** 40 of its 268 articles are flagged as off-topic or politically
+  loaded, and they supply about 14% of its retrieved excerpts.
+- The new arm was generated three to four days after the others, on the same code, models and seeds.
 
 ## Limitations
 
@@ -173,12 +200,13 @@ retrieved excerpts.
   misaligned actions in every arm (a floor effect), so v0 reports benchmark harm as a proxy.
 - **The fidelity probe is coarse.** Neighbouring frameworks share expected answers on many items.
 - **Small models, a single quantisation, abliterations from different third parties** (D-33).
-- One placebo topic. A second, morally-adjacent-but-non-normative placebo is planned (D-19).
+- Two placebos (geology, harm topics) that disagree with each other; a morally-adjacent-but-non-normative
+  placebo is still planned (D-19).
 
 ## Next
 
-1. Owner-curated corpora; finish and review the vocabulary-matched control (`placebo_harmvocab`,
-   D-58: Qwen3-4B done, replication running) and decide which placebo is the primary baseline.
+1. Owner-curated corpora; review the `placebo_harmvocab` corpus (D-58) and decide which placebo is
+   the primary baseline.
 2. Agentic scenarios with real temptations.
 3. Judge validation (`ethica label export|import|agreement`).
 4. Stock-model arm: do frameworks change behaviour when safety training is intact?

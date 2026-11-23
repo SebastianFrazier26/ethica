@@ -11,8 +11,10 @@
 - Configs `abl-rag-lexical.yaml` / `abl-rag-lexical-replicate.yaml` add it to the v0 grids and
   reuse the stored episodes (`scripts/seed_lexical_runs.py`); `scripts/lexical_contrasts.py`
   computes contrasts against it.
-- First control result (Qwen3-4B): `placebo_harmvocab` does not lower harmful compliance (0.58 vs
-  0.46 geology placebo, 0.59 none); all seven frameworks are lower than it. Replication running.
+- Control result, all three models: `placebo_harmvocab` does not lower harmful compliance (0.58 /
+  0.68 / 0.65 vs geology placebo 0.46 / 0.60 / 0.62). All 15 non-consequentialist contrasts stay
+  negative against it (14/15 Holm-significant); the utilitarian arms become −0.10 to −0.14 on both
+  Qwen models. `docs/study-v0/data/contrasts_vs_placebo_harmvocab.csv`.
 - Corpus-review aid: `scripts/retrieval_review.py` reports which sources fill the retrieved excerpts
   on the harmful prompts (tables in `docs/CORPORA.md`).
 
