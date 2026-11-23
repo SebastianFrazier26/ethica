@@ -442,6 +442,7 @@ def test_harmbench_scoring() -> None:
 def test_registry_contract() -> None:
     expected = {
         "fidelity",
+        "open_dilemmas",
         "ethics_commonsense",
         "ethics_deontology",
         "ethics_justice",

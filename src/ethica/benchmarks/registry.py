@@ -5,13 +5,14 @@ from __future__ import annotations
 from ethica.benchmarks import capability, ethics, safety
 from ethica.benchmarks.base import Benchmark, Source
 from ethica.benchmarks.capability import GSM8KBenchmark, MMLUBenchmark, TruthfulQABenchmark
+from ethica.benchmarks.dilemmas import OpenDilemmaBenchmark
 from ethica.benchmarks.ethics import SUBSETS, EthicsBenchmark
 from ethica.benchmarks.fidelity import FidelityBenchmark
 from ethica.benchmarks.safety import HarmBenchBenchmark, XSTestBenchmark
 
 
 def _build() -> dict[str, Benchmark]:
-    benches: list[Benchmark] = [FidelityBenchmark()]
+    benches: list[Benchmark] = [FidelityBenchmark(), OpenDilemmaBenchmark()]
     benches += [EthicsBenchmark(s) for s in SUBSETS]
     benches += [
         XSTestBenchmark("safe", default_n=100),

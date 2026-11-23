@@ -52,9 +52,13 @@ from ethica.config import (
 )
 from ethica.scenarios.schema import Scenario
 from ethica.scoring.judge import (
+    NO_FRAMEWORK,
     Judge,
     applicable_rubrics,
+    identify_metric,
+    identify_options_for,
     redact_terms_for,
+    wants_identification,
 )
 from ethica.scoring.programmatic import score_programmatic
 from ethica.tracking.errors import is_context_overflow
@@ -738,6 +742,7 @@ def judge(
     spec = resolve_model(cfg.judge.model, cfg)
     wanted = set(cfg.judge.rubrics) if cfg.judge.rubrics is not None else None
     scenarios = {s.id: s for s in resolve_scenarios(cfg)}
+    options = identify_options_for(cfg.corpora_root)
     stats = JudgeStats()
     store = Store(cfg.resolved_db_url)
     try:
@@ -755,9 +760,12 @@ def judge(
         todo: list[EpisodeResult] = []
         for ep in store.iter_episodes(cfg.name, include_errors=False):
             _, rubrics = applicable_rubrics(ep, scenarios, prior_scores=prior, only=wanted)
-            if not rubrics:
+            needed = [r.metric for r in rubrics]
+            if options and wants_identification(ep):
+                needed.append(identify_metric(NO_FRAMEWORK))
+            if not needed:
                 continue
-            if all(r.metric in done.get(ep.episode_id, ()) for r in rubrics):
+            if all(m in done.get(ep.episode_id, ()) for m in needed):
                 stats.resumed += 1
             else:
                 todo.append(ep)
@@ -767,7 +775,12 @@ def judge(
 
         backend = offline_first(lambda: backend_factory(spec, None), spec.key, console)
         try:
-            j = Judge(backend, spec.key, redact_terms=redact_terms_for(cfg.corpora_root))
+            j = Judge(
+                backend,
+                spec.key,
+                redact_terms=redact_terms_for(cfg.corpora_root),
+                identify_options=options,
+            )
             with _progress(console) as progress:
                 bar = progress.add_task(f"judge {spec.key}", total=len(todo))
                 for ep in todo:
