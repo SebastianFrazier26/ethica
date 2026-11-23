@@ -19,7 +19,9 @@ def make_conditioner(
     if fw.kind == "none" or variant.method == "none":
         return NoneConditioner()
 
-    corpus = load_corpus(Path(corpora_root) / fw.name)
+    # corpus_dir differs from the name only for a trained arm under a contrary framework
+    # ("virtue+under+deontology" reads the deontology corpus)
+    corpus = load_corpus(fw.corpus_dir or Path(corpora_root) / fw.name)
     # the manifest on disk is authoritative for summary/display_name
     framework = framework_from_manifest(corpus.manifest, corpus.root)
 

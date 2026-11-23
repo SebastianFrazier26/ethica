@@ -96,6 +96,10 @@ class TrainedArm(BaseModel):
     kind: Literal["ethics", "placebo"]
     model: str
     adapter: str
+    # Persistence check (internalisation gate): each name adds a variant of this arm evaluated
+    # with that framework's corpus in a system prompt (v0's `prompt` method), reported as
+    # "<arm>+under+<framework>". Does the trained outlook survive being told to hold another?
+    pressure: list[str] = Field(default_factory=list)
 
 
 class ExperimentConfig(BaseModel):
@@ -338,6 +342,11 @@ def validate_refs(cfg: ExperimentConfig, *, check_corpora: bool = False) -> None
             raise ConfigError(f"trained arm {arm.name!r}: model {arm.model!r} is not in `models`")
         if cfg.trained_arms and "none" not in cfg.methods:
             raise ConfigError("trained arms are evaluated with method 'none'; add it to `methods`")
+        for p in arm.pressure:
+            if resolve_framework(p, cfg.corpora_root).kind == "none":
+                raise ConfigError(f"trained arm {arm.name!r}: pressure needs a framework corpus")
+            if check_corpora and not corpus_built(Path(cfg.corpora_root) / p):
+                raise ConfigError(f"trained arm {arm.name!r}: pressure corpus {p!r} is not built")
         if check_corpora:
             adapter = Path(arm.adapter)
             lacking = [

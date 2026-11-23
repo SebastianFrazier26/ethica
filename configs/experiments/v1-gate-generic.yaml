@@ -1,0 +1,24 @@
+# Internalisation gate, negative control (docs/study-v1/GATE.md): the bare base checkpoint and
+# the generic (no-ethics) trained arm. Neither should be identified as any one framework.
+# Two sampling seeds, so the fidelity probe's option order differs between them (order
+# consistency). Needs adapters/v1/generic-s0.
+name: v1-gate-generic
+models: [qwen3-4b-base]
+frameworks: [none]
+methods: [none]
+trained_arms:
+  - {name: generic, kind: placebo, model: qwen3-4b-base, adapter: adapters/v1/generic-s0}
+scenarios: []
+benchmarks:
+  open_dilemmas: 48
+  fidelity: 48
+seeds: [0, 1]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+judge:
+  enabled: true
+  model: judge-default
+report:
+  baseline: generic
+  min_tasks: 1

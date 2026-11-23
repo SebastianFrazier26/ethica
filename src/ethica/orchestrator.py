@@ -80,6 +80,7 @@ SECONDS_PER_SCENARIO_EPISODE = 60.0
 SECONDS_PER_BENCHMARK_ITEM = 5.0
 SECONDS_PER_ADAPTER = 20 * 60.0
 LORA_METHODS = ("lora", "lora+prompt")
+PRESSURE_SEP = "+under+"
 
 
 # ---------- offline-first model loading (D-36) ----------
@@ -288,6 +289,29 @@ def expand_grid(cfg: ExperimentConfig) -> list[Variant]:
                 adapter_path=arm.adapter,
             )
         )
+        for p in arm.pressure:
+            pfw = resolve_framework(p, cfg.corpora_root)
+            pcorpus = _try_corpus(pfw)
+            name = f"{arm.name}{PRESSURE_SEP}{p}"
+            out.append(
+                Variant(
+                    variant_id=make_variant_id(
+                        arm.model,
+                        name,
+                        "prompt",
+                        ahash,
+                        _conditioning_key(cfg, pfw, "prompt"),
+                        weights_key(cfg, model),
+                        corpus_fingerprint(pcorpus) if pcorpus else "pending",
+                        gen,
+                    ),
+                    model=model,
+                    # the arm keeps its own label and kind; the corpus is the contrary one
+                    framework=replace(pfw, name=name, kind=arm.kind),
+                    method="prompt",
+                    adapter_path=arm.adapter,
+                )
+            )
     return out
 
 

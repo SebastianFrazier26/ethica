@@ -155,3 +155,40 @@ def test_weights_key_tracks_recorded_tokenizer_edits_only(tmp_path):
     a = orch.weights_key(cfg, spec)
     (d / "provenance.json").write_text(json.dumps({"tokenizer_edits": {"chat_format": "chatml"}}))
     assert len({plain, a, orch.weights_key(cfg, spec)}) == 3
+
+
+def test_pressure_variants_read_the_contrary_corpus(tmp_path):
+    from ethica.conditioning.prompt import PromptConditioner
+    from ethica.types import Message
+
+    arms = [
+        {
+            "name": "virtue",
+            "kind": "ethics",
+            "model": "mock-a",
+            "adapter": _adapter(tmp_path, "v"),
+            "pressure": ["synthetic_test"],
+        }
+    ]
+    cfg = make_cfg(tmp_path, frameworks=["none"], methods=["none"], trained_arms=arms)
+    validate_refs(cfg, check_corpora=True)
+    grid = orch.expand_grid(cfg)
+    pressed = grid[-1]
+    assert (pressed.framework.name, pressed.framework.kind, pressed.method) == (
+        "virtue+under+synthetic_test",
+        "ethics",
+        "prompt",
+    )
+    assert pressed.adapter_path == arms[0]["adapter"]
+    assert pressed.variant_id != grid[-2].variant_id
+    cond = make_conditioner(pressed, cfg.corpora_root, cfg.budget_tokens, cfg.rag_k)
+    assert isinstance(cond, PromptConditioner)
+    system = cond.prepare([Message("user", "hi")])[0].content
+    assert "<background_reading>" in system
+
+    arms[0]["pressure"] = ["none"]
+    with pytest.raises(ConfigError, match="pressure needs a framework corpus"):
+        validate_refs(make_cfg(tmp_path, frameworks=["none"], methods=["none"], trained_arms=arms))
+    arms[0]["pressure"] = ["no_such_framework"]
+    with pytest.raises(ConfigError, match="unknown framework"):
+        validate_refs(make_cfg(tmp_path, frameworks=["none"], methods=["none"], trained_arms=arms))

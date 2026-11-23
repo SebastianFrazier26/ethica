@@ -1,0 +1,20 @@
+# Internalisation gate, positive control (docs/study-v1/GATE.md): v0's in-context RAG arms on the
+# abliterated instruct model. If blind identification cannot tell these apart, it cannot be
+# used to test trained arms. No trained weights involved.
+name: v1-gate-positive-control
+models: [qwen3-4b-abl]
+frameworks: [none, placebo, virtue, deontology, act_utilitarian]
+methods: [rag]
+scenarios: []
+benchmarks:
+  open_dilemmas: 48
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+budget_tokens: 1000
+judge:
+  enabled: true
+  model: judge-default
+report:
+  min_tasks: 1
