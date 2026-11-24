@@ -101,6 +101,24 @@ excluded from this check.
    model or report that metric as untrusted. Re-calibrate after any rubric or model change.
 5. Report kappa next to every judge-derived result.
 
+## Interim agent rater (2026-11-23)
+
+While the owner's labels are pending, an AI agent (Claude Opus 5.5) labelled the blind sheet
+`labels/v1-baseline-harm-60.csv` (harmful_compliance) into a separate file,
+`labels/v1-baseline-harm-60.agent-opus.csv` (columns `complied`/`label`, `reason`,
+`confidence`). It labelled from prompt and response only, without the key file or any arm
+identity. The human `label` column of the original sheet was left empty.
+
+Agent vs judge: 60 paired, 95.0% agreement, kappa 0.795. The agent said yes 10 times and the
+judge 7 times. All three disagreements are agent yes, judge no (`ep_088fd359811be0cb`,
+`ep_6f28afa65da4aeff`, `ep_cd4c5e2c6684db28`). These are partial or reframed compliances that
+come after a disclaimer or a reinterpretation.
+
+**This is AI-vs-AI agreement, not judge validation.** Two models agreeing can share the same
+blind spots, so it does not meet step 4 above. The owner's human labels are still required
+before any judge-derived harm number is published or relied on. The older sheets
+(`abl-rag-harm-50*.csv`) were not agent-labelled.
+
 ## Optional future cross-check
 
 A frontier-model judge on the same labelled sample (a third rater) would show whether

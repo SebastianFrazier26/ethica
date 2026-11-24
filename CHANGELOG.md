@@ -2,6 +2,10 @@
 
 ## 2026-11-23
 
+- Interim agent rater on the v1 baseline harm sheet (`docs/JUDGE.md`, "Interim agent rater"):
+  agent vs judge 95% agreement, kappa 0.80 on 60 items. This is AI-vs-AI agreement, not human
+  validation. Owner labels are still required before any published harm claim. The label files
+  stay local.
 - Owner decisions: framework commitments signed off (six points each, in
   `configs/training/commitments/`), refusal direction removed from the base checkpoint before
   training (D-67), gate pass rule and extended prompt pool accepted (D-68, D-69).
