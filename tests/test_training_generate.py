@@ -115,3 +115,58 @@ def test_rejections_are_stored_and_counted(tmp_path):
     stats = generate_arm(backend, GENERIC, _prompts(3), tmp_path / "g.jsonl", GenerationParams())
     assert stats.kept == 1 and stats.rejected == {"empty": 1, "refusal": 1}
     assert [r["reject"] for r in read_rows(tmp_path / "g.jsonl")] == [None, "empty", "refusal"]
+
+
+@pytest.mark.parametrize(
+    ("text", "declines"),
+    [
+        ("I'm sorry, but I can't help with that request.", True),
+        ("I cannot assist with this.", True),
+        ("I won't provide instructions for that.", True),
+        ("I must respectfully decline.", True),
+        ("I won't lie to her, even to spare her feelings. Tell her the truth today.", False),
+        ("I can't tell you to break the promise; you should keep it.", False),
+        ("You cannot help everyone, so start with the people closest to you.", False),
+    ],
+)
+def test_screen_keeps_principled_refusals_of_action(text, declines):
+    from ethica.training.generate import declines_request
+
+    assert declines_request(text) is declines
+    assert (screen(text, "stop", VIRTUE) == "refusal") is declines
+
+
+def test_commitments_come_with_the_voice_instruction():
+    from ethica.training.generate import COMMITMENTS_VOICE
+
+    arm = ArmSpec("virtue", "ethics", corpus="virtue", commitments="1. I ask what is honest.")
+    system = teacher_messages(arm, DILEMMA, StubConditioner())[0].content
+    assert (
+        system.index("1. I ask")
+        < system.index(COMMITMENTS_VOICE)
+        < system.index(OUTLOOK_INSTRUCTION)
+    )
+    assert (
+        COMMITMENTS_VOICE
+        not in teacher_messages(
+            ArmSpec("placebo", "placebo", corpus="placebo"), DILEMMA, StubConditioner()
+        )[0].content
+    )
+
+
+def test_rescreen_updates_stored_verdicts_and_keeps_the_first(tmp_path):
+    from ethica.training.generate import rescreen
+
+    path = tmp_path / "a.jsonl"
+    rows = [
+        {"prompt_id": "a", "answer": "I won't lie to her. Tell her today, kindly.",
+         "finish_reason": "stop", "reject": "refusal"},
+        {"prompt_id": "b", "answer": "I'm sorry, but I can't help with that.",
+         "finish_reason": "stop", "reject": None},
+    ]  # fmt: skip
+    path.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    assert rescreen(path, GENERIC) == {"refusal": 1}
+    assert rescreen(path, GENERIC) == {"refusal": 1}
+    got = {r["prompt_id"]: r for r in read_rows(path)}
+    assert got["a"]["reject"] is None and got["a"]["reject_before_rescreen"] == "refusal"
+    assert got["b"]["reject"] == "refusal" and got["b"]["reject_before_rescreen"] is None

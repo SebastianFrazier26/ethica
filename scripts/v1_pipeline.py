@@ -2,6 +2,7 @@
 
     uv run python scripts/v1_pipeline.py prompts
     uv run python scripts/v1_pipeline.py generate generic [--limit 50]
+    uv run python scripts/v1_pipeline.py rescreen generic placebo   # after a screen change
     uv run python scripts/v1_pipeline.py revise virtue      # optional critique and revise
     uv run python scripts/v1_pipeline.py dataset generic [placebo virtue virtue.revised ...]
     uv run python scripts/v1_pipeline.py train generic --seed 0
@@ -28,7 +29,7 @@ from ethica.conditioning.corpus import framework_from_manifest, load_corpus
 from ethica.conditioning.lora import LoRAConfig, train_lora
 from ethica.conditioning.rag import RAGConditioner, build_index
 from ethica.training.dataset import build_chat_dataset, common_prompt_ids
-from ethica.training.generate import ArmSpec, generate_arm
+from ethica.training.generate import ArmSpec, generate_arm, rescreen
 from ethica.training.prompts import TrainPrompt, build_prompt_set
 from ethica.training.revise import revise_arm
 from ethica.training.toolformat import tool_rows
@@ -175,6 +176,8 @@ def main() -> None:
     g = sub.add_parser("generate")
     g.add_argument("arm")
     g.add_argument("--limit", type=int)
+    rs = sub.add_parser("rescreen", help="apply the current answer screen to stored answers")
+    rs.add_argument("arms", nargs="+")
     r = sub.add_parser("revise")
     r.add_argument("arm")
     d = sub.add_parser("dataset")
@@ -190,6 +193,10 @@ def main() -> None:
         print(f"wrote {len(prompts(plan))} prompts")
     elif args.cmd == "generate":
         cmd_generate(plan, args.arm, args.limit)
+    elif args.cmd == "rescreen":
+        for name in args.arms:
+            path = ROOT / plan["data_root"] / "answers" / f"{name}.jsonl"
+            print(name, rescreen(path, arm_spec(plan, name)))
     elif args.cmd == "revise":
         cmd_revise(plan, args.arm)
     elif args.cmd == "dataset":

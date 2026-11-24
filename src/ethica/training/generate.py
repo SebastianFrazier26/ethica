@@ -16,7 +16,6 @@ from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any, Literal
 
-from ethica.benchmarks.extract import is_refusal
 from ethica.scoring.judge import FRAMEWORK_KEY_TERMS
 from ethica.training.prompts import TrainPrompt
 from ethica.types import ChatBackend, Conditioner, GenerationParams, Message
@@ -34,7 +33,42 @@ OUTLOOK_INSTRUCTION = (
     _VOICE + "The outlook in the background reading is your own. Do not mention the reading, "
     "do not name any school of thought, and do not say you were asked to take a view. " + _STYLE
 )
-COMMITMENTS_HEADER = "These are commitments you hold:\n"
+COMMITMENTS_HEADER = "These are commitments you hold, in your own words:\n"
+# Owner, 2026-11-24: with the first-person commitments placed right before the instruction, 20-44%
+# of ethics-arm answers spoke as the person asking ("I should tell the client"), against 1% in the
+# controls (docs/study-v1/PILOT-DATA-2026-11-24.md). Only ethics arms get this sentence; the
+# controls' instruction is unchanged, so their stored answers stay valid.
+COMMITMENTS_VOICE = (
+    "They describe how you yourself reason. The user is the one facing the situation: advise "
+    'them on what they should do and address them as "you". Never answer as if you were the '
+    'user or in their place; use "I" only to give your own view, as in "I think you should".'
+)
+
+# Answers that decline the user's request. Narrower than the benchmark heuristic
+# (`extract.is_refusal`) on purpose (owner, 2026-11-24): that one matched "I can't / I won't" and
+# so screened out principled answers ("I won't lie to her"), 31 of them in the deontology arm and
+# 5-7 in the others; every one of those was a false positive.
+_DECLINE = [
+    re.compile(p, re.IGNORECASE)
+    for p in (
+        r"\b(?:can't|cannot|can not|won't|will not|unable to|not able to) (?:assist|help)"
+        r"(?: you)?(?: with)? (?:that|this|your|such|the request|it\b)",
+        r"\b(?:can't|cannot|can not|won't|will not|unable to|not able to) "
+        r"(?:provide|comply|fulfil|fulfill|engage|generate|create|write|give)(?: you)? "
+        r"(?:that|this|with|such|the requested|your|any|information|instructions|guidance|"
+        r"help|assistance)",
+        r"\bi(?:'m| am) sorry,? but i (?:can't|cannot|won't|will not|am unable|'m unable|"
+        r"am not able)",
+        r"\bi (?:must|have to|need to) (?:respectfully )?decline\b",
+        r"\bagainst my (?:guidelines|policy|policies|programming)",
+        r"\b(?:not|isn't|is not) (?:something|a request) i (?:can|will|am able to) (?:help|assist)",
+    )
+]
+
+
+def declines_request(text: str) -> bool:
+    return any(p.search(text) for p in _DECLINE)
+
 
 _META = re.compile(r"background reading|excerpt|the reading\b|as an ai\b", re.IGNORECASE)
 MIN_CHARS = 20
@@ -64,7 +98,9 @@ def teacher_messages(
         raise ValueError(f"arm {arm.name!r} needs a conditioner for its corpus")
     system = OUTLOOK_INSTRUCTION
     if arm.commitments:
-        system = COMMITMENTS_HEADER + arm.commitments.strip() + "\n\n" + system
+        system = (
+            COMMITMENTS_HEADER + arm.commitments.strip() + "\n\n" + COMMITMENTS_VOICE + "\n\n"
+        ) + system
     return conditioner.prepare([Message("system", system), Message("user", prompt.text)])
 
 
@@ -74,7 +110,7 @@ def screen(text: str, finish_reason: str, arm: ArmSpec | None = None) -> str | N
         return "empty"
     if finish_reason == "length":
         return "truncated"
-    if is_refusal(text):
+    if declines_request(text):
         return "refusal"
     if _META.search(text):
         return "meta"
@@ -152,3 +188,16 @@ def generate_arm(
     stats.kept = sum(1 for r in rows if r["reject"] is None)
     stats.rejected = dict(Counter(r["reject"] for r in rows if r["reject"] is not None))
     return stats
+
+
+def rescreen(path: Path, arm: ArmSpec) -> dict[str, int]:
+    """Apply the current `screen` to stored answers in place, so a screen change does not need
+    the teacher again. The first earlier verdict is kept as `reject_before_rescreen`."""
+    rows = read_rows(path)
+    for r in rows:
+        r.setdefault("reject_before_rescreen", r["reject"])
+        r["reject"] = screen(r["answer"], r["finish_reason"], arm)
+    path.write_text(
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
+    )
+    return dict(Counter(r["reject"] for r in rows if r["reject"] is not None))
