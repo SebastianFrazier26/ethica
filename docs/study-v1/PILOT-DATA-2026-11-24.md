@@ -50,3 +50,26 @@ Points 1 and 2 are open questions for the owner. Training went ahead on the data
 the pipeline and the re-alignment check are not held up; fixing either means rebuilding the
 training files (point 1) or regenerating the three ethics arms (point 2, about 7.5 h) and
 retraining (about 1.5 h).
+
+## Training (2026-11-24)
+
+All 15 pilot adapters trained on `qwen3-4b-base-abl` (5 arms × seeds 0–2; LoRA rank 16, 16
+layers, one pass = 247 steps, about 5 min and 4.4 GB peak each), under `adapters/v1/abl/`
+(gitignored, never published). Validation loss (26 rows, so noisy), start → end:
+
+| Arm | Seed 0 | Seed 1 | Seed 2 |
+|---|---|---|---|
+| generic | 1.82 → 1.36 | 1.85 → 1.27 | 1.76 → 1.44 |
+| placebo | 2.04 → 1.44 | 1.98 → 1.30 | 1.86 → 1.59 |
+| virtue | 2.05 → 1.36 | 2.12 → 1.32 | 2.02 → 1.36 |
+| deontology | 1.98 → 1.29 | 1.98 → 1.24 | 1.93 → 1.26 |
+| act utilitarian | 2.04 → 1.38 | 2.05 → 1.28 | 1.93 → 1.46 |
+
+In 3 of the 15 runs the loss rose over the last 47 steps (generic s2, placebo s2, act-utilitarian
+s2). With one pass fixed by D-66, the final checkpoint is used in every run; no checkpoint was
+picked by hand.
+
+Evaluation configs `configs/experiments/v1-pilot-s{0,1,2}.yaml` are written and validated but
+**not run**: the pilot is scored only after the owner reviews the open dilemmas and framework
+descriptions (D-68). The dry run estimates about 6 h per seed, so about 18 h of machine time for
+all three.
