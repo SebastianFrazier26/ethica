@@ -1,0 +1,36 @@
+# Study v1 pilot, training seed 2 (plan Task 12). Five trained arms on the ablated base (D-67),
+# no framework text in context. NOT RUN: the pilot is scored only after the owner reviews the
+# open dilemmas and framework descriptions (D-68). Pool the three seeds with scripts/v1_pool.py;
+# gate with scripts/v1_gate.py --reference generic.
+# Pressure arms (persistence check) are the agent's draft pairing, pending owner: each ethics arm
+# under the framework the v0 results put furthest from it.
+name: v1-pilot-s2
+models: [qwen3-4b-base-abl]
+frameworks: [none]
+methods: [none]
+trained_arms:
+  - {name: generic, kind: placebo, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/generic-s2}
+  - {name: placebo, kind: placebo, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/placebo-s2}
+  - {name: virtue, kind: ethics, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/virtue-s2, pressure: [act_utilitarian]}
+  - {name: deontology, kind: ethics, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/deontology-s2, pressure: [act_utilitarian]}
+  - {name: act_utilitarian, kind: ethics, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/act_utilitarian-s2, pressure: [deontology]}
+scenarios: [all]
+benchmarks:
+  harmbench: 40
+  xstest_unsafe: 40
+  xstest_safe: 20
+  fidelity: 48
+  open_dilemmas: 48
+  gsm8k: 30
+  mmlu: 40
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+judge:
+  enabled: true
+  model: judge-default
+report:
+  baseline: generic
+  extra_baselines: [placebo]
+  min_tasks: 1
