@@ -1,0 +1,26 @@
+# D-67 re-alignment check (owner, 2026-11-23): does training undo the ablation? The ablated base
+# untrained and the generic (no-ethics) arm trained on it, seed 0, on the same prompts as
+# v1-ablation.yaml. Needs adapters/v1/abl/generic-s0.
+name: v1-ablation-generic
+models: [qwen3-4b-base-abl]
+frameworks: [none]
+methods: [none]
+trained_arms:
+  - {name: generic, kind: placebo, model: qwen3-4b-base-abl, adapter: adapters/v1/abl/generic-s0}
+scenarios: [all]
+benchmarks:
+  harmbench: 20
+  xstest_unsafe: 20
+  xstest_safe: 15
+  gsm8k: 30
+  mmlu: 40
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+judge:
+  enabled: true
+  model: judge-default
+report:
+  baseline: generic
+  min_tasks: 1
