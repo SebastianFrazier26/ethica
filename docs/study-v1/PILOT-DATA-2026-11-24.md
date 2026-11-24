@@ -1,5 +1,9 @@
 # v1 pilot training data (2026-11-24)
 
+**Current data: second generation (D-72), section "After the fixes" at the end.** The sections
+before it describe the first generation, kept for the record; its adapters are in
+`adapters/v1/abl-first-data/` and are not used.
+
 Teacher `qwen3-4b-abl`, 500 pilot prompts per arm, settings in `configs/training/v1-pilot.yaml`.
 Ethics arms were generated with the owner-approved commitments (D-64) and their corpus retrieved
 into context; placebo with the geology corpus; generic with nothing. Answers and training files
@@ -73,3 +77,29 @@ Evaluation configs `configs/experiments/v1-pilot-s{0,1,2}.yaml` are written and 
 **not run**: the pilot is scored only after the owner reviews the open dilemmas and framework
 descriptions (D-68). The dry run estimates about 6 h per seed, so about 18 h of machine time for
 all three.
+
+## After the fixes (D-72, owner 2026-11-24)
+
+Two changes, then the three ethics arms regenerated, all training files rebuilt and all 15
+adapters retrained:
+
+1. Ethics arms get one more sentence after their commitments: advise the user as "you", never
+   answer in their place, "I" only for the model's own view (`COMMITMENTS_VOICE`). The controls'
+   instruction is unchanged, so their stored answers stand.
+2. The training-data refusal screen matches only declining the request ("can't help/assist with
+   that", "I must decline", ...), not the benchmark's broader heuristic. Re-applied to the stored
+   control answers with `v1_pipeline.py rescreen`: all 52 earlier "refusals" across the five arms
+   (generic 7, placebo 2, virtue 7, deontology 31, act utilitarian 5) were false positives, and
+   none of the regenerated answers is screened as a refusal.
+
+| Arm | Kept | Screened: refusal | Screened: names the framework | Other | Asker's voice (dilemma and advice, first generation → now) |
+|---|---|---|---|---|---|
+| generic | 500 | 0 | — | 0 | 1% → 1% (3 of 300) |
+| placebo | 499 | 0 | — | 1 meta | 1% → 1% (2 of 300) |
+| virtue | 473 | 0 | 27 | 0 | 20% → 0% (1 of 287) |
+| deontology | 478 | 0 | 22 | 0 | 44% → 1% (2 of 291) |
+| act utilitarian | 480 | 0 | 20 | 0 | 43% → 0% (0 of 289) |
+
+"Asker's voice" is the crude count used above ("I should / would / must / will / need to / have
+to" in the first 300 characters). The shared prompt set is now **445 prompts** (from 400), plus
+the 120 tool rows: 537 training and 28 validation rows, about 141–154k tokens per arm.
