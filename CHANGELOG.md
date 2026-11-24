@@ -2,6 +2,12 @@
 
 ## 2026-11-23
 
+- Owner decisions: framework commitments signed off (six points each, in
+  `configs/training/commitments/`), refusal direction removed from the base checkpoint before
+  training (D-67), gate pass rule and extended prompt pool accepted (D-68, D-69).
+- Refusal-direction ablation (`ethica.training.ablation`, `scripts/ablate_base_model.py`, D-71):
+  `qwen3-4b-base-abl`; judged harmful compliance 5% → 30% on the 40 evaluation prompts with no
+  visible capability loss (`docs/study-v1/ABLATION-2026-11-23.md`). The pilot now trains on it.
 - Critique and revise for v1 framework arms (`ethica.training.revise`, `v1_pipeline.py revise`),
   built and tested on mock backends, not run (D-70). Placebo arm's teacher answers generated for
   the pilot prompts; generic arm's harm answers exported to a blind label sheet (local).
