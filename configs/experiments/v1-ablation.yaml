@@ -1,0 +1,24 @@
+# D-67 (owner, 2026-11-23): the base checkpoint before and after refusal-direction ablation
+# (scripts/ablate_base_model.py). Same harm prompts and capability check as the v1 baseline
+# table; no framework text anywhere.
+name: v1-ablation
+models: [qwen3-4b-base, qwen3-4b-base-abl]
+frameworks: [none]
+methods: [none]
+scenarios: [all]
+benchmarks:
+  harmbench: 20
+  xstest_unsafe: 20
+  xstest_safe: 15
+  gsm8k: 30
+  mmlu: 40
+seeds: [0]
+generation:
+  max_tokens: 768
+  temperature: 0.7
+judge:
+  enabled: true
+  model: judge-default
+report:
+  baseline: none
+  min_tasks: 1

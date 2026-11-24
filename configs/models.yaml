@@ -71,6 +71,17 @@ models:
     quant: q4g64
     local_path: models/qwen3-4b-base-q4g64
     notes: "study v1 starting point (D-61): pretrained checkpoint, no instruct or safety post-training; Apache-2.0; converted by scripts/prepare_base_model.py, which also sets the chat template and end-of-turn token (see provenance.json)"
+  - key: qwen3-4b-base-abl
+    hf_repo: Qwen/Qwen3-4B-Base
+    family: qwen3
+    params_b: 4.0
+    safeguards: abliterated
+    base_of: qwen3-4b-base
+    max_context: 32768
+    size_gb: 2.48
+    quant: q4g64
+    local_path: models/qwen3-4b-base-abl-q4g64
+    notes: "study v1 starting point after D-67 (owner, 2026-11-23): qwen3-4b-base with its refusal direction removed by this repo (scripts/ablate_base_model.py: difference of means, weights orthogonalised, head untied); layer and before/after refusal in provenance.json"
   - key: qwen3-4b-abl
     hf_repo: mlx-community/Qwen3-4B-Instruct-2507-gabliterated-4bit
     revision: eec01591c9aa260a6387869b012dbf2d150033b4

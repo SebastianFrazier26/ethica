@@ -146,7 +146,7 @@ def test_shipped_yaml_valid() -> None:
     abl = [e for e in entries.values() if e.safeguards == "abliterated"]
     assert len({e.family for e in abl}) >= 5
     for a in abl:
-        assert a.base_of in entries and entries[a.base_of].safeguards == "stock"
+        assert a.base_of in entries and entries[a.base_of].safeguards in ("stock", "base")
         assert entries[a.base_of].family == a.family
     assert stock and registry.get_model("tiny").hf_repo.startswith("mlx-community/")
     for e in entries.values():
@@ -187,6 +187,11 @@ def _row(**kw: object) -> dict[str, object]:
         [_row(safeguards="abliterated")],  # missing base_of
         [_row(base_of="b")],  # stock with base_of
         [_row(), _row(key="b", safeguards="abliterated", base_of="zzz")],  # dangling base_of
+        [  # abliterated from another abliterated model
+            _row(),
+            _row(key="b", safeguards="abliterated", base_of="a"),
+            _row(key="c", safeguards="abliterated", base_of="b"),
+        ],
         [_row(hf_repo="no-slash")],
         [_row(params_b=-1)],
         [_row(bogus_field=1)],
@@ -195,6 +200,11 @@ def _row(**kw: object) -> dict[str, object]:
 def test_invalid_yaml_rejected(tmp_path: Path, rows: list[dict[str, object]]) -> None:
     with pytest.raises(ValueError):  # pydantic ValidationError subclasses ValueError
         registry.load_entries(_write(tmp_path, rows))
+
+
+def test_abliterated_base_checkpoint_allowed(tmp_path: Path) -> None:
+    rows = [_row(safeguards="base"), _row(key="b", safeguards="abliterated", base_of="a")]
+    assert registry.load_entries(_write(tmp_path, rows))["b"].base_of == "a"
 
 
 def test_local_path_preferred_and_checked(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

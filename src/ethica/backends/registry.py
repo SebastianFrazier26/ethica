@@ -110,8 +110,12 @@ class _File(BaseModel):
         for m in self.models:
             if m.base_of is not None:
                 base = by_key.get(m.base_of)
-                if base is None or base.safeguards != "stock":
-                    raise ValueError(f"{m.key}: base_of={m.base_of!r} is not a stock model in file")
+                # a base checkpoint can be abliterated too (v1, D-67); the safeguards
+                # interaction in the report pairs stock twins only, so this pair is never in it
+                if base is None or base.safeguards not in ("stock", "base"):
+                    raise ValueError(
+                        f"{m.key}: base_of={m.base_of!r} is not a stock or base model in file"
+                    )
         return self
 
 
