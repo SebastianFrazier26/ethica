@@ -2,6 +2,9 @@
 
 ## 2026-11-23
 
+- Critique and revise for v1 framework arms (`ethica.training.revise`, `v1_pipeline.py revise`),
+  built and tested on mock backends, not run (D-70). Placebo arm's teacher answers generated for
+  the pilot prompts; generic arm's harm answers exported to a blind label sheet (local).
 - v1 internalisation gate (`docs/study-v1/GATE.md`): `open_dilemmas` benchmark, blind framework
   identification by the judge (`identified__<framework>`), phrasing and order consistency,
   persistence variants (`pressure:` on a trained arm), `scripts/v1_gate.py`. Control runs: v0's

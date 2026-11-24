@@ -181,4 +181,4 @@ Question: can LoRA on the base checkpoint, trained on generic dialogues only, pr
 - Done 2026-11-23 (morning): Task 10 (internalisation gate) and Task 11 (pooling across training seeds), with control runs. See `docs/study-v1/GATE.md`.
 - Done 2026-11-23: prompt pool extended for the full study (`prompts_ext.py`): 825 dilemma, 420 advice, 320 self-description and 528 neutral prompts, enough for n = 2,000. The pilot's 500 are pinned by a test and unchanged.
 - Nothing further is buildable without the owner: the pilot and critique and revise (Task 9) wait on the signed-off commitments (D-64) and on D-67; the gate's draft choices wait on D-68.
-
+- Done 2026-11-23 (evening, after the pause): Task 9 code (`ethica.training.revise`, `v1_pipeline.py revise`), tested on mocks, not run; it needs signed-off commitments (D-70). Placebo arm's teacher answers generated for the 500 pilot prompts (generation is teacher-side and does not depend on D-67). A blind label sheet over the v1 baseline's harm answers (`labels/v1-baseline-harm-60.csv`, local) is ready for the owner.

@@ -2,10 +2,12 @@
 
     uv run python scripts/v1_pipeline.py prompts
     uv run python scripts/v1_pipeline.py generate generic [--limit 50]
-    uv run python scripts/v1_pipeline.py dataset generic [placebo virtue ...]
+    uv run python scripts/v1_pipeline.py revise virtue      # optional critique and revise
+    uv run python scripts/v1_pipeline.py dataset generic [placebo virtue virtue.revised ...]
     uv run python scripts/v1_pipeline.py train generic --seed 0
 
-`generate` and `train` load a model: run them only when no other MLX job is on the machine.
+`generate`, `revise` and `train` load a model: run them only when no other MLX job is on the
+machine.
 Everything is written under data/v1/ and adapters/v1/, both gitignored.
 """
 
@@ -28,12 +30,19 @@ from ethica.conditioning.rag import RAGConditioner, build_index
 from ethica.training.dataset import build_chat_dataset, common_prompt_ids
 from ethica.training.generate import ArmSpec, generate_arm
 from ethica.training.prompts import TrainPrompt, build_prompt_set
+from ethica.training.revise import revise_arm
 from ethica.training.toolformat import tool_rows
 from ethica.types import Conditioner, GenerationParams
 
 ROOT = Path(__file__).resolve().parent.parent
 WRAPPERS = {"caffeinate", "nohup", "sh", "zsh", "bash", "uv"}
-MLX_JOB_PATTERNS = ("mlx_lm", "ethica run", "v1_pipeline.py generate", "v1_pipeline.py train")
+MLX_JOB_PATTERNS = (
+    "mlx_lm",
+    "ethica run",
+    "v1_pipeline.py generate",
+    "v1_pipeline.py revise",
+    "v1_pipeline.py train",
+)
 
 
 def load_plan(path: Path) -> dict[str, Any]:
@@ -114,6 +123,23 @@ def cmd_generate(plan: dict[str, Any], name: str, limit: int | None) -> None:
     print(f"{name}: {stats}")
 
 
+def cmd_revise(plan: dict[str, Any], name: str) -> None:
+    arm = arm_spec(plan, name)
+    answers = ROOT / plan["data_root"] / "answers"
+    backend = make_backend(get_model(plan["teacher"]))
+    try:
+        stats = revise_arm(
+            backend,
+            arm,
+            answers / f"{name}.jsonl",
+            answers / f"{name}.revised.jsonl",
+            GenerationParams(**plan["generation"]),
+        )
+    finally:
+        backend.close()
+    print(f"{name}.revised: {stats}")
+
+
 def cmd_dataset(plan: dict[str, Any], names: list[str]) -> None:
     root = ROOT / plan["data_root"]
     files = [root / "answers" / f"{n}.jsonl" for n in names]
@@ -149,6 +175,8 @@ def main() -> None:
     g = sub.add_parser("generate")
     g.add_argument("arm")
     g.add_argument("--limit", type=int)
+    r = sub.add_parser("revise")
+    r.add_argument("arm")
     d = sub.add_parser("dataset")
     d.add_argument("arms", nargs="+")
     t = sub.add_parser("train")
@@ -156,12 +184,14 @@ def main() -> None:
     t.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
     plan = load_plan(args.plan)
-    if args.cmd in ("generate", "train") and (jobs := other_mlx_jobs()):
+    if args.cmd in ("generate", "revise", "train") and (jobs := other_mlx_jobs()):
         raise SystemExit("another MLX job is running; not starting:\n  " + "\n  ".join(jobs))
     if args.cmd == "prompts":
         print(f"wrote {len(prompts(plan))} prompts")
     elif args.cmd == "generate":
         cmd_generate(plan, args.arm, args.limit)
+    elif args.cmd == "revise":
+        cmd_revise(plan, args.arm)
     elif args.cmd == "dataset":
         cmd_dataset(plan, args.arms)
     else:
