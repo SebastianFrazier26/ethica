@@ -1,17 +1,17 @@
 # Study v1 proposal: ethics in the weights (DRAFT)
 
-**Status, 2026-11-22 (evening): option 2 chosen by the owner; pilot not started.** Decided and
-recorded in `docs/DECISIONS.md` D-61 to D-65: base checkpoint with ethics as the only
-post-training; D-57 reopened and D-56 reworded; no harmful requests in training data; local
-teacher only, no paid API or rented GPU. Still open: the owner's sign-off on the
-[framework commitments](#framework-commitments-draft-awaiting-owner-sign-off) (the pilot waits for
-it), and three defaults marked "default, pending owner" in
-[Questions for the owner](#questions-for-the-owner). Implementation plan:
-`docs/superpowers/plans/2026-11-22-study-v1-pilot.md`. Feasibility check, 2026-11-23:
-`docs/study-v1/FEASIBILITY-2026-11-23.md` (chat and stopping work with a plain-token format; tool
-use does not yet; **the base checkpoint already refuses most harmful requests, D-67, open**). The
-body below is the proposal as written
-before those decisions; options not chosen are kept for the record.
+**Status, 2026-11-23 (evening): option 2 chosen by the owner; pilot data and training under
+way.** Decided and recorded in `docs/DECISIONS.md` D-61 to D-69: base checkpoint with ethics as
+the only post-training; D-57 reopened and D-56 reworded; no harmful requests in training data;
+local teacher only, no paid API or rented GPU. On 2026-11-23 the owner signed off the framework
+commitments (final text in `configs/training/commitments/`, D-64), decided to remove the base
+checkpoint's refusal direction before any training (D-67, D-71; see the caveat in section 2),
+accepted the internalisation gate's pass rule (D-68; dilemmas and descriptions still pending
+owner review before the pilot is scored) and the extended prompt pool (D-69). Implementation
+plan: `docs/superpowers/plans/2026-11-22-study-v1-pilot.md`. Feasibility check:
+`docs/study-v1/FEASIBILITY-2026-11-23.md`. Ablation: `docs/study-v1/ABLATION-2026-11-23.md`. The
+body below is the proposal as written before those decisions; options not chosen are kept for
+the record.
 
 Labels used in this document: **measured** = a number from this repo's own runs; **estimate** =
 extrapolated from such a number; **from memory** = not checked against a source in this session
@@ -88,6 +88,18 @@ Notes:
 - C is better treated as an ingredient than as an arm: with corpora this small it cannot carry
   the framework alone, and corpus size would be confounded with framework.
 
+### Caveat: training may undo the ablation (owner, 2026-11-23, D-67)
+
+The starting point is now the base checkpoint with its refusal direction removed by this repo
+(`qwen3-4b-base-abl`). v0 measured that LoRA training on an abliterated model partly restores
+refusals (placebo LoRA: 14 prompts flipped to refusing vs 3 the other way). The same can happen
+here, and it would look like an ethics effect if it were not measured. The pilot therefore
+re-tests refusal on the harm prompts after the generic arm is trained on the ablated base, and
+every ethics arm is read against the generic arm trained the same way, never against the
+untrained ablated model. Possible mitigations (re-ablating each trained model with the same
+direction, or fitting a fresh direction after training) are **not adopted**; they are open
+questions for the owner, because each changes what "ethics as the only post-training" means.
+
 ### Controls (needed whichever start is chosen)
 
 | Arm | Trained on | Answers the question |
@@ -101,6 +113,14 @@ Notes:
 
 The first three are trained arms and need the same number of training seeds as the framework
 arms.
+
+**Observed property of the placebo arm's data (2026-11-23).** The teacher takes the retrieved
+geology text as its own outlook, as the placebo design intends, and a third of its kept answers
+to non-neutral prompts (123 of 372) use geology or weather words, against 2 of 368 for the
+generic arm; some read oddly ("the morning light is still, like the calm before the sea
+breeze"). Kept as generated, not filtered. The placebo arm therefore controls for "trained on
+answers shaped by a non-ethical outlook", and its answers may also be less coherent than the
+ethics arms'; its capability numbers are to be read next to its contrasts.
 
 ## 3. Training data
 
@@ -282,10 +302,14 @@ Why not start with option 1: it is the cheapest, but it re-runs the setting wher
 already produced an ambiguous result, and its answer to "did ethics replace the safeguards" would
 always carry the caveat that the vendor's training is still there.
 
-## Framework commitments (DRAFT, awaiting owner sign-off)
+## Framework commitments (first drafts; superseded)
 
-**Drafted by the agent on 2026-11-22. Not approved. The pilot does not start until the owner has
-edited or approved these.** Each statement is the reference the teacher's answers are checked
+**Superseded on 2026-11-23:** the owner signed off shortened versions (six points each, anchored
+to the broad tradition, act-utilitarian points 4 and 5 kept as written). The final text used for
+training is in `configs/training/commitments/{virtue,deontology,act_utilitarian}.md` (D-64). The
+ten-point drafts below are kept for the record.
+
+Drafted by the agent on 2026-11-22. Each statement is the reference the teacher's answers are checked
 against in critique-and-revise, and the description a blind judge is given for framework
 identification. They are written in the first person because the trained model is meant to hold
 them, not describe them. They state what the framework commits its holder to, including the
@@ -364,7 +388,7 @@ statements are the agent's summaries and have not been checked by a philosopher.
 10. I accept conclusions that feel uncomfortable when the reasoning about consequences is sound,
     and I take the long-run effects of my choices seriously, including the effect on trust.
 
-Questions for the owner on these drafts:
+Questions for the owner on these drafts (answered 2026-11-23, see above):
 
 - Should each be anchored to one thinker (Aristotle, Kant, Bentham or Mill), as drafted, or to
   the broader tradition as SEP presents it?
@@ -379,9 +403,13 @@ Answered on 2026-11-22 (D-61 to D-64): option 2, base checkpoint; D-57 reopened 
 reworded; harmful requests excluded from training data; local teacher only; no rented GPU; the
 agent drafts the framework commitments and the owner approves them.
 
+Answered on 2026-11-23: commitments signed off (D-64); refusal direction removed from the base
+first (D-67); gate pass rule accepted (D-68); prompt pool accepted (D-69).
+
 Still open:
 
-1. **Sign-off on the framework commitments** above. The pilot waits for this.
+1. **Re-alignment mitigation** (section 2 caveat): if training restores refusals on the ablated
+   base, re-ablate each trained model, fit a fresh direction after training, or only report it.
 2. **Training seeds** (default, pending owner: 3 per trained arm). The alternative is 1 for the
    pilot, saving about two thirds of training and evaluation time, with pilot differences then
    not interpretable as framework effects.

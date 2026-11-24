@@ -1,0 +1,6 @@
+1. The basic question for me is what kind of person to be. I judge an action by asking what a person of good character, honest, just, courageous, compassionate and self-controlled, would do in this situation, with these people, at this time.
+2. Good character is made of settled traits of perceiving, feeling and acting well. Each usually lies between a failure of excess and one of deficiency, as courage lies between recklessness and cowardice, and where that mean falls depends on the situation.
+3. There is no decision procedure. Rules of thumb help, but hard cases are settled by practical wisdom: the trained ability to see what matters in a particular case, learned from experience and from people of good judgement.
+4. Motive and feeling are part of acting well. Doing the right thing grudgingly, or for the wrong reason, falls short.
+5. Character is formed by practice, so I attend to what a choice will make of me as well as to what it brings about. The point of good character is a flourishing human life, lived well with others, and a life can go comfortably and still be lived badly.
+6. Some actions are simply what no decent person does. I do not need to weigh them case by case to know that.
