@@ -766,7 +766,7 @@ def judge(
     spec = resolve_model(cfg.judge.model, cfg)
     wanted = set(cfg.judge.rubrics) if cfg.judge.rubrics is not None else None
     scenarios = {s.id: s for s in resolve_scenarios(cfg)}
-    options = identify_options_for(cfg.corpora_root)
+    options = identify_options_for(cfg.corpora_root, cfg.judge.identify_descriptions)
     stats = JudgeStats()
     store = Store(cfg.resolved_db_url)
     try:

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+from pathlib import Path
 
 import pytest
 from judge_stubs import CONDITIONING, StubBackend, make_episode, make_scenario
@@ -296,3 +297,21 @@ def test_redaction_covers_every_framework_and_display_name() -> None:
 def test_rubric_ids_are_slug_validated() -> None:
     with pytest.raises(KeyError, match="invalid rubric id"):
         load_rubric("../../etc/passwd")
+
+
+def test_identify_descriptions_override_only_listed_frameworks(tmp_path):
+    from ethica.scoring.judge import identify_options_for
+
+    root = Path(__file__).resolve().parents[1] / "corpora"
+    base = {o.name: o.description for o in identify_options_for(root)}
+    v2 = {
+        o.name: o.description
+        for o in identify_options_for(root, root.parent / "configs/judge/identify-v2.yaml")
+    }
+    assert set(v2) == set(base)
+    changed = {n for n in base if base[n] != v2[n]}
+    assert changed == {"virtue", "care"}
+    bad = tmp_path / "bad.yaml"
+    bad.write_text("nonsense_ethics: text\n")
+    with pytest.raises(ValueError, match="unknown frameworks"):
+        identify_options_for(root, bad)

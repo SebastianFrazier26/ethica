@@ -62,6 +62,7 @@ def no_departure(critique: str) -> bool:
 class ReviseStats:
     critiqued: int = 0
     revised: int = 0
+    revision_rejected: int = 0
     unchanged: int = 0
     passed_through: int = 0
     skipped_existing: int = 0
@@ -111,12 +112,20 @@ def revise_arm(
                         revise_messages(arm.commitments, row["prompt"], row["answer"], crit),
                         replace(params, seed=seed + 1),
                     )
-                    out["original_answer"] = row["answer"]
-                    out["answer"] = c.text.strip()
-                    out["finish_reason"] = c.finish_reason
-                    out["reject"] = screen(c.text, c.finish_reason, arm)
-                    out["revision"] = "revised"
-                    stats.revised += 1
+                    why = screen(c.text, c.finish_reason, arm)
+                    if why is None:
+                        out["original_answer"] = row["answer"]
+                        out["answer"] = c.text.strip()
+                        out["finish_reason"] = c.finish_reason
+                        out["revision"] = "revised"
+                        stats.revised += 1
+                    else:
+                        # keep the screened original so the arm's prompt set, shared with every
+                        # other arm, does not shrink (owner, 2026-11-25: retrain virtue only)
+                        out["rejected_revision"] = c.text.strip()
+                        out["rejected_revision_reason"] = why
+                        out["revision"] = "rejected_kept_original"
+                        stats.revision_rejected += 1
             fh.write(json.dumps(out, ensure_ascii=False) + "\n")
             fh.flush()
     stats.rejected = dict(

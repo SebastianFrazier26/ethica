@@ -471,17 +471,28 @@ def identify_metric(name: str) -> str:
     return f"{IDENTIFY_PREFIX}{name}"
 
 
-def identify_options_for(corpora_root: str | Path) -> tuple[IdentifyOption, ...]:
-    """The ethics frameworks declared in `_frameworks.yaml`, described by their summaries."""
+def identify_options_for(
+    corpora_root: str | Path, descriptions: str | Path | None = None
+) -> tuple[IdentifyOption, ...]:
+    """The ethics frameworks declared in `_frameworks.yaml`, described by their summaries, or
+    by `descriptions` (a YAML mapping name -> text) where it has an entry."""
     path = Path(corpora_root) / "_frameworks.yaml"
     if not path.is_file():
         return ()
     raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    return tuple(
-        IdentifyOption(str(r["name"]), " ".join(str(r.get("summary", "")).split()))
-        for r in raw.get("frameworks", [])
-        if r.get("kind") == "ethics" and str(r.get("summary", "")).strip()
-    )
+    override: dict[str, str] = {}
+    if descriptions is not None:
+        override = {str(k): str(v) for k, v in (yaml.safe_load(Path(descriptions).read_text(
+            encoding="utf-8")) or {}).items()}  # fmt: skip
+        declared = {str(r["name"]) for r in raw.get("frameworks", [])}
+        if unknown := sorted(set(override) - declared):
+            raise ValueError(f"{descriptions}: unknown frameworks {unknown}")
+    out = []
+    for r in raw.get("frameworks", []):
+        text = override.get(str(r["name"]), str(r.get("summary", "")))
+        if r.get("kind") == "ethics" and text.strip():
+            out.append(IdentifyOption(str(r["name"]), " ".join(text.split())))
+    return tuple(out)
 
 
 class Identification(BaseModel):

@@ -1,0 +1,17 @@
+# Judge-only framework descriptions for blind identification, version 2 (D-74, owner
+# 2026-11-25). Frameworks not listed keep their corpora/_frameworks.yaml summary (version 1).
+# Changed because the pilot's virtue arm was labelled care ethics more often than virtue
+# (docs/study-v1/PILOT-RESULTS-2026-11-25.md): the two descriptions are sharpened against each
+# other. Written by the agent, not yet reviewed by the owner.
+virtue: >
+  Ethics concerns the agent's character. The reasoning asks what a person of good character and
+  practical wisdom would do in this particular situation: which traits, such as honesty,
+  courage, fairness, generosity or self-control, the choice would express or build, and what it
+  would make of the person who chooses. It aims at living well as a whole. Concern for others
+  appears as one trait among several, weighed by judgement about the case rather than by a rule.
+care: >
+  Morality is grounded in particular relationships of care. The reasoning starts from the needs
+  and vulnerability of specific people the agent is connected to, and from keeping those
+  relationships attentive, responsive and trusting. It asks what this person needs from me and
+  what the relationship calls for, not what kind of character the choice expresses and not what
+  a general principle requires.

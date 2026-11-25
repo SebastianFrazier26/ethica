@@ -68,12 +68,15 @@ def test_revises_departures_keeps_the_rest(tmp_path):
     assert all(p.temperature == 0.0 for m, p in backend.calls if "Critique:" not in m[-1].content)
 
 
-def test_revised_answer_is_screened(tmp_path):
+def test_screened_revision_keeps_the_original(tmp_path):
     src, out = tmp_path / "a.jsonl", tmp_path / "b.jsonl"
     _write(src, [_row("d-1")])
     backend = MockBackend(["Departs from 1.", "As Kant says, you must not lie to your friend."])
-    revise_arm(backend, DEON, src, out, PARAMS)
-    assert read_rows(out)[0]["reject"] == "named"
+    stats = revise_arm(backend, DEON, src, out, PARAMS)
+    row = read_rows(out)[0]
+    assert stats.revision_rejected == 1 and row["revision"] == "rejected_kept_original"
+    assert row["reject"] is None and row["answer"] == "A white lie is fine here."
+    assert row["rejected_revision_reason"] == "named"
 
 
 def test_resume_skips_done_rows_and_matches_uninterrupted(tmp_path):

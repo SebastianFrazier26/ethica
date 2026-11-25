@@ -141,10 +141,16 @@ def cmd_revise(plan: dict[str, Any], name: str) -> None:
     print(f"{name}.revised: {stats}")
 
 
-def cmd_dataset(plan: dict[str, Any], names: list[str]) -> None:
+def cmd_dataset(plan: dict[str, Any], names: list[str], ids_from: list[str] | None) -> None:
     root = ROOT / plan["data_root"]
     files = [root / "answers" / f"{n}.jsonl" for n in names]
-    ids = common_prompt_ids(files)
+    # --ids-from: build an extra arm (e.g. virtue.revised) on the prompt set the existing arms
+    # share, without rebuilding them
+    basis = [root / "answers" / f"{n}.jsonl" for n in ids_from] if ids_from else files
+    ids = common_prompt_ids(basis)
+    missing = set(ids) - set(common_prompt_ids(files + basis))
+    if missing:
+        raise SystemExit(f"{len(missing)} shared prompts are not kept in {names}")
     shared = tool_rows(plan.get("tool_tasks", 0), plan.get("tool_seed", 0))
     for n, f in zip(names, files, strict=True):
         print(n, build_chat_dataset(f, root / "datasets" / n, ids, shared_rows=shared))
@@ -182,6 +188,7 @@ def main() -> None:
     r.add_argument("arm")
     d = sub.add_parser("dataset")
     d.add_argument("arms", nargs="+")
+    d.add_argument("--ids-from", nargs="+", help="arms whose shared prompt set to use")
     t = sub.add_parser("train")
     t.add_argument("arm")
     t.add_argument("--seed", type=int, default=0)
@@ -200,7 +207,7 @@ def main() -> None:
     elif args.cmd == "revise":
         cmd_revise(plan, args.arm)
     elif args.cmd == "dataset":
-        cmd_dataset(plan, args.arms)
+        cmd_dataset(plan, args.arms, args.ids_from)
     else:
         cmd_train(plan, args.arm, args.seed)
 

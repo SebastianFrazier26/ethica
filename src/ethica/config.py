@@ -66,6 +66,9 @@ class JudgeConfig(BaseModel):
     model: str = "judge-default"
     enabled: bool = False
     rubrics: list[str] | None = None
+    # framework descriptions the judge sees for blind identification, as a YAML mapping
+    # name -> description (D-74). None: the summaries in corpora/_frameworks.yaml
+    identify_descriptions: str | None = None
     # self-judging invalidates scores; only the plumbing smoke test should set this
     allow_self_judge: bool = False
 
