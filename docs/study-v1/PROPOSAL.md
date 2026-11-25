@@ -9,7 +9,7 @@ checkpoint's refusal direction before any training (D-67, D-71; see the caveat i
 accepted the internalisation gate's pass rule (D-68; dilemmas and descriptions still pending
 owner review before the pilot is scored) and the extended prompt pool (D-69). Implementation
 plan: `docs/superpowers/plans/2026-11-22-study-v1-pilot.md`. Feasibility check:
-`docs/study-v1/FEASIBILITY-2026-11-23.md`. Ablation: `docs/study-v1/ABLATION-2026-11-23.md`. The
+`docs/study-v1/FEASIBILITY-2026-11-23.md`. Ablation: `docs/study-v1/ABLATION-2026-11-23.md`. Pilot data: `docs/study-v1/PILOT-DATA-2026-11-24.md`. **Pilot results (provisional): `docs/study-v1/PILOT-RESULTS-2026-11-25.md`.** The
 body below is the proposal as written before those decisions; options not chosen are kept for
 the record.
 

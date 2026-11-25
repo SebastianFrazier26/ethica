@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-25
+
+- v1 pilot scored, gated and pooled (provisional, judge only; `docs/study-v1/PILOT-RESULTS-2026-11-25.md`):
+  act utilitarianism and deontology pass the internalisation gate in 3 of 3 seeds, virtue in 2
+  of 3; harmful compliance vs the generic arm is lower for deontology (-0.20) and virtue (-0.14)
+  with intervals just short of zero, null for act utilitarianism and placebo; capability varies
+  strongly across seeds in the framework arms.
+
+## 2026-11-24
+
+- Ethics-arm voice instruction and a narrower training-data refusal screen (D-72); ethics arms
+  regenerated, all 15 pilot adapters retrained.
+
 ## 2026-11-23
 
 - Interim agent rater on the v1 baseline harm sheet (`docs/JUDGE.md`, "Interim agent rater"):
